@@ -10,7 +10,7 @@ app.get("/admins", async (req, res) => {
   res.json(admins);
 });
 
-app.post("/users", async (req, res) => {
+app.post("/admins", async (req, res) => {
   const { name, email } = req.body;
   try {
     const user = await prisma.user.create({

@@ -1,16 +1,5 @@
-# Logs
-logs
-*.log
-
-# Dependency directories
-node_modules/
-
-# dotenv environment variable files
+node_modules
+# Keep environment variables out of version control
 .env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
 
-# run project
-app.js
+/generated/prisma

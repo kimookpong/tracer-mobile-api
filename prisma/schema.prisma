@@ -1,0 +1,791 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model admins {
+  id                 String   @id @db.VarChar(36)
+  email              String?  @db.VarChar(255)
+  citizen_id         String   @db.VarChar(255)
+  masking_citizen_id String   @db.VarChar(17)
+  password           String   @db.VarChar(255)
+  title              String?  @db.VarChar(10)
+  first_name         String?  @db.VarChar(255)
+  middle_name        String?  @db.VarChar(255)
+  last_name          String?  @db.VarChar(255)
+  pic_url            String?  @db.VarChar(255)
+  permissions        String[] @db.VarChar(255)
+  role_id            Int?
+  created_at         DateTime @db.Timestamp(6)
+  created_by_id      String   @db.VarChar(36)
+  created_by         String   @db.VarChar(255)
+  updated_at         DateTime @db.Timestamp(6)
+  updated_by_id      String   @db.VarChar(36)
+  updated_by         String   @db.VarChar(255)
+}
+
+model buyer_attachments {
+  id            String   @id @db.VarChar(36)
+  buyer_id      String   @db.VarChar(36)
+  file_name     String   @db.VarChar(255)
+  file_path     String   @db.VarChar(255)
+  is_public     Boolean
+  content_type  String   @db.VarChar(50)
+  description   String?  @db.VarChar(255)
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar(255)
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar(255)
+  buyers        buyers   @relation(fields: [buyer_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_order_id")
+}
+
+model buyers {
+  id                   String              @id @db.VarChar(36)
+  buyer_code           String              @db.VarChar(20)
+  company_name         String              @db.VarChar(255)
+  comp_registration_id String              @db.VarChar(30)
+  country              String              @db.VarChar(255)
+  address              String              @db.VarChar(255)
+  title                String              @db.VarChar(10)
+  first_name           String              @db.VarChar(255)
+  middle_name          String?             @db.VarChar(255)
+  last_name            String              @db.VarChar(255)
+  phone_number         String              @db.VarChar(50)
+  email                String?             @db.VarChar(255)
+  whatsapp             String?             @db.VarChar(255)
+  wechat               String?             @db.VarChar(255)
+  line_id              String?             @db.VarChar(255)
+  status               String              @db.VarChar(50)
+  created_at           DateTime            @db.Timestamp(6)
+  created_by_id        String              @db.VarChar(36)
+  created_by           String              @db.VarChar(255)
+  updated_at           DateTime            @db.Timestamp(6)
+  updated_by_id        String              @db.VarChar(36)
+  updated_by           String              @db.VarChar(255)
+  country_code         String              @default("") @db.VarChar(10)
+  buyer_attachments    buyer_attachments[]
+}
+
+model cattle_attachments {
+  id            String   @id @db.VarChar(36)
+  cattle_id     String   @db.VarChar(36)
+  file_name     String   @db.VarChar
+  file_path     String   @db.VarChar
+  is_public     Boolean
+  content_type  String   @db.VarChar(50)
+  description   String?  @db.VarChar
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar
+  cattles       cattles  @relation(fields: [cattle_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_cattle_id")
+}
+
+model cattle_breeds {
+  id            String   @id @db.VarChar(36)
+  name_en       String   @db.VarChar(255)
+  name_th       String   @db.VarChar(255)
+  short_name    String   @db.VarChar(30)
+  remark        String?  @db.VarChar(255)
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar(255)
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar(255)
+}
+
+model cattle_create_staged {
+  id                              String    @id @db.VarChar(36)
+  staged_id                       String    @db.VarChar(36)
+  order_request_id                String?   @db.VarChar(36)
+  farm_sourcing_id                String?   @db.VarChar(36)
+  farm_id                         String    @db.VarChar(36)
+  pen_id                          String    @db.VarChar(36)
+  cattle_type_id                  String    @db.VarChar(36)
+  cattle_breed_ids                String[]  @db.VarChar(36)
+  nid                             String    @db.VarChar(36)
+  gender                          String    @db.VarChar(10)
+  castration_status               String    @db.VarChar(30)
+  pregnant_status                 String    @db.VarChar(30)
+  birthdate                       DateTime  @db.Timestamp(6)
+  passport_no                     String?   @db.VarChar(50)
+  color                           String    @db.VarChar(30)
+  ear                             String    @db.VarChar(30)
+  horn                            String    @db.VarChar(30)
+  weight                          Decimal   @db.Decimal(10, 2)
+  date_weight                     DateTime  @db.Timestamp(6)
+  tracer_tag                      String    @db.VarChar(50)
+  breed_sire                      String[]  @db.VarChar(36)
+  breed_dam                       String[]  @db.VarChar(36)
+  breed_pgs                       String[]  @db.VarChar(36)
+  breed_pgd                       String[]  @db.VarChar(36)
+  breed_mgs                       String[]  @db.VarChar(36)
+  breed_mgd                       String[]  @db.VarChar(36)
+  country_code                    String    @db.VarChar(10)
+  health_treatment_date           DateTime  @db.Timestamp(6)
+  health_veterinary_name          String    @db.VarChar(100)
+  health_health_condition         String    @db.VarChar(36)
+  health_symptom                  String?   @db.VarChar(100)
+  health_cause_of_death           String?   @db.VarChar
+  health_treatment                String?   @db.VarChar(100)
+  health_drug_name                String?   @db.VarChar(100)
+  health_dosage                   Decimal?  @db.Decimal(10, 2)
+  health_period_residue           String?   @db.VarChar(50)
+  vaccination_vaccination_date    DateTime? @db.Timestamp(6)
+  vaccination_veterinary_name     String?   @db.VarChar(100)
+  vaccination_vaccine_type        String?   @db.VarChar(36)
+  vaccination_remark              String?   @db.VarChar(100)
+  vaccination_vaccine_id          String?   @db.VarChar(100)
+  vaccination_vaccine_lot_no      String?   @db.VarChar(100)
+  vaccination_vaccine_expiry_date DateTime? @db.Timestamp(6)
+  created_at                      DateTime  @db.Timestamp(6)
+  created_by_id                   String    @db.VarChar(36)
+  created_by                      String    @db.VarChar
+  updated_at                      DateTime  @db.Timestamp(6)
+  updated_by_id                   String    @db.VarChar(36)
+  updated_by                      String    @db.VarChar
+}
+
+model cattle_healths {
+  id               String   @id @db.VarChar(36)
+  cattle_id        String   @db.VarChar(36)
+  treatment_date   DateTime @db.Timestamp(6)
+  veterinary_name  String   @db.VarChar(100)
+  health_condition String   @db.VarChar(36)
+  symptom          String?  @db.VarChar(100)
+  cause_of_death   String?  @db.VarChar
+  treatment        String?  @db.VarChar(100)
+  drug_name        String?  @db.VarChar(100)
+  dosage           Decimal? @db.Decimal(10, 2)
+  period_residue   String?  @db.VarChar(50)
+  status           String   @db.VarChar(50)
+  created_at       DateTime @db.Timestamp(6)
+  created_by_id    String   @db.VarChar(36)
+  created_by       String   @db.VarChar
+  updated_at       DateTime @db.Timestamp(6)
+  updated_by_id    String   @db.VarChar(36)
+  updated_by       String   @db.VarChar
+  cattles          cattles  @relation(fields: [cattle_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_cattle_id")
+}
+
+model cattle_matching_order_staged {
+  id               String   @id @db.VarChar(36)
+  staged_id        String   @db.VarChar(36)
+  order_request_id String   @db.VarChar(36)
+  farm_sourcing_id String   @db.VarChar(36)
+  cattle_ids       String[] @db.VarChar(36)
+  is_exists_all    Boolean
+  created_at       DateTime @db.Timestamp(6)
+  created_by_id    String   @db.VarChar(36)
+  created_by       String   @db.VarChar
+  updated_at       DateTime @db.Timestamp(6)
+  updated_by_id    String   @db.VarChar(36)
+  updated_by       String   @db.VarChar
+}
+
+model cattle_sourcing {
+  id               String        @id @db.VarChar(36)
+  order_id         String        @db.VarChar(36)
+  order_request_id String        @db.VarChar(36)
+  farm_sourcing_id String        @db.VarChar(36)
+  cattle_id        String        @db.VarChar(36)
+  created_at       DateTime      @db.Timestamp(6)
+  created_by_id    String        @db.VarChar(36)
+  created_by       String        @db.VarChar
+  updated_at       DateTime      @db.Timestamp(6)
+  updated_by_id    String        @db.VarChar(36)
+  updated_by       String        @db.VarChar
+  farm_sourcing    farm_sourcing @relation(fields: [farm_sourcing_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_farm_sourcing_id")
+}
+
+model cattle_types {
+  id            String   @id @db.VarChar(36)
+  name_en       String   @db.VarChar(255)
+  name_th       String   @db.VarChar(255)
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar(255)
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar(255)
+}
+
+model cattle_vaccinations {
+  id                  String    @id @db.VarChar(36)
+  cattle_id           String    @db.VarChar(36)
+  vaccination_date    DateTime? @db.Timestamp(6)
+  veterinary_name     String?   @db.VarChar(100)
+  vaccine_type        String?   @db.VarChar(36)
+  remark              String?   @db.VarChar(100)
+  vaccine_id          String?   @db.VarChar(100)
+  vaccine_lot_no      String?   @db.VarChar(100)
+  vaccine_expiry_date DateTime? @db.Timestamp(6)
+  status              String    @db.VarChar(50)
+  created_at          DateTime  @db.Timestamp(6)
+  created_by_id       String    @db.VarChar(36)
+  created_by          String    @db.VarChar
+  updated_at          DateTime  @db.Timestamp(6)
+  updated_by_id       String    @db.VarChar(36)
+  updated_by          String    @db.VarChar
+  cattles             cattles   @relation(fields: [cattle_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_cattle_id")
+}
+
+model cattles {
+  id                  String                @id @db.VarChar(36)
+  tracer_id           String                @db.VarChar(36)
+  farm_id             String                @db.VarChar(36)
+  pen_id              String                @db.VarChar(36)
+  cattle_type_id      String                @db.VarChar(36)
+  cattle_breed_ids    String[]              @db.VarChar(36)
+  traceability_id     String?               @db.VarChar(36)
+  nid                 String                @db.VarChar(36)
+  gender              String                @db.VarChar(10)
+  castration_status   String                @db.VarChar(30)
+  pregnant_status     String                @db.VarChar(30)
+  birthdate           DateTime              @db.Timestamp(6)
+  passport_no         String?               @db.VarChar(50)
+  color               String                @db.VarChar(30)
+  ear                 String                @db.VarChar(30)
+  horn                String                @db.VarChar(30)
+  weight              Decimal               @db.Decimal(10, 2)
+  date_weight         DateTime              @db.Timestamp(6)
+  tracer_tag          String                @db.VarChar(50)
+  ear_tag             String[]              @db.VarChar(50)
+  breed_sire          String[]              @db.VarChar(36)
+  breed_dam           String[]              @db.VarChar(36)
+  breed_pgs           String[]              @db.VarChar(36)
+  breed_pgd           String[]              @db.VarChar(36)
+  breed_mgs           String[]              @db.VarChar(36)
+  breed_mgd           String[]              @db.VarChar(36)
+  is_sourcing         Boolean
+  is_tracing          Boolean
+  country_code        String                @db.VarChar(10)
+  status              String                @db.VarChar(50)
+  created_at          DateTime              @db.Timestamp(6)
+  created_by_id       String                @db.VarChar(36)
+  created_by          String                @db.VarChar
+  updated_at          DateTime              @db.Timestamp(6)
+  updated_by_id       String                @db.VarChar(36)
+  updated_by          String                @db.VarChar
+  cattle_attachments  cattle_attachments[]
+  cattle_healths      cattle_healths[]
+  cattle_vaccinations cattle_vaccinations[]
+  farms               farms                 @relation(fields: [farm_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_farm_id")
+  pens                pens                  @relation(fields: [pen_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pen_id")
+}
+
+model data_migrations {
+  version BigInt  @id
+  dirty   Boolean
+}
+
+model farm_attachments {
+  id            String   @id @db.VarChar(36)
+  farm_id       String   @db.VarChar(36)
+  file_name     String   @db.VarChar
+  file_path     String   @db.VarChar
+  is_public     Boolean
+  content_type  String   @db.VarChar(50)
+  description   String?  @db.VarChar
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar
+  encrypted_key String?  @db.VarChar
+  farms         farms    @relation(fields: [farm_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_farm_id")
+}
+
+model farm_authorized {
+  id                     String   @id @db.VarChar(36)
+  farm_id                String   @db.VarChar(36)
+  authorized_type        String   @db.VarChar
+  authorized_second_type String?  @db.VarChar
+  license_id             String   @db.VarChar
+  expire_date            DateTime @db.Timestamp(6)
+  created_at             DateTime @db.Timestamp(6)
+  created_by_id          String   @db.VarChar(36)
+  created_by             String   @db.VarChar
+  updated_at             DateTime @db.Timestamp(6)
+  updated_by_id          String   @db.VarChar(36)
+  updated_by             String   @db.VarChar
+  farms                  farms    @relation(fields: [farm_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_farm_id")
+}
+
+model farm_create_staged {
+  id                                String   @id @db.VarChar(36)
+  staged_id                         String   @db.VarChar(36)
+  farm_identification               String   @db.VarChar
+  farm_type                         String   @db.VarChar
+  ref_1                             String   @db.VarChar(36)
+  max_cows                          Int
+  name                              String   @db.VarChar
+  standard                          String   @db.VarChar
+  rai                               Decimal  @db.Decimal(16, 2)
+  ngan                              Decimal  @db.Decimal(16, 2)
+  wa                                Decimal  @db.Decimal(16, 2)
+  address_line1                     String   @db.VarChar
+  address_subdistrict               String   @db.VarChar
+  address_district                  String   @db.VarChar
+  address_province                  String   @db.VarChar
+  address_zipcode                   String   @db.VarChar(30)
+  tracer_id                         String   @db.VarChar(36)
+  is_owner_ref_farmer               Boolean
+  farmer_id                         String?  @db.VarChar(36)
+  owner_type                        String?  @db.VarChar(36)
+  owner_tin                         String?  @db.VarChar
+  owner_title                       String?  @db.VarChar(10)
+  owner_first_name                  String?  @db.VarChar
+  owner_middle_name                 String?  @db.VarChar
+  owner_last_name                   String?  @db.VarChar
+  owner_company_name                String?  @db.VarChar
+  owner_gender                      String?  @db.VarChar(30)
+  owner_birthdate                   String?  @db.VarChar(30)
+  owner_education_degree            String?  @db.VarChar
+  owner_occupation                  String?  @db.VarChar
+  owner_second_occupation           String?  @db.VarChar
+  owner_phone_number                String?  @db.VarChar(50)
+  owner_mobile_number               String?  @db.VarChar(50)
+  owner_email                       String?  @db.VarChar
+  owner_line_id                     String?  @db.VarChar
+  owner_address_line1               String?  @db.VarChar
+  owner_address_subdistrict         String?  @db.VarChar
+  owner_address_district            String?  @db.VarChar
+  owner_address_province            String?  @db.VarChar
+  owner_address_zipcode             String?  @db.VarChar(30)
+  owner_contact_address_line1       String?  @db.VarChar
+  owner_contact_address_subdistrict String?  @db.VarChar
+  owner_contact_address_district    String?  @db.VarChar
+  owner_contact_address_province    String?  @db.VarChar
+  owner_contact_address_zipcode     String?  @db.VarChar(30)
+  authorized_type                   String   @db.VarChar
+  authorized_second_type            String?  @db.VarChar
+  authorized_license_id             String   @db.VarChar
+  authorized_expire_date            DateTime @db.Timestamp(6)
+  veterinary_name                   String?  @db.VarChar
+  veterinary_license_id             String?  @db.VarChar
+  created_at                        DateTime @db.Timestamp(6)
+  created_by_id                     String   @db.VarChar(36)
+  created_by                        String   @db.VarChar
+  updated_at                        DateTime @db.Timestamp(6)
+  updated_by_id                     String   @db.VarChar(36)
+  updated_by                        String   @db.VarChar
+  status                            String   @default("") @db.VarChar(10)
+}
+
+model farm_sourcing {
+  id               String            @id @db.VarChar(36)
+  order_id         String            @db.VarChar(36)
+  order_request_id String            @db.VarChar(36)
+  farm_id          String            @db.VarChar(36)
+  amount           Int
+  status           String            @db.VarChar(10)
+  created_at       DateTime          @db.Timestamp(6)
+  created_by_id    String            @db.VarChar(36)
+  created_by       String            @db.VarChar
+  updated_at       DateTime          @db.Timestamp(6)
+  updated_by_id    String            @db.VarChar(36)
+  updated_by       String            @db.VarChar
+  cattle_sourcing  cattle_sourcing[]
+}
+
+model farm_veterinary {
+  id            String   @id @db.VarChar(36)
+  farm_id       String   @db.VarChar(36)
+  name          String   @db.VarChar
+  license_id    String   @db.VarChar
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar
+  farms         farms    @relation(fields: [farm_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_farm_id")
+}
+
+model farmer_accounts {
+  id            String   @id @db.VarChar(36)
+  farmer_id     String   @db.VarChar(36)
+  username      String   @db.VarChar(255)
+  password      String   @db.VarChar(255)
+  role_id       Int?
+  permissions   String[] @db.VarChar(255)
+  status        String?  @db.VarChar(50)
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar(255)
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar(255)
+  farmers       farmers  @relation(fields: [farmer_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_farmer_id")
+}
+
+model farmer_attachments {
+  id            String   @id @db.VarChar(36)
+  farmer_id     String   @db.VarChar(36)
+  file_name     String   @db.VarChar(255)
+  file_path     String   @db.VarChar(255)
+  is_public     Boolean
+  content_type  String   @db.VarChar(50)
+  description   String?  @db.VarChar(255)
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar(255)
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar(255)
+  encrypted_key String?  @db.VarChar
+  farmers       farmers  @relation(fields: [farmer_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_farmer_id")
+}
+
+model farmer_create_staged {
+  id                          String   @id @db.VarChar(36)
+  staged_id                   String   @db.VarChar(36)
+  farmer_type                 String   @db.VarChar(36)
+  tin                         String   @db.VarChar
+  title                       String?  @db.VarChar(10)
+  first_name                  String?  @db.VarChar
+  middle_name                 String?  @db.VarChar
+  last_name                   String?  @db.VarChar
+  company_name                String?  @db.VarChar
+  gender                      String?  @db.VarChar(30)
+  birthdate                   String?  @db.VarChar(30)
+  education_degree            String?  @db.VarChar
+  occupation                  String?  @db.VarChar
+  second_occupation           String?  @db.VarChar
+  phone_number                String?  @db.VarChar(50)
+  mobile_number               String?  @db.VarChar(50)
+  email                       String?  @db.VarChar
+  line_id                     String?  @db.VarChar
+  address_line1               String?  @db.VarChar
+  address_subdistrict         String?  @db.VarChar
+  address_district            String?  @db.VarChar
+  address_province            String?  @db.VarChar
+  address_zipcode             String?  @db.VarChar(30)
+  contact_address_line1       String?  @db.VarChar
+  contact_address_subdistrict String?  @db.VarChar
+  contact_address_district    String?  @db.VarChar
+  contact_address_province    String?  @db.VarChar
+  contact_address_zipcode     String?  @db.VarChar(30)
+  status                      Int
+  created_at                  DateTime @db.Timestamp(6)
+  created_by_id               String   @db.VarChar(36)
+  created_by                  String   @db.VarChar
+  updated_at                  DateTime @db.Timestamp(6)
+  updated_by_id               String   @db.VarChar(36)
+  updated_by                  String   @db.VarChar
+}
+
+model farmers {
+  id                          String               @id @db.VarChar(36)
+  tracer_id                   String               @db.VarChar(36)
+  farmer_type                 String               @db.VarChar(36)
+  tin                         String               @db.VarChar(255)
+  masking_tin                 String?              @db.VarChar(30)
+  title                       String               @db.VarChar(10)
+  first_name                  String               @db.VarChar(255)
+  middle_name                 String?              @db.VarChar(255)
+  last_name                   String               @db.VarChar(255)
+  company_name                String?              @db.VarChar(255)
+  gender                      String?              @db.VarChar(30)
+  birthdate                   String?              @db.VarChar(30)
+  education_degree            String?              @db.VarChar(255)
+  occupation                  String?              @db.VarChar(255)
+  second_occupation           String?              @db.VarChar(255)
+  phone_number                String?              @db.VarChar(50)
+  mobile_number               String               @db.VarChar(50)
+  email                       String?              @db.VarChar(255)
+  line_id                     String               @db.VarChar(255)
+  address_line1               String               @db.VarChar(255)
+  address_subdistrict         String               @db.VarChar(255)
+  address_district            String               @db.VarChar(255)
+  address_province            String               @db.VarChar(255)
+  address_zipcode             String               @db.VarChar(30)
+  contact_address_line1       String               @db.VarChar(255)
+  contact_address_subdistrict String               @db.VarChar(255)
+  contact_address_district    String               @db.VarChar(255)
+  contact_address_province    String               @db.VarChar(255)
+  contact_address_zipcode     String               @db.VarChar(30)
+  status                      String               @db.VarChar(50)
+  created_at                  DateTime             @db.Timestamp(6)
+  created_by_id               String               @db.VarChar(36)
+  created_by                  String               @db.VarChar(255)
+  updated_at                  DateTime             @db.Timestamp(6)
+  updated_by_id               String               @db.VarChar(36)
+  updated_by                  String               @db.VarChar(255)
+  farmer_accounts             farmer_accounts[]
+  farmer_attachments          farmer_attachments[]
+}
+
+model farms {
+  id                                String             @id @db.VarChar(36)
+  tracer_id                         String             @db.VarChar(36)
+  farm_identification               String             @db.VarChar
+  farm_type                         String             @db.VarChar
+  max_cows                          Int
+  name                              String             @db.VarChar
+  standard                          String             @db.VarChar
+  status                            String             @db.VarChar(10)
+  rai                               Decimal            @db.Decimal(16, 2)
+  ngan                              Decimal            @db.Decimal(16, 2)
+  wa                                Decimal            @db.Decimal(16, 2)
+  address_line1                     String             @db.VarChar
+  address_subdistrict               String             @db.VarChar
+  address_district                  String             @db.VarChar
+  address_province                  String             @db.VarChar
+  address_zipcode                   String             @db.VarChar(30)
+  is_owner_ref_farmer               Boolean
+  farmer_id                         String?            @db.VarChar(36)
+  owner_type                        String?            @db.VarChar(36)
+  owner_tin                         String?            @db.VarChar
+  owner_masking_tin                 String?            @db.VarChar(30)
+  owner_title                       String?            @db.VarChar(10)
+  owner_first_name                  String?            @db.VarChar
+  owner_middle_name                 String?            @db.VarChar
+  owner_last_name                   String?            @db.VarChar
+  owner_company_name                String?            @db.VarChar
+  owner_gender                      String?            @db.VarChar(30)
+  owner_birthdate                   String?            @db.VarChar(30)
+  owner_education_degree            String?            @db.VarChar
+  owner_occupation                  String?            @db.VarChar
+  owner_second_occupation           String?            @db.VarChar
+  owner_phone_number                String?            @db.VarChar(50)
+  owner_mobile_number               String?            @db.VarChar(50)
+  owner_email                       String?            @db.VarChar
+  owner_line_id                     String?            @db.VarChar
+  owner_address_line1               String?            @db.VarChar
+  owner_address_subdistrict         String?            @db.VarChar
+  owner_address_district            String?            @db.VarChar
+  owner_address_province            String?            @db.VarChar
+  owner_address_zipcode             String?            @db.VarChar(30)
+  owner_contact_address_line1       String?            @db.VarChar
+  owner_contact_address_subdistrict String?            @db.VarChar
+  owner_contact_address_district    String?            @db.VarChar
+  owner_contact_address_province    String?            @db.VarChar
+  owner_contact_address_zipcode     String?            @db.VarChar(30)
+  created_at                        DateTime           @db.Timestamp(6)
+  created_by_id                     String             @db.VarChar(36)
+  created_by                        String             @db.VarChar
+  updated_at                        DateTime           @db.Timestamp(6)
+  updated_by_id                     String             @db.VarChar(36)
+  updated_by                        String             @db.VarChar
+  ref_1                             String             @db.VarChar(36)
+  cattles                           cattles[]
+  farm_attachments                  farm_attachments[]
+  farm_authorized                   farm_authorized[]
+  farm_veterinary                   farm_veterinary[]
+  pens                              pens[]
+}
+
+model order_attachments {
+  id            String   @id @db.VarChar(36)
+  order_id      String   @db.VarChar(36)
+  file_name     String   @db.VarChar(255)
+  file_path     String   @db.VarChar(255)
+  is_public     Boolean
+  content_type  String   @db.VarChar(50)
+  description   String?  @db.VarChar(255)
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar(255)
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar(255)
+  orders        orders   @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_order_id")
+}
+
+model order_requests {
+  id                String   @id @db.VarChar(36)
+  order_id          String   @db.VarChar(36)
+  cattle_breed_id   String   @db.VarChar(36)
+  cattle_type_ids   String[] @db.VarChar(36)
+  request_amount    Int
+  received_amount   Int?
+  from_age          Int
+  to_age            Int
+  from_weight       Decimal  @db.Decimal(10, 6)
+  to_weight         Decimal  @db.Decimal(10, 6)
+  castration_status String   @db.VarChar(30)
+  status            String   @db.VarChar(255)
+  created_at        DateTime @db.Timestamp(6)
+  created_by_id     String   @db.VarChar(36)
+  created_by        String   @db.VarChar(255)
+  updated_at        DateTime @db.Timestamp(6)
+  updated_by_id     String   @db.VarChar(36)
+  updated_by        String   @db.VarChar(255)
+  gender            String?  @db.VarChar(10)
+  pregnant_status   String?  @db.VarChar(30)
+  orders            orders   @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_order_id")
+}
+
+model orders {
+  id                       String              @id @db.VarChar(36)
+  buyer_id                 String              @db.VarChar(36)
+  buyer_code               String              @db.VarChar(20)
+  buyer_company_name       String              @db.VarChar(255)
+  buyer_register_date      DateTime            @db.Timestamp(6)
+  order_code               String              @db.VarChar(20)
+  remark                   String?             @db.VarChar(255)
+  delivery_from_date       DateTime            @db.Timestamp(6)
+  delivery_to_date         DateTime            @db.Timestamp(6)
+  delivery_type            String              @db.VarChar(255)
+  origin_address           String              @db.VarChar(255)
+  destination_address      String              @db.VarChar(255)
+  destination_country      String              @db.VarChar(255)
+  destination_country_code String              @db.VarChar(10)
+  total_price              Decimal             @db.Decimal(15, 6)
+  quarantine_day           Int
+  status                   String              @db.VarChar(255)
+  created_at               DateTime            @db.Timestamp(6)
+  created_by_id            String              @db.VarChar(36)
+  created_by               String              @db.VarChar(255)
+  updated_at               DateTime            @db.Timestamp(6)
+  updated_by_id            String              @db.VarChar(36)
+  updated_by               String              @db.VarChar(255)
+  order_attachments        order_attachments[]
+  order_requests           order_requests[]
+}
+
+model pen_attachments {
+  id            String   @id @db.VarChar(36)
+  pen_id        String   @db.VarChar(36)
+  file_name     String   @db.VarChar
+  file_path     String   @db.VarChar
+  is_public     Boolean
+  content_type  String   @db.VarChar(50)
+  description   String?  @db.VarChar
+  created_at    DateTime @db.Timestamp(6)
+  created_by_id String   @db.VarChar(36)
+  created_by    String   @db.VarChar
+  updated_at    DateTime @db.Timestamp(6)
+  updated_by_id String   @db.VarChar(36)
+  updated_by    String   @db.VarChar
+  pens          pens     @relation(fields: [pen_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pen_id")
+}
+
+model pens {
+  id              String            @id @db.VarChar(36)
+  farm_id         String            @db.VarChar(36)
+  pen_type        String            @db.VarChar
+  pen_number      String            @db.VarChar
+  capacity        Int
+  name            String            @db.VarChar
+  wa              Decimal           @db.Decimal(16, 2)
+  latitude        Decimal           @db.Decimal(16, 8)
+  longitude       Decimal           @db.Decimal(16, 8)
+  status          String            @db.VarChar(10)
+  created_at      DateTime          @db.Timestamp(6)
+  created_by_id   String            @db.VarChar(36)
+  created_by      String            @db.VarChar
+  updated_at      DateTime          @db.Timestamp(6)
+  updated_by_id   String            @db.VarChar(36)
+  updated_by      String            @db.VarChar
+  cattles         cattles[]
+  pen_attachments pen_attachments[]
+  farms           farms             @relation(fields: [farm_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_farm_id")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model prefix_sequence {
+  prefix   String @db.VarChar(30)
+  alphabet String @db.VarChar(10)
+
+  @@index([prefix], map: "idx_prefix_sequence_hash", type: Hash)
+  @@ignore
+}
+
+model schema_migrations {
+  version BigInt  @id
+  dirty   Boolean
+}
+
+model traceability {
+  id                        String                 @id @db.VarChar(36)
+  reason                    String                 @db.VarChar(30)
+  document_no               String                 @db.VarChar(50)
+  total_animal              Int
+  origin_farm_id            String                 @db.VarChar(36)
+  origin_pen_id             String                 @db.VarChar(36)
+  destination_farm_id       String?                @db.VarChar(36)
+  destination_pen_id        String?                @db.VarChar(36)
+  specific_destination_name String?                @db.VarChar
+  destination_province      String?                @db.VarChar
+  shipment_date             DateTime               @db.Timestamp(6)
+  estimated_arrival_date    DateTime               @db.Timestamp(6)
+  destination_type          String                 @db.VarChar(30)
+  status                    String                 @db.VarChar(50)
+  created_at                DateTime               @db.Timestamp(6)
+  created_by_id             String                 @db.VarChar(36)
+  created_by                String                 @db.VarChar
+  updated_at                DateTime               @db.Timestamp(6)
+  updated_by_id             String                 @db.VarChar(36)
+  updated_by                String                 @db.VarChar
+  traceability_cattle       traceability_cattle[]
+  traceability_status       traceability_status[]
+  traceability_vehicle      traceability_vehicle[]
+}
+
+model traceability_cattle {
+  id                   String               @id @db.VarChar(36)
+  traceability_id      String               @db.VarChar(36)
+  vehicle_id           String               @db.VarChar(36)
+  cattle_id            String               @db.VarChar(36)
+  created_at           DateTime             @db.Timestamp(6)
+  created_by_id        String               @db.VarChar(36)
+  created_by           String               @db.VarChar
+  updated_at           DateTime             @db.Timestamp(6)
+  updated_by_id        String               @db.VarChar(36)
+  updated_by           String               @db.VarChar
+  traceability         traceability         @relation(fields: [traceability_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_traceability_id")
+  traceability_vehicle traceability_vehicle @relation(fields: [vehicle_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_vehicle_id")
+}
+
+model traceability_status {
+  id              String       @id @db.VarChar(36)
+  traceability_id String       @db.VarChar(36)
+  status          String       @db.VarChar(50)
+  created_at      DateTime     @db.Timestamp(6)
+  created_by_id   String       @db.VarChar(36)
+  created_by      String       @db.VarChar
+  updated_at      DateTime     @db.Timestamp(6)
+  updated_by_id   String       @db.VarChar(36)
+  updated_by      String       @db.VarChar
+  traceability    traceability @relation(fields: [traceability_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_traceability_id")
+}
+
+model traceability_vehicle {
+  id                      String                @id @db.VarChar(36)
+  traceability_id         String                @db.VarChar(36)
+  vehicle_type            String                @db.VarChar(36)
+  vehicle_registration    String                @db.VarChar(20)
+  transport_company_name  String                @db.VarChar
+  driver_title            String                @db.VarChar(10)
+  driver_first_name       String                @db.VarChar
+  driver_middle_name      String?               @db.VarChar
+  driver_last_name        String                @db.VarChar
+  contact_title           String?               @db.VarChar(10)
+  contact_first_name      String?               @db.VarChar
+  contact_middle_name     String?               @db.VarChar
+  contact_last_name       String?               @db.VarChar
+  contact_phone           String                @db.VarChar(20)
+  is_contract_same_driver Boolean
+  created_at              DateTime              @db.Timestamp(6)
+  created_by_id           String                @db.VarChar(36)
+  created_by              String                @db.VarChar
+  updated_at              DateTime              @db.Timestamp(6)
+  updated_by_id           String                @db.VarChar(36)
+  updated_by              String                @db.VarChar
+  traceability_cattle     traceability_cattle[]
+  traceability            traceability          @relation(fields: [traceability_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_traceability_id")
+}

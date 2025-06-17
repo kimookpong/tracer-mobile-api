@@ -853,6 +853,12 @@ exports.Prisma.Traceability_vehicleScalarFieldEnum = {
   updated_by: 'updated_by'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  type: 'type'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -902,7 +908,8 @@ exports.Prisma.ModelName = {
   traceability: 'traceability',
   traceability_cattle: 'traceability_cattle',
   traceability_status: 'traceability_status',
-  traceability_vehicle: 'traceability_vehicle'
+  traceability_vehicle: 'traceability_vehicle',
+  user: 'user'
 };
 
 /**

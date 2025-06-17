@@ -789,3 +789,9 @@ model traceability_vehicle {
   traceability_cattle     traceability_cattle[]
   traceability            traceability          @relation(fields: [traceability_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_traceability_id")
 }
+
+model user {
+  id    String  @id @default(uuid())
+  token String  @db.VarChar
+  type  String? @db.VarChar
+}

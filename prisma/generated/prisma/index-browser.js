@@ -856,7 +856,25 @@ exports.Prisma.Traceability_vehicleScalarFieldEnum = {
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   token: 'token',
-  type: 'type'
+  type: 'type',
+  last_login: 'last_login',
+  user_id: 'user_id',
+  approve_status: 'approve_status',
+  role_id: 'role_id',
+  type_id: 'type_id',
+  company_name: 'company_name',
+  company_id: 'company_id',
+  title_name: 'title_name',
+  first_name: 'first_name',
+  last_name: 'last_name',
+  birth_date: 'birth_date',
+  nationality_id: 'nationality_id',
+  id_card: 'id_card',
+  mobile_number: 'mobile_number',
+  office_number: 'office_number',
+  email: 'email',
+  line_id: 'line_id',
+  avatar: 'avatar'
 };
 
 exports.Prisma.SortOrder = {

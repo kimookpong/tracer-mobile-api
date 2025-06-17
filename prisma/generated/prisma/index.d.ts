@@ -180,7 +180,7 @@ export type traceability_status = $Result.DefaultSelection<Prisma.$traceability_
 export type traceability_vehicle = $Result.DefaultSelection<Prisma.$traceability_vehiclePayload>
 /**
  * Model user
- * 
+ * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
  */
 export type user = $Result.DefaultSelection<Prisma.$userPayload>
 
@@ -45691,18 +45691,72 @@ export namespace Prisma {
     id: string | null
     token: string | null
     type: string | null
+    last_login: Date | null
+    user_id: string | null
+    approve_status: string | null
+    role_id: string | null
+    type_id: string | null
+    company_name: string | null
+    company_id: string | null
+    title_name: string | null
+    first_name: string | null
+    last_name: string | null
+    birth_date: Date | null
+    nationality_id: string | null
+    id_card: string | null
+    mobile_number: string | null
+    office_number: string | null
+    email: string | null
+    line_id: string | null
+    avatar: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     token: string | null
     type: string | null
+    last_login: Date | null
+    user_id: string | null
+    approve_status: string | null
+    role_id: string | null
+    type_id: string | null
+    company_name: string | null
+    company_id: string | null
+    title_name: string | null
+    first_name: string | null
+    last_name: string | null
+    birth_date: Date | null
+    nationality_id: string | null
+    id_card: string | null
+    mobile_number: string | null
+    office_number: string | null
+    email: string | null
+    line_id: string | null
+    avatar: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     token: number
     type: number
+    last_login: number
+    user_id: number
+    approve_status: number
+    role_id: number
+    type_id: number
+    company_name: number
+    company_id: number
+    title_name: number
+    first_name: number
+    last_name: number
+    birth_date: number
+    nationality_id: number
+    id_card: number
+    mobile_number: number
+    office_number: number
+    email: number
+    line_id: number
+    avatar: number
     _all: number
   }
 
@@ -45711,18 +45765,72 @@ export namespace Prisma {
     id?: true
     token?: true
     type?: true
+    last_login?: true
+    user_id?: true
+    approve_status?: true
+    role_id?: true
+    type_id?: true
+    company_name?: true
+    company_id?: true
+    title_name?: true
+    first_name?: true
+    last_name?: true
+    birth_date?: true
+    nationality_id?: true
+    id_card?: true
+    mobile_number?: true
+    office_number?: true
+    email?: true
+    line_id?: true
+    avatar?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     token?: true
     type?: true
+    last_login?: true
+    user_id?: true
+    approve_status?: true
+    role_id?: true
+    type_id?: true
+    company_name?: true
+    company_id?: true
+    title_name?: true
+    first_name?: true
+    last_name?: true
+    birth_date?: true
+    nationality_id?: true
+    id_card?: true
+    mobile_number?: true
+    office_number?: true
+    email?: true
+    line_id?: true
+    avatar?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     token?: true
     type?: true
+    last_login?: true
+    user_id?: true
+    approve_status?: true
+    role_id?: true
+    type_id?: true
+    company_name?: true
+    company_id?: true
+    title_name?: true
+    first_name?: true
+    last_name?: true
+    birth_date?: true
+    nationality_id?: true
+    id_card?: true
+    mobile_number?: true
+    office_number?: true
+    email?: true
+    line_id?: true
+    avatar?: true
     _all?: true
   }
 
@@ -45802,6 +45910,24 @@ export namespace Prisma {
     id: string
     token: string
     type: string | null
+    last_login: Date | null
+    user_id: string | null
+    approve_status: string | null
+    role_id: string | null
+    type_id: string | null
+    company_name: string | null
+    company_id: string | null
+    title_name: string | null
+    first_name: string | null
+    last_name: string | null
+    birth_date: Date | null
+    nationality_id: string | null
+    id_card: string | null
+    mobile_number: string | null
+    office_number: string | null
+    email: string | null
+    line_id: string | null
+    avatar: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -45825,27 +45951,99 @@ export namespace Prisma {
     id?: boolean
     token?: boolean
     type?: boolean
+    last_login?: boolean
+    user_id?: boolean
+    approve_status?: boolean
+    role_id?: boolean
+    type_id?: boolean
+    company_name?: boolean
+    company_id?: boolean
+    title_name?: boolean
+    first_name?: boolean
+    last_name?: boolean
+    birth_date?: boolean
+    nationality_id?: boolean
+    id_card?: boolean
+    mobile_number?: boolean
+    office_number?: boolean
+    email?: boolean
+    line_id?: boolean
+    avatar?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type userSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     token?: boolean
     type?: boolean
+    last_login?: boolean
+    user_id?: boolean
+    approve_status?: boolean
+    role_id?: boolean
+    type_id?: boolean
+    company_name?: boolean
+    company_id?: boolean
+    title_name?: boolean
+    first_name?: boolean
+    last_name?: boolean
+    birth_date?: boolean
+    nationality_id?: boolean
+    id_card?: boolean
+    mobile_number?: boolean
+    office_number?: boolean
+    email?: boolean
+    line_id?: boolean
+    avatar?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type userSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     token?: boolean
     type?: boolean
+    last_login?: boolean
+    user_id?: boolean
+    approve_status?: boolean
+    role_id?: boolean
+    type_id?: boolean
+    company_name?: boolean
+    company_id?: boolean
+    title_name?: boolean
+    first_name?: boolean
+    last_name?: boolean
+    birth_date?: boolean
+    nationality_id?: boolean
+    id_card?: boolean
+    mobile_number?: boolean
+    office_number?: boolean
+    email?: boolean
+    line_id?: boolean
+    avatar?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type userSelectScalar = {
     id?: boolean
     token?: boolean
     type?: boolean
+    last_login?: boolean
+    user_id?: boolean
+    approve_status?: boolean
+    role_id?: boolean
+    type_id?: boolean
+    company_name?: boolean
+    company_id?: boolean
+    title_name?: boolean
+    first_name?: boolean
+    last_name?: boolean
+    birth_date?: boolean
+    nationality_id?: boolean
+    id_card?: boolean
+    mobile_number?: boolean
+    office_number?: boolean
+    email?: boolean
+    line_id?: boolean
+    avatar?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "type", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "type" | "last_login" | "user_id" | "approve_status" | "role_id" | "type_id" | "company_name" | "company_id" | "title_name" | "first_name" | "last_name" | "birth_date" | "nationality_id" | "id_card" | "mobile_number" | "office_number" | "email" | "line_id" | "avatar", ExtArgs["result"]["user"]>
 
   export type $userPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user"
@@ -45854,6 +46052,24 @@ export namespace Prisma {
       id: string
       token: string
       type: string | null
+      last_login: Date | null
+      user_id: string | null
+      approve_status: string | null
+      role_id: string | null
+      type_id: string | null
+      company_name: string | null
+      company_id: string | null
+      title_name: string | null
+      first_name: string | null
+      last_name: string | null
+      birth_date: Date | null
+      nationality_id: string | null
+      id_card: string | null
+      mobile_number: string | null
+      office_number: string | null
+      email: string | null
+      line_id: string | null
+      avatar: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -46280,6 +46496,24 @@ export namespace Prisma {
     readonly id: FieldRef<"user", 'String'>
     readonly token: FieldRef<"user", 'String'>
     readonly type: FieldRef<"user", 'String'>
+    readonly last_login: FieldRef<"user", 'DateTime'>
+    readonly user_id: FieldRef<"user", 'String'>
+    readonly approve_status: FieldRef<"user", 'String'>
+    readonly role_id: FieldRef<"user", 'String'>
+    readonly type_id: FieldRef<"user", 'String'>
+    readonly company_name: FieldRef<"user", 'String'>
+    readonly company_id: FieldRef<"user", 'String'>
+    readonly title_name: FieldRef<"user", 'String'>
+    readonly first_name: FieldRef<"user", 'String'>
+    readonly last_name: FieldRef<"user", 'String'>
+    readonly birth_date: FieldRef<"user", 'DateTime'>
+    readonly nationality_id: FieldRef<"user", 'String'>
+    readonly id_card: FieldRef<"user", 'String'>
+    readonly mobile_number: FieldRef<"user", 'String'>
+    readonly office_number: FieldRef<"user", 'String'>
+    readonly email: FieldRef<"user", 'String'>
+    readonly line_id: FieldRef<"user", 'String'>
+    readonly avatar: FieldRef<"user", 'String'>
   }
     
 
@@ -47495,7 +47729,25 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     token: 'token',
-    type: 'type'
+    type: 'type',
+    last_login: 'last_login',
+    user_id: 'user_id',
+    approve_status: 'approve_status',
+    role_id: 'role_id',
+    type_id: 'type_id',
+    company_name: 'company_name',
+    company_id: 'company_id',
+    title_name: 'title_name',
+    first_name: 'first_name',
+    last_name: 'last_name',
+    birth_date: 'birth_date',
+    nationality_id: 'nationality_id',
+    id_card: 'id_card',
+    mobile_number: 'mobile_number',
+    office_number: 'office_number',
+    email: 'email',
+    line_id: 'line_id',
+    avatar: 'avatar'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -51842,12 +52094,48 @@ export namespace Prisma {
     id?: StringFilter<"user"> | string
     token?: StringFilter<"user"> | string
     type?: StringNullableFilter<"user"> | string | null
+    last_login?: DateTimeNullableFilter<"user"> | Date | string | null
+    user_id?: StringNullableFilter<"user"> | string | null
+    approve_status?: StringNullableFilter<"user"> | string | null
+    role_id?: StringNullableFilter<"user"> | string | null
+    type_id?: StringNullableFilter<"user"> | string | null
+    company_name?: StringNullableFilter<"user"> | string | null
+    company_id?: StringNullableFilter<"user"> | string | null
+    title_name?: StringNullableFilter<"user"> | string | null
+    first_name?: StringNullableFilter<"user"> | string | null
+    last_name?: StringNullableFilter<"user"> | string | null
+    birth_date?: DateTimeNullableFilter<"user"> | Date | string | null
+    nationality_id?: StringNullableFilter<"user"> | string | null
+    id_card?: StringNullableFilter<"user"> | string | null
+    mobile_number?: StringNullableFilter<"user"> | string | null
+    office_number?: StringNullableFilter<"user"> | string | null
+    email?: StringNullableFilter<"user"> | string | null
+    line_id?: StringNullableFilter<"user"> | string | null
+    avatar?: StringNullableFilter<"user"> | string | null
   }
 
   export type userOrderByWithRelationInput = {
     id?: SortOrder
     token?: SortOrder
     type?: SortOrderInput | SortOrder
+    last_login?: SortOrderInput | SortOrder
+    user_id?: SortOrderInput | SortOrder
+    approve_status?: SortOrderInput | SortOrder
+    role_id?: SortOrderInput | SortOrder
+    type_id?: SortOrderInput | SortOrder
+    company_name?: SortOrderInput | SortOrder
+    company_id?: SortOrderInput | SortOrder
+    title_name?: SortOrderInput | SortOrder
+    first_name?: SortOrderInput | SortOrder
+    last_name?: SortOrderInput | SortOrder
+    birth_date?: SortOrderInput | SortOrder
+    nationality_id?: SortOrderInput | SortOrder
+    id_card?: SortOrderInput | SortOrder
+    mobile_number?: SortOrderInput | SortOrder
+    office_number?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    line_id?: SortOrderInput | SortOrder
+    avatar?: SortOrderInput | SortOrder
   }
 
   export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -51857,12 +52145,48 @@ export namespace Prisma {
     NOT?: userWhereInput | userWhereInput[]
     token?: StringFilter<"user"> | string
     type?: StringNullableFilter<"user"> | string | null
+    last_login?: DateTimeNullableFilter<"user"> | Date | string | null
+    user_id?: StringNullableFilter<"user"> | string | null
+    approve_status?: StringNullableFilter<"user"> | string | null
+    role_id?: StringNullableFilter<"user"> | string | null
+    type_id?: StringNullableFilter<"user"> | string | null
+    company_name?: StringNullableFilter<"user"> | string | null
+    company_id?: StringNullableFilter<"user"> | string | null
+    title_name?: StringNullableFilter<"user"> | string | null
+    first_name?: StringNullableFilter<"user"> | string | null
+    last_name?: StringNullableFilter<"user"> | string | null
+    birth_date?: DateTimeNullableFilter<"user"> | Date | string | null
+    nationality_id?: StringNullableFilter<"user"> | string | null
+    id_card?: StringNullableFilter<"user"> | string | null
+    mobile_number?: StringNullableFilter<"user"> | string | null
+    office_number?: StringNullableFilter<"user"> | string | null
+    email?: StringNullableFilter<"user"> | string | null
+    line_id?: StringNullableFilter<"user"> | string | null
+    avatar?: StringNullableFilter<"user"> | string | null
   }, "id">
 
   export type userOrderByWithAggregationInput = {
     id?: SortOrder
     token?: SortOrder
     type?: SortOrderInput | SortOrder
+    last_login?: SortOrderInput | SortOrder
+    user_id?: SortOrderInput | SortOrder
+    approve_status?: SortOrderInput | SortOrder
+    role_id?: SortOrderInput | SortOrder
+    type_id?: SortOrderInput | SortOrder
+    company_name?: SortOrderInput | SortOrder
+    company_id?: SortOrderInput | SortOrder
+    title_name?: SortOrderInput | SortOrder
+    first_name?: SortOrderInput | SortOrder
+    last_name?: SortOrderInput | SortOrder
+    birth_date?: SortOrderInput | SortOrder
+    nationality_id?: SortOrderInput | SortOrder
+    id_card?: SortOrderInput | SortOrder
+    mobile_number?: SortOrderInput | SortOrder
+    office_number?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    line_id?: SortOrderInput | SortOrder
+    avatar?: SortOrderInput | SortOrder
     _count?: userCountOrderByAggregateInput
     _max?: userMaxOrderByAggregateInput
     _min?: userMinOrderByAggregateInput
@@ -51875,6 +52199,24 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"user"> | string
     token?: StringWithAggregatesFilter<"user"> | string
     type?: StringNullableWithAggregatesFilter<"user"> | string | null
+    last_login?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
+    user_id?: StringNullableWithAggregatesFilter<"user"> | string | null
+    approve_status?: StringNullableWithAggregatesFilter<"user"> | string | null
+    role_id?: StringNullableWithAggregatesFilter<"user"> | string | null
+    type_id?: StringNullableWithAggregatesFilter<"user"> | string | null
+    company_name?: StringNullableWithAggregatesFilter<"user"> | string | null
+    company_id?: StringNullableWithAggregatesFilter<"user"> | string | null
+    title_name?: StringNullableWithAggregatesFilter<"user"> | string | null
+    first_name?: StringNullableWithAggregatesFilter<"user"> | string | null
+    last_name?: StringNullableWithAggregatesFilter<"user"> | string | null
+    birth_date?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
+    nationality_id?: StringNullableWithAggregatesFilter<"user"> | string | null
+    id_card?: StringNullableWithAggregatesFilter<"user"> | string | null
+    mobile_number?: StringNullableWithAggregatesFilter<"user"> | string | null
+    office_number?: StringNullableWithAggregatesFilter<"user"> | string | null
+    email?: StringNullableWithAggregatesFilter<"user"> | string | null
+    line_id?: StringNullableWithAggregatesFilter<"user"> | string | null
+    avatar?: StringNullableWithAggregatesFilter<"user"> | string | null
   }
 
   export type adminsCreateInput = {
@@ -57069,45 +57411,171 @@ export namespace Prisma {
   }
 
   export type userCreateInput = {
-    id?: string
+    id: string
     token: string
     type?: string | null
+    last_login?: Date | string | null
+    user_id?: string | null
+    approve_status?: string | null
+    role_id?: string | null
+    type_id?: string | null
+    company_name?: string | null
+    company_id?: string | null
+    title_name?: string | null
+    first_name?: string | null
+    last_name?: string | null
+    birth_date?: Date | string | null
+    nationality_id?: string | null
+    id_card?: string | null
+    mobile_number?: string | null
+    office_number?: string | null
+    email?: string | null
+    line_id?: string | null
+    avatar?: string | null
   }
 
   export type userUncheckedCreateInput = {
-    id?: string
+    id: string
     token: string
     type?: string | null
+    last_login?: Date | string | null
+    user_id?: string | null
+    approve_status?: string | null
+    role_id?: string | null
+    type_id?: string | null
+    company_name?: string | null
+    company_id?: string | null
+    title_name?: string | null
+    first_name?: string | null
+    last_name?: string | null
+    birth_date?: Date | string | null
+    nationality_id?: string | null
+    id_card?: string | null
+    mobile_number?: string | null
+    office_number?: string | null
+    email?: string | null
+    line_id?: string | null
+    avatar?: string | null
   }
 
   export type userUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    approve_status?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    company_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title_name?: NullableStringFieldUpdateOperationsInput | string | null
+    first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality_id?: NullableStringFieldUpdateOperationsInput | string | null
+    id_card?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    office_number?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type userUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    approve_status?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    company_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title_name?: NullableStringFieldUpdateOperationsInput | string | null
+    first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality_id?: NullableStringFieldUpdateOperationsInput | string | null
+    id_card?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    office_number?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type userCreateManyInput = {
-    id?: string
+    id: string
     token: string
     type?: string | null
+    last_login?: Date | string | null
+    user_id?: string | null
+    approve_status?: string | null
+    role_id?: string | null
+    type_id?: string | null
+    company_name?: string | null
+    company_id?: string | null
+    title_name?: string | null
+    first_name?: string | null
+    last_name?: string | null
+    birth_date?: Date | string | null
+    nationality_id?: string | null
+    id_card?: string | null
+    mobile_number?: string | null
+    office_number?: string | null
+    email?: string | null
+    line_id?: string | null
+    avatar?: string | null
   }
 
   export type userUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    approve_status?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    company_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title_name?: NullableStringFieldUpdateOperationsInput | string | null
+    first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality_id?: NullableStringFieldUpdateOperationsInput | string | null
+    id_card?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    office_number?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type userUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    approve_status?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    company_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title_name?: NullableStringFieldUpdateOperationsInput | string | null
+    first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality_id?: NullableStringFieldUpdateOperationsInput | string | null
+    id_card?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    office_number?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -59929,18 +60397,72 @@ export namespace Prisma {
     id?: SortOrder
     token?: SortOrder
     type?: SortOrder
+    last_login?: SortOrder
+    user_id?: SortOrder
+    approve_status?: SortOrder
+    role_id?: SortOrder
+    type_id?: SortOrder
+    company_name?: SortOrder
+    company_id?: SortOrder
+    title_name?: SortOrder
+    first_name?: SortOrder
+    last_name?: SortOrder
+    birth_date?: SortOrder
+    nationality_id?: SortOrder
+    id_card?: SortOrder
+    mobile_number?: SortOrder
+    office_number?: SortOrder
+    email?: SortOrder
+    line_id?: SortOrder
+    avatar?: SortOrder
   }
 
   export type userMaxOrderByAggregateInput = {
     id?: SortOrder
     token?: SortOrder
     type?: SortOrder
+    last_login?: SortOrder
+    user_id?: SortOrder
+    approve_status?: SortOrder
+    role_id?: SortOrder
+    type_id?: SortOrder
+    company_name?: SortOrder
+    company_id?: SortOrder
+    title_name?: SortOrder
+    first_name?: SortOrder
+    last_name?: SortOrder
+    birth_date?: SortOrder
+    nationality_id?: SortOrder
+    id_card?: SortOrder
+    mobile_number?: SortOrder
+    office_number?: SortOrder
+    email?: SortOrder
+    line_id?: SortOrder
+    avatar?: SortOrder
   }
 
   export type userMinOrderByAggregateInput = {
     id?: SortOrder
     token?: SortOrder
     type?: SortOrder
+    last_login?: SortOrder
+    user_id?: SortOrder
+    approve_status?: SortOrder
+    role_id?: SortOrder
+    type_id?: SortOrder
+    company_name?: SortOrder
+    company_id?: SortOrder
+    title_name?: SortOrder
+    first_name?: SortOrder
+    last_name?: SortOrder
+    birth_date?: SortOrder
+    nationality_id?: SortOrder
+    id_card?: SortOrder
+    mobile_number?: SortOrder
+    office_number?: SortOrder
+    email?: SortOrder
+    line_id?: SortOrder
+    avatar?: SortOrder
   }
 
   export type adminsCreatepermissionsInput = {

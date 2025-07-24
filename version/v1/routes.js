@@ -10,6 +10,7 @@ const verifyToken = require("../../middleware/auth");
 
 router.post("/authen/register", verifyToken, Authen.register);
 router.post("/authen/login", Authen.login);
+router.post("/authen/loginTest", Authen.loginTest);
 router.post("/authen/logout", verifyToken, Authen.logout);
 router.post("/authen/checktoken", Authen.checkToken);
 

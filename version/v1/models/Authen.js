@@ -69,6 +69,51 @@ exports.login = async (req, res, next) => {
   }
 };
 
+exports.loginTest = async (req, res, next) => {
+  try {
+    const { body } = req;
+    if (!body.token) {
+      return res
+        .status(400)
+        .json({ status: "error", error: "Token is required" });
+    }
+    const data = await prisma.user.findFirst({
+      where: { token: body.token },
+    });
+    let user = data;
+    if (!data) {
+      user = {
+        id: uuidv4(),
+        token: body.token,
+        role_id: body.roleId,
+        first_name: "นายสมชาย",
+        last_name: "ใจดี",
+        user_id: null,
+        type: null,
+        last_login: new Date(),
+        approve_status: "SIGNUP",
+      };
+      await prisma.user.create({ data: user });
+    } else {
+      await prisma.user.update({
+        where: { id: data.id },
+        data: { last_login: new Date(), role_id: body.roleId },
+      });
+    }
+    const accessToken = jwt.sign(user, process.env.JWT_TOKEN_SECRET);
+
+    res.status(200).json({
+      status: "success",
+      message: "Login successful",
+      data: user,
+      accessToken: accessToken,
+      userId: user.id,
+    });
+  } catch (error) {
+    res.status(400).json({ status: "error", error: error.message });
+  }
+};
+
 exports.logout = async (req, res, next) => {
   try {
     res.status(200).json({ status: "success", message: "Logout successful" });

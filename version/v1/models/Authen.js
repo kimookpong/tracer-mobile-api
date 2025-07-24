@@ -88,6 +88,7 @@ exports.loginTest = async (req, res, next) => {
         role_id: body.roleId,
         first_name: "นายสมชาย",
         last_name: "ใจดี",
+        mobile_number: "0812345678",
         user_id: null,
         type: null,
         last_login: new Date(),

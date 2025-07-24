@@ -97,6 +97,10 @@ exports.loginTest = async (req, res, next) => {
       };
       await prisma.user.create({ data: user });
     } else {
+      user = {
+        ...data,
+        role_id: body.roleId,
+      };
       await prisma.user.update({
         where: { id: data.id },
         data: { last_login: new Date(), role_id: body.roleId },

@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
+const { toCamelCase } = require("../../../middleware/utils");
 const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("../../../prisma/generated/prisma");
 const prisma = new PrismaClient();
@@ -20,7 +21,7 @@ exports.checkToken = async (req, res, next) => {
     return res.status(200).json({
       status: "success",
       message: "Token is valid",
-      user: user,
+      user: toCamelCase(user),
     });
   } catch (error) {
     res.status(400).json({ status: "error", error: error.message });
@@ -60,7 +61,7 @@ exports.login = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       message: "Login successful",
-      data: user,
+      data: toCamelCase(user),
       accessToken: accessToken,
       userId: user.id,
     });
@@ -106,7 +107,7 @@ exports.loginTest = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       message: "Login successful",
-      data: user,
+      data: toCamelCase(user),
       accessToken: accessToken,
       userId: user.id,
     });
@@ -152,7 +153,7 @@ exports.register = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       message: "Registration successful",
-      data: data,
+      data: toCamelCase(data),
     });
   } catch (error) {
     res.status(400).json({ status: "error", error: error.message });

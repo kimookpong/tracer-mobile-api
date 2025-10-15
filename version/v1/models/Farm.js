@@ -39,7 +39,7 @@ exports.create = async (req, res, next) => {
   try {
     const { body } = req;
 
-    res.status(201).json({ status: "success", data: body });
+    // res.status(201).json({ status: "success", data: body });
 
     const data = await prisma.farms.create({
       data: body,

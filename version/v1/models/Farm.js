@@ -1,5 +1,5 @@
 const { PrismaClient } = require("../../../prisma/generated/prisma");
-const { toCamelCase } = require("../../../middleware/utils");
+const { toCamelCase, generateUUID } = require("../../../middleware/utils");
 const prisma = new PrismaClient();
 
 exports.getAll = async (req, res, next) => {
@@ -40,6 +40,7 @@ exports.create = async (req, res, next) => {
     const { body } = req;
 
     const dataForm = {
+      id: generateUUID(),
       farm_type: body.farmType || 1,
       max_cows: body.maxCows || 0,
       name: body.name || "",

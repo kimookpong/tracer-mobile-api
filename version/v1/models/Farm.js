@@ -39,10 +39,28 @@ exports.create = async (req, res, next) => {
   try {
     const { body } = req;
 
-    // res.status(201).json({ status: "success", data: body });
+    const dataForm = {
+      farm_type: body.farmType || 1,
+      max_cows: body.maxCows || 0,
+      name: body.name || "",
+      farm_identification: body.farmIdentification || "",
+      tracer_id: body.tracerId || "",
+      status: body.status || 1,
+      standard: body.standard || 1,
+      rai: body.rai || 1,
+      ngan: body.ngan || 1,
+      wa: body.wa || 1,
+      address_line1: body.addressLine1 || "",
+      address_line2: body.addressLine2 || "",
+      address_subdistrict: body.addressSubdistrict || "",
+      address_district: body.addressDistrict || "",
+      address_province: body.addressProvince || "",
+      address_zipcode: body.addressZipcode || "",
+      is_owner_ref_farmer: body.isOwnerRefFarmer || true,
+    };
 
     const data = await prisma.farms.create({
-      data: body,
+      data: dataForm,
     });
     res.status(201).json({ status: "success", data: toCamelCase(data) });
   } catch (error) {

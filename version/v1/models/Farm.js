@@ -56,7 +56,6 @@ exports.create = async (req, res, next) => {
       ngan: body.ngan || 1,
       wa: body.wa || 1,
       address_line1: body.addressLine1 || "",
-      address_line2: body.addressLine2 || "",
       address_subdistrict: body.addressSubdistrict || "",
       address_district: body.addressDistrict || "",
       address_province: body.addressProvince || "",

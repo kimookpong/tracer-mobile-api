@@ -20,7 +20,14 @@ function generateUUID() {
   });
 }
 
+// generate F240001 F is type Farms,Farmers,Users,Cows 24 is current year 0001 is Running number
+function generateTracerId(type, runningNumber) {
+  const currentYear = new Date().getFullYear().toString().slice(-2);
+  return `${type}${currentYear}${runningNumber}`;
+}
+
 module.exports = {
   toCamelCase,
   generateUUID,
+  generateTracerId,
 };

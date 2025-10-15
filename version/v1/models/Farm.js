@@ -65,8 +65,12 @@ exports.create = async (req, res, next) => {
 
       created_at: new Date(),
       updated_at: new Date(),
+      created_by_id: body.createdById || "",
       created_by: body.createdBy || "",
+      updated_by_id: body.updatedById || "",
       updated_by: body.updatedBy || "",
+
+      ref_1: generateUUID(),
     };
 
     const data = await prisma.farms.create({

@@ -5,6 +5,9 @@ const Authen = require("./models/Authen");
 const User = require("./models/User");
 const News = require("./models/News");
 const Farms = require("./models/Farm");
+const Pens = require("./models/Pens");
+const Cattles = require("./models/Cattles");
+const Master = require("./models/Master");
 const verifyToken = require("../../middleware/auth");
 
 // Authentication
@@ -36,5 +39,30 @@ router.post("/farms", verifyToken, Farms.create);
 router.get("/farms/:id", verifyToken, Farms.getId);
 router.put("/farms/:id", verifyToken, Farms.update);
 router.delete("/farms/:id", verifyToken, Farms.remove);
+
+// Fences
+router.get("/pens", verifyToken, Pens.getAll);
+router.post("/pens", verifyToken, Pens.create);
+router.get("/pens/:id", verifyToken, Pens.getId);
+router.put("/pens/:id", verifyToken, Pens.update);
+router.delete("/pens/:id", verifyToken, Pens.remove);
+router.get("/pens/:id/stats", verifyToken, Pens.getStats);
+router.get("/pens/farm/:farmId", verifyToken, Pens.getByFarmId);
+
+// Cattles
+router.get("/cattles", verifyToken, Cattles.getAll);
+router.post("/cattles", verifyToken, Cattles.create);
+router.get("/cattles/stats", verifyToken, Cattles.getStats);
+router.get("/cattles/:id", verifyToken, Cattles.getId);
+router.put("/cattles/:id", verifyToken, Cattles.update);
+router.delete("/cattles/:id", verifyToken, Cattles.remove);
+router.get("/cattles/farm/:farmId", verifyToken, Cattles.getByFarmId);
+router.get("/cattles/pen/:penId", verifyToken, Cattles.getByPenId);
+router.get("/cattles/tracer/:tracerId", verifyToken, Cattles.getByTracerId);
+router.post("/cattles/:id/move", verifyToken, Cattles.moveToPen);
+
+// Master Data
+router.get("/master/cattleBreeds", verifyToken, Master.getBreeds);
+router.get("/master/cattleTypes", verifyToken, Master.getTypes);
 
 module.exports = router;

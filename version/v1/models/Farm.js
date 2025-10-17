@@ -8,7 +8,12 @@ const prisma = new PrismaClient();
 
 exports.getAll = async (req, res, next) => {
   try {
-    const data = await prisma.farms.findMany();
+    const data = await prisma.farms.findMany({
+      include: {
+        pens: true,
+        cattles: true,
+      },
+    });
     res.status(200).json({ status: "success", data: toCamelCase(data) });
   } catch (error) {
     res.status(400).json({ status: "error", error: error.message });
@@ -17,7 +22,20 @@ exports.getAll = async (req, res, next) => {
 
 exports.getMyFarms = async (req, res, next) => {
   try {
-    const data = await prisma.farms.findMany();
+    const { userId } = req.query;
+    if (!userId || userId.trim() === "") {
+      return res
+        .status(400)
+        .json({ status: "error", message: "userId is required" });
+    }
+    const data = await prisma.farms.findMany({
+      where: { farmer_id: userId },
+      include: {
+        pens: true,
+        cattles: true,
+      },
+    });
+
     res.status(200).json({ status: "success", data: toCamelCase(data) });
   } catch (error) {
     res.status(400).json({ status: "error", error: error.message });
@@ -29,6 +47,10 @@ exports.getId = async (req, res, next) => {
     const { id } = req.params;
     const data = await prisma.farms.findFirst({
       where: { id: id },
+      include: {
+        pens: true,
+        cattles: true,
+      },
     });
     if (!data) {
       res.status(404).json({ status: "error", message: "Data not found" });
@@ -49,7 +71,7 @@ exports.create = async (req, res, next) => {
       max_cows: body.maxCows || 0,
       name: body.name || "",
       farm_identification: body.farmIdentification || "",
-      tracer_id: body.tracerId || generateTracerId("F", "0001"),
+      tracer_id: generateTracerId("F", "0001"),
       status: body.status || 1,
       standard: body.standard || 1,
       rai: body.rai || 1,
@@ -61,6 +83,8 @@ exports.create = async (req, res, next) => {
       address_province: body.addressProvince || "",
       address_zipcode: body.addressZipcode || "",
       is_owner_ref_farmer: body.isOwnerRefFarmer || true,
+
+      farmer_id: body.farmerId || "",
 
       created_at: new Date(),
       updated_at: new Date(),

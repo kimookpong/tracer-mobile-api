@@ -8,6 +8,7 @@ const Farms = require("./models/Farm");
 const Pens = require("./models/Pens");
 const Cattles = require("./models/Cattles");
 const Master = require("./models/Master");
+const Upload = require("./models/Upload");
 const verifyToken = require("../../middleware/auth");
 
 // Authentication
@@ -64,5 +65,13 @@ router.post("/cattles/:id/move", verifyToken, Cattles.moveToPen);
 // Master Data
 router.get("/master/cattleBreeds", verifyToken, Master.getBreeds);
 router.get("/master/cattleTypes", verifyToken, Master.getTypes);
+
+// Upload Files
+router.post("/upload/single", verifyToken, Upload.uploadSingle, Upload.upload);
+router.post("/upload/multiple", verifyToken, Upload.uploadMultiple);
+router.post("/upload/remove", verifyToken, Upload.remove);
+router.get("/upload/preview/:category/:year/:filename", Upload.preview);
+router.get("/upload/info/:category/:year/:filename", Upload.getFileInfo);
+router.get("/upload/list/:category/:year", verifyToken, Upload.listFiles);
 
 module.exports = router;

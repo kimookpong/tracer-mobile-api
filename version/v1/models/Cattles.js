@@ -94,7 +94,9 @@ exports.getByTracerId = async (req, res, next) => {
   try {
     const { tracerId } = req.params;
     const data = await prisma.cattles.findFirst({
-      where: { tracer_id: tracerId },
+      where: {
+        OR: [{ tracer_id: tracerId }, { tracer_tag: tracerId }],
+      },
       include: {
         farms: true,
         pens: true,
@@ -131,34 +133,45 @@ exports.create = async (req, res, next) => {
         .json({ status: "error", message: "Pen ID is required" });
     }
 
-    // Check pen capacity
-    const pen = await prisma.pens.findFirst({
-      where: { id: body.penId },
-      include: { cattles: true },
-    });
+    const Year = new Date().getFullYear().toString().slice(-2);
+    const runningNid =
+      (
+        await prisma.cattles.findMany({
+          where: {
+            created_at: {
+              gte: new Date(
+                new Date().setFullYear(new Date().getFullYear() - 1)
+              ),
+            },
+            farm_id: body.farmId || "",
+          },
+        })
+      ).length + 1;
 
-    if (!pen) {
-      return res
-        .status(404)
-        .json({ status: "error", message: "Pen not found" });
-    }
-
-    if (pen.cattles.length >= pen.capacity) {
-      return res.status(400).json({
-        status: "error",
-        message: `Pen is at full capacity (${pen.capacity} cattles)`,
-      });
-    }
+    const runningNumber =
+      (
+        await prisma.cattles.findMany({
+          where: {
+            created_at: {
+              gte: new Date(
+                new Date().setFullYear(new Date().getFullYear() - 1)
+              ),
+            },
+          },
+        })
+      ).length + 1;
 
     const dataForm = {
       id: generateUUID(),
-      tracer_id: body.tracerId || generateTracerId("THA", "0001"),
+      tracer_id:
+        body.tracerId ||
+        generateTracerId("THA", String(runningNumber).padStart(7, "0")),
       farm_id: body.farmId,
       pen_id: body.penId,
       cattle_type_id: body.cattleTypeId || "",
       cattle_breed_ids: body.cattleBreedIds || [],
       traceability_id: body.traceabilityId || null,
-      nid: body.nid || "",
+      nid: body.nid || `${Year}${String(runningNid).padStart(3, "0")}`,
       gender: body.gender || "",
       castration_status: body.castrationStatus || "",
       pregnant_status: body.pregnantStatus || "",
@@ -179,7 +192,7 @@ exports.create = async (req, res, next) => {
       breed_mgd: body.breedMgd || [],
       is_sourcing: body.isSourcing !== undefined ? body.isSourcing : false,
       is_tracing: body.isTracing !== undefined ? body.isTracing : false,
-      country_code: body.countryCode || "TH",
+      country_code: body.countryCode || "THA",
       status: body.status || "NORMAL",
       created_at: new Date(),
       updated_at: new Date(),

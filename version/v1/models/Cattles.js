@@ -152,7 +152,7 @@ exports.create = async (req, res, next) => {
 
     const dataForm = {
       id: generateUUID(),
-      tracer_id: body.tracerId || generateTracerId("C", "0001"),
+      tracer_id: body.tracerId || generateTracerId("THA", "0001"),
       farm_id: body.farmId,
       pen_id: body.penId,
       cattle_type_id: body.cattleTypeId || "",
@@ -180,7 +180,7 @@ exports.create = async (req, res, next) => {
       is_sourcing: body.isSourcing !== undefined ? body.isSourcing : false,
       is_tracing: body.isTracing !== undefined ? body.isTracing : false,
       country_code: body.countryCode || "TH",
-      status: body.status || "active",
+      status: body.status || "NORMAL",
       created_at: new Date(),
       updated_at: new Date(),
       created_by_id: body.createdById || "",

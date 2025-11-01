@@ -9,6 +9,7 @@ const Pens = require("./models/Pens");
 const Cattles = require("./models/Cattles");
 const Master = require("./models/Master");
 const Upload = require("./models/Upload");
+const Traceability = require("./models/Traceability");
 const verifyToken = require("../../middleware/auth");
 
 // Authentication
@@ -40,6 +41,7 @@ router.post("/farms", verifyToken, Farms.create);
 router.get("/farms/:id", verifyToken, Farms.getId);
 router.put("/farms/:id", verifyToken, Farms.update);
 router.delete("/farms/:id", verifyToken, Farms.remove);
+router.get("/farms/:id/pens", verifyToken, Farms.getPens);
 
 // Fences
 router.get("/pens", verifyToken, Pens.getAll);
@@ -73,5 +75,41 @@ router.post("/upload/remove", verifyToken, Upload.remove);
 router.get("/upload/preview/:category/:year/:filename", Upload.preview);
 router.get("/upload/info/:category/:year/:filename", Upload.getFileInfo);
 router.get("/upload/list/:category/:year", verifyToken, Upload.listFiles);
+
+// Traceability
+router.get("/traceability", verifyToken, Traceability.getAll);
+router.post("/traceability", verifyToken, Traceability.create);
+router.get("/traceability/stats", verifyToken, Traceability.getStats);
+router.get("/traceability/:id", verifyToken, Traceability.getId);
+router.put("/traceability/:id", verifyToken, Traceability.update);
+router.delete("/traceability/:id", verifyToken, Traceability.remove);
+router.get(
+  "/traceability/document/:documentNo",
+  verifyToken,
+  Traceability.getByDocumentNo
+);
+router.get(
+  "/traceability/origin-farm/:farmId",
+  verifyToken,
+  Traceability.getByOriginFarm
+);
+router.get(
+  "/traceability/destination-farm/:farmId",
+  verifyToken,
+  Traceability.getByDestinationFarm
+);
+router.get(
+  "/traceability/status/:status",
+  verifyToken,
+  Traceability.getByStatus
+);
+router.post("/traceability/:id/status", verifyToken, Traceability.updateStatus);
+router.post("/traceability/:id/vehicle", verifyToken, Traceability.addVehicle);
+router.post("/traceability/:id/cattle", verifyToken, Traceability.addCattle);
+router.get(
+  "/traceability/:id/history",
+  verifyToken,
+  Traceability.getStatusHistory
+);
 
 module.exports = router;

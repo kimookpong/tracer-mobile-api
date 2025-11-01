@@ -130,3 +130,36 @@ exports.remove = async (req, res, next) => {
     res.status(400).json({ status: "error", error: error.message });
   }
 };
+
+// Get all pens for a specific farm
+exports.getPens = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    // Check if farm exists
+    const farm = await prisma.farms.findFirst({
+      where: { id: id },
+    });
+
+    if (!farm) {
+      return res
+        .status(404)
+        .json({ status: "error", message: "Farm not found" });
+    }
+
+    // Get all pens for this farm
+    const pens = await prisma.pens.findMany({
+      where: { farm_id: id },
+      include: {
+        cattles: true,
+      },
+      orderBy: {
+        pen_number: "asc",
+      },
+    });
+
+    res.status(200).json({ status: "success", data: toCamelCase(pens) });
+  } catch (error) {
+    res.status(400).json({ status: "error", error: error.message });
+  }
+};

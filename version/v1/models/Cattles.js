@@ -8,8 +8,13 @@ const prisma = new PrismaClient();
 
 // Get all cattles
 exports.getAll = async (req, res, next) => {
+  const { farmId, penId } = req.query;
   try {
     const data = await prisma.cattles.findMany({
+      where: {
+        ...(farmId && { farm_id: farmId }),
+        ...(penId && { pen_id: penId }),
+      },
       include: {
         farms: true,
         pens: true,

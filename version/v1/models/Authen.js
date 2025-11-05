@@ -87,13 +87,14 @@ exports.loginTest = async (req, res, next) => {
         id: uuidv4(),
         token: body.token,
         role_id: body.roleId,
-        first_name: "นายสมชาย",
-        last_name: "ใจดี",
+        title_name: "นาย",
+        first_name: "สมชาย",
+        last_name: body.roleName || "ใจดี",
         mobile_number: "0812345678",
         user_id: null,
         type: null,
         last_login: new Date(),
-        approve_status: "SIGNUP",
+        approve_status: "ACTIVE",
       };
       await prisma.user.create({ data: user });
     } else {

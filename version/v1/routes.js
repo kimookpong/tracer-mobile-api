@@ -19,6 +19,9 @@ router.post("/authen/loginTest", Authen.loginTest);
 router.post("/authen/logout", verifyToken, Authen.logout);
 router.post("/authen/checktoken", Authen.checkToken);
 
+// Dashboard
+router.get("/dashboard/summary", verifyToken, Admins.getDashboardSummary);
+
 //Admin Tracer
 router.get("/admin/users", verifyToken, User.getAll);
 

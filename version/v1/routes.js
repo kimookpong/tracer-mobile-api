@@ -99,6 +99,16 @@ router.get(
   Traceability.getByDestinationFarm
 );
 router.get(
+  "/traceability/origin-owner/:userId",
+  verifyToken,
+  Traceability.getByOriginOwner
+);
+router.get(
+  "/traceability/destination-owner/:userId",
+  verifyToken,
+  Traceability.getByDestinationOwner
+);
+router.get(
   "/traceability/status/:status",
   verifyToken,
   Traceability.getByStatus

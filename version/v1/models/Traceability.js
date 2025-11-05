@@ -1,5 +1,10 @@
 const { PrismaClient } = require("../../../prisma/generated/prisma");
-const { toCamelCase, generateUUID } = require("../../../middleware/utils");
+const {
+  toCamelCase,
+  generateUUID,
+  generateRandomNumber,
+  generateTracerId,
+} = require("../../../middleware/utils");
 const prisma = new PrismaClient();
 
 // Get all traceability records
@@ -178,6 +183,98 @@ exports.getByStatus = async (req, res, next) => {
   }
 };
 
+// Get traceability by origin owner (farmer_id)
+exports.getByOriginOwner = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+
+    // Get all farms owned by this user
+    const farms = await prisma.farms.findMany({
+      where: { farmer_id: userId },
+      select: { id: true },
+    });
+
+    const farmIds = farms.map((farm) => farm.id);
+
+    const data = await prisma.traceability.findMany({
+      where: {
+        origin_farm_id: {
+          in: farmIds,
+        },
+      },
+      include: {
+        traceability_cattle: {
+          include: {
+            traceability_vehicle: true,
+          },
+        },
+        traceability_status: {
+          orderBy: {
+            created_at: "desc",
+          },
+        },
+        traceability_vehicle: true,
+        origin_farm: true,
+        destination_farm: true,
+        origin_pen: true,
+        destination_pen: true,
+      },
+      orderBy: {
+        created_at: "desc",
+      },
+    });
+    res.status(200).json({ status: "success", data: toCamelCase(data) });
+  } catch (error) {
+    res.status(400).json({ status: "error", error: error.message });
+  }
+};
+
+// Get traceability by destination owner (farmer_id)
+exports.getByDestinationOwner = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+
+    // Get all farms owned by this user
+    const farms = await prisma.farms.findMany({
+      where: { farmer_id: userId },
+      select: { id: true },
+    });
+
+    const farmIds = farms.map((farm) => farm.id);
+
+    const data = await prisma.traceability.findMany({
+      where: {
+        destination_farm_id: {
+          in: farmIds,
+        },
+      },
+      include: {
+        traceability_cattle: {
+          include: {
+            traceability_vehicle: true,
+          },
+        },
+        traceability_status: {
+          orderBy: {
+            created_at: "desc",
+          },
+        },
+        traceability_vehicle: true,
+        origin_farm: true,
+        destination_farm: true,
+        origin_pen: true,
+        destination_pen: true,
+      },
+      orderBy: {
+        created_at: "desc",
+      },
+    });
+    res.status(200).json({ status: "success", data: toCamelCase(data) });
+  } catch (error) {
+    res.status(400).json({ status: "error", error: error.message });
+  }
+};
+
 // Create new traceability record
 exports.create = async (req, res, next) => {
   try {
@@ -195,10 +292,25 @@ exports.create = async (req, res, next) => {
         .json({ status: "error", message: "Origin pen ID is required" });
     }
 
+    const runningNumber =
+      (
+        await prisma.traceability.findMany({
+          where: {
+            created_at: {
+              gte: new Date(
+                new Date().setFullYear(new Date().getFullYear() - 1)
+              ),
+            },
+          },
+        })
+      ).length + 1;
+
     const dataForm = {
       id: generateUUID(),
       reason: body.reason || "",
-      document_no: body.documentNo || "",
+      document_no:
+        body.documentNo ||
+        generateTracerId("TCM", String(runningNumber).padStart(7, "0")),
       total_animal: body.totalAnimal || 0,
       origin_farm_id: body.originFarmId,
       origin_pen_id: body.originPenId,
@@ -206,6 +318,12 @@ exports.create = async (req, res, next) => {
       destination_pen_id: body.destinationPenId || null,
       specific_destination_name: body.specificDestinationName || null,
       destination_province: body.destinationProvince || null,
+
+      buyer_title: body.buyerTitle || null,
+      buyer_first_name: body.buyerFirstName || null,
+      buyer_last_name: body.buyerLastName || null,
+      buyer_identity: body.buyerIdentity || null,
+
       shipment_date: body.shipmentDate
         ? new Date(body.shipmentDate)
         : new Date(),
@@ -213,7 +331,10 @@ exports.create = async (req, res, next) => {
         ? new Date(body.estimatedArrivalDate)
         : new Date(),
       destination_type: body.destinationType || "",
-      status: body.status || "pending",
+      status:
+        body.reason === "TRANSPORT_FOR_SALE"
+          ? "PREPARING_TO_MOVE"
+          : "COMPLETED",
       created_at: new Date(),
       updated_at: new Date(),
       created_by_id: body.createdById || "",
@@ -245,6 +366,91 @@ exports.create = async (req, res, next) => {
         updated_by: body.updatedBy || "",
       },
     });
+
+    // Create vehicle records if provided
+    if (body.vehicles && body.vehicles.length > 0) {
+      const vehicleData = body.vehicles.map((vehicle) => ({
+        id: generateUUID(),
+        traceability_id: data.id,
+        vehicle_type: vehicle.vehicleType || "",
+        vehicle_registration: vehicle.vehicleRegistration || "",
+        transport_company_name: vehicle.transportCompanyName || "",
+        driver_title: vehicle.driverTitle || "",
+        driver_first_name: vehicle.driverFirstName || "",
+        driver_middle_name: vehicle.driverMiddleName || null,
+        driver_last_name: vehicle.driverLastName || "",
+        contact_title: vehicle.contactTitle || null,
+        contact_first_name: vehicle.contactFirstName || null,
+        contact_middle_name: vehicle.contactMiddleName || null,
+        contact_last_name: vehicle.contactLastName || null,
+        contact_phone: vehicle.contactPhone || "",
+        is_contract_same_driver:
+          vehicle.isContractSameDriver !== undefined
+            ? vehicle.isContractSameDriver
+            : true,
+        created_at: new Date(),
+        updated_at: new Date(),
+        created_by_id: body.createdById || "",
+        created_by: body.createdBy || "",
+        updated_by_id: body.updatedById || "",
+        updated_by: body.updatedBy || "",
+      }));
+
+      await prisma.traceability_vehicle.createMany({
+        data: vehicleData,
+      });
+    }
+
+    if (body.reason === "TRANSPORT_WITHIN_FARM") {
+      // update pen_id of cattles to be body.destinationPenId
+      if (body.cattleIds && body.cattleIds.length > 0) {
+        await prisma.cattles.updateMany({
+          where: {
+            id: {
+              in: body.cattleIds,
+            },
+          },
+          data: {
+            pen_id: body.destinationPenId || null,
+          },
+        });
+      }
+    }
+
+    if (body.reason === "TRANSPORT_FOR_SALE_FRONT") {
+      if (body.cattleIds && body.cattleIds.length > 0) {
+        await prisma.cattles.updateMany({
+          where: {
+            id: {
+              in: body.cattleIds,
+            },
+          },
+          data: {
+            status: "SOLD",
+          },
+        });
+      }
+    }
+
+    // Create cattle records if provided
+    if (body.cattleIds && body.cattleIds.length > 0) {
+      const cattleData = body.cattleIds.map((cattleId) => ({
+        id: generateUUID(),
+        traceability_id: data.id,
+        vehicle_id: null,
+        cattle_id: cattleId || "",
+        created_at: new Date(),
+        updated_at: new Date(),
+        created_by_id: body.createdById || "",
+        created_by: body.createdBy || "",
+        updated_by_id: body.updatedById || "",
+        updated_by: body.updatedBy || "",
+      }));
+
+      await prisma.traceability_cattle.createMany({
+        data: cattleData,
+      });
+    }
 
     res.status(201).json({ status: "success", data: toCamelCase(data) });
   } catch (error) {
@@ -550,12 +756,10 @@ exports.remove = async (req, res, next) => {
       where: { id: id },
     });
 
-    res
-      .status(200)
-      .json({
-        status: "success",
-        message: "Traceability record deleted successfully",
-      });
+    res.status(200).json({
+      status: "success",
+      message: "Traceability record deleted successfully",
+    });
   } catch (error) {
     res.status(400).json({ status: "error", error: error.message });
   }

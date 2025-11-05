@@ -4028,6 +4028,8 @@ export namespace Prisma {
     farm_authorized: number
     farm_veterinary: number
     pens: number
+    traceability_origin: number
+    traceability_destination: number
   }
 
   export type FarmsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4036,6 +4038,8 @@ export namespace Prisma {
     farm_authorized?: boolean | FarmsCountOutputTypeCountFarm_authorizedArgs
     farm_veterinary?: boolean | FarmsCountOutputTypeCountFarm_veterinaryArgs
     pens?: boolean | FarmsCountOutputTypeCountPensArgs
+    traceability_origin?: boolean | FarmsCountOutputTypeCountTraceability_originArgs
+    traceability_destination?: boolean | FarmsCountOutputTypeCountTraceability_destinationArgs
   }
 
   // Custom InputTypes
@@ -4082,6 +4086,20 @@ export namespace Prisma {
    */
   export type FarmsCountOutputTypeCountPensArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: pensWhereInput
+  }
+
+  /**
+   * FarmsCountOutputType without action
+   */
+  export type FarmsCountOutputTypeCountTraceability_originArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: traceabilityWhereInput
+  }
+
+  /**
+   * FarmsCountOutputType without action
+   */
+  export type FarmsCountOutputTypeCountTraceability_destinationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: traceabilityWhereInput
   }
 
 
@@ -4132,11 +4150,15 @@ export namespace Prisma {
   export type PensCountOutputType = {
     cattles: number
     pen_attachments: number
+    traceability_origin: number
+    traceability_destination: number
   }
 
   export type PensCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cattles?: boolean | PensCountOutputTypeCountCattlesArgs
     pen_attachments?: boolean | PensCountOutputTypeCountPen_attachmentsArgs
+    traceability_origin?: boolean | PensCountOutputTypeCountTraceability_originArgs
+    traceability_destination?: boolean | PensCountOutputTypeCountTraceability_destinationArgs
   }
 
   // Custom InputTypes
@@ -4162,6 +4184,20 @@ export namespace Prisma {
    */
   export type PensCountOutputTypeCountPen_attachmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: pen_attachmentsWhereInput
+  }
+
+  /**
+   * PensCountOutputType without action
+   */
+  export type PensCountOutputTypeCountTraceability_originArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: traceabilityWhereInput
+  }
+
+  /**
+   * PensCountOutputType without action
+   */
+  export type PensCountOutputTypeCountTraceability_destinationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: traceabilityWhereInput
   }
 
 
@@ -32245,6 +32281,8 @@ export namespace Prisma {
     farm_authorized?: boolean | farms$farm_authorizedArgs<ExtArgs>
     farm_veterinary?: boolean | farms$farm_veterinaryArgs<ExtArgs>
     pens?: boolean | farms$pensArgs<ExtArgs>
+    traceability_origin?: boolean | farms$traceability_originArgs<ExtArgs>
+    traceability_destination?: boolean | farms$traceability_destinationArgs<ExtArgs>
     _count?: boolean | FarmsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["farms"]>
 
@@ -32420,6 +32458,8 @@ export namespace Prisma {
     farm_authorized?: boolean | farms$farm_authorizedArgs<ExtArgs>
     farm_veterinary?: boolean | farms$farm_veterinaryArgs<ExtArgs>
     pens?: boolean | farms$pensArgs<ExtArgs>
+    traceability_origin?: boolean | farms$traceability_originArgs<ExtArgs>
+    traceability_destination?: boolean | farms$traceability_destinationArgs<ExtArgs>
     _count?: boolean | FarmsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type farmsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -32433,6 +32473,8 @@ export namespace Prisma {
       farm_authorized: Prisma.$farm_authorizedPayload<ExtArgs>[]
       farm_veterinary: Prisma.$farm_veterinaryPayload<ExtArgs>[]
       pens: Prisma.$pensPayload<ExtArgs>[]
+      traceability_origin: Prisma.$traceabilityPayload<ExtArgs>[]
+      traceability_destination: Prisma.$traceabilityPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -32886,6 +32928,8 @@ export namespace Prisma {
     farm_authorized<T extends farms$farm_authorizedArgs<ExtArgs> = {}>(args?: Subset<T, farms$farm_authorizedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$farm_authorizedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     farm_veterinary<T extends farms$farm_veterinaryArgs<ExtArgs> = {}>(args?: Subset<T, farms$farm_veterinaryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$farm_veterinaryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     pens<T extends farms$pensArgs<ExtArgs> = {}>(args?: Subset<T, farms$pensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pensPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    traceability_origin<T extends farms$traceability_originArgs<ExtArgs> = {}>(args?: Subset<T, farms$traceability_originArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$traceabilityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    traceability_destination<T extends farms$traceability_destinationArgs<ExtArgs> = {}>(args?: Subset<T, farms$traceability_destinationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$traceabilityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -33472,6 +33516,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PensScalarFieldEnum | PensScalarFieldEnum[]
+  }
+
+  /**
+   * farms.traceability_origin
+   */
+  export type farms$traceability_originArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the traceability
+     */
+    select?: traceabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the traceability
+     */
+    omit?: traceabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: traceabilityInclude<ExtArgs> | null
+    where?: traceabilityWhereInput
+    orderBy?: traceabilityOrderByWithRelationInput | traceabilityOrderByWithRelationInput[]
+    cursor?: traceabilityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TraceabilityScalarFieldEnum | TraceabilityScalarFieldEnum[]
+  }
+
+  /**
+   * farms.traceability_destination
+   */
+  export type farms$traceability_destinationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the traceability
+     */
+    select?: traceabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the traceability
+     */
+    omit?: traceabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: traceabilityInclude<ExtArgs> | null
+    where?: traceabilityWhereInput
+    orderBy?: traceabilityOrderByWithRelationInput | traceabilityOrderByWithRelationInput[]
+    cursor?: traceabilityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TraceabilityScalarFieldEnum | TraceabilityScalarFieldEnum[]
   }
 
   /**
@@ -38791,6 +38883,8 @@ export namespace Prisma {
     cattles?: boolean | pens$cattlesArgs<ExtArgs>
     pen_attachments?: boolean | pens$pen_attachmentsArgs<ExtArgs>
     farms?: boolean | farmsDefaultArgs<ExtArgs>
+    traceability_origin?: boolean | pens$traceability_originArgs<ExtArgs>
+    traceability_destination?: boolean | pens$traceability_destinationArgs<ExtArgs>
     _count?: boolean | PensCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pens"]>
 
@@ -38858,6 +38952,8 @@ export namespace Prisma {
     cattles?: boolean | pens$cattlesArgs<ExtArgs>
     pen_attachments?: boolean | pens$pen_attachmentsArgs<ExtArgs>
     farms?: boolean | farmsDefaultArgs<ExtArgs>
+    traceability_origin?: boolean | pens$traceability_originArgs<ExtArgs>
+    traceability_destination?: boolean | pens$traceability_destinationArgs<ExtArgs>
     _count?: boolean | PensCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type pensIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -38873,6 +38969,8 @@ export namespace Prisma {
       cattles: Prisma.$cattlesPayload<ExtArgs>[]
       pen_attachments: Prisma.$pen_attachmentsPayload<ExtArgs>[]
       farms: Prisma.$farmsPayload<ExtArgs>
+      traceability_origin: Prisma.$traceabilityPayload<ExtArgs>[]
+      traceability_destination: Prisma.$traceabilityPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -39288,6 +39386,8 @@ export namespace Prisma {
     cattles<T extends pens$cattlesArgs<ExtArgs> = {}>(args?: Subset<T, pens$cattlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cattlesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     pen_attachments<T extends pens$pen_attachmentsArgs<ExtArgs> = {}>(args?: Subset<T, pens$pen_attachmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pen_attachmentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     farms<T extends farmsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, farmsDefaultArgs<ExtArgs>>): Prisma__farmsClient<$Result.GetResult<Prisma.$farmsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    traceability_origin<T extends pens$traceability_originArgs<ExtArgs> = {}>(args?: Subset<T, pens$traceability_originArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$traceabilityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    traceability_destination<T extends pens$traceability_destinationArgs<ExtArgs> = {}>(args?: Subset<T, pens$traceability_destinationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$traceabilityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -39774,6 +39874,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Pen_attachmentsScalarFieldEnum | Pen_attachmentsScalarFieldEnum[]
+  }
+
+  /**
+   * pens.traceability_origin
+   */
+  export type pens$traceability_originArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the traceability
+     */
+    select?: traceabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the traceability
+     */
+    omit?: traceabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: traceabilityInclude<ExtArgs> | null
+    where?: traceabilityWhereInput
+    orderBy?: traceabilityOrderByWithRelationInput | traceabilityOrderByWithRelationInput[]
+    cursor?: traceabilityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TraceabilityScalarFieldEnum | TraceabilityScalarFieldEnum[]
+  }
+
+  /**
+   * pens.traceability_destination
+   */
+  export type pens$traceability_destinationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the traceability
+     */
+    select?: traceabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the traceability
+     */
+    omit?: traceabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: traceabilityInclude<ExtArgs> | null
+    where?: traceabilityWhereInput
+    orderBy?: traceabilityOrderByWithRelationInput | traceabilityOrderByWithRelationInput[]
+    cursor?: traceabilityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TraceabilityScalarFieldEnum | TraceabilityScalarFieldEnum[]
   }
 
   /**
@@ -40819,6 +40967,10 @@ export namespace Prisma {
     shipment_date: Date | null
     estimated_arrival_date: Date | null
     destination_type: string | null
+    buyer_title: string | null
+    buyer_first_name: string | null
+    buyer_last_name: string | null
+    buyer_identity: string | null
     status: string | null
     created_at: Date | null
     created_by_id: string | null
@@ -40842,6 +40994,10 @@ export namespace Prisma {
     shipment_date: Date | null
     estimated_arrival_date: Date | null
     destination_type: string | null
+    buyer_title: string | null
+    buyer_first_name: string | null
+    buyer_last_name: string | null
+    buyer_identity: string | null
     status: string | null
     created_at: Date | null
     created_by_id: string | null
@@ -40865,6 +41021,10 @@ export namespace Prisma {
     shipment_date: number
     estimated_arrival_date: number
     destination_type: number
+    buyer_title: number
+    buyer_first_name: number
+    buyer_last_name: number
+    buyer_identity: number
     status: number
     created_at: number
     created_by_id: number
@@ -40898,6 +41058,10 @@ export namespace Prisma {
     shipment_date?: true
     estimated_arrival_date?: true
     destination_type?: true
+    buyer_title?: true
+    buyer_first_name?: true
+    buyer_last_name?: true
+    buyer_identity?: true
     status?: true
     created_at?: true
     created_by_id?: true
@@ -40921,6 +41085,10 @@ export namespace Prisma {
     shipment_date?: true
     estimated_arrival_date?: true
     destination_type?: true
+    buyer_title?: true
+    buyer_first_name?: true
+    buyer_last_name?: true
+    buyer_identity?: true
     status?: true
     created_at?: true
     created_by_id?: true
@@ -40944,6 +41112,10 @@ export namespace Prisma {
     shipment_date?: true
     estimated_arrival_date?: true
     destination_type?: true
+    buyer_title?: true
+    buyer_first_name?: true
+    buyer_last_name?: true
+    buyer_identity?: true
     status?: true
     created_at?: true
     created_by_id?: true
@@ -41054,6 +41226,10 @@ export namespace Prisma {
     shipment_date: Date
     estimated_arrival_date: Date
     destination_type: string
+    buyer_title: string | null
+    buyer_first_name: string | null
+    buyer_last_name: string | null
+    buyer_identity: string | null
     status: string
     created_at: Date
     created_by_id: string
@@ -41096,6 +41272,10 @@ export namespace Prisma {
     shipment_date?: boolean
     estimated_arrival_date?: boolean
     destination_type?: boolean
+    buyer_title?: boolean
+    buyer_first_name?: boolean
+    buyer_last_name?: boolean
+    buyer_identity?: boolean
     status?: boolean
     created_at?: boolean
     created_by_id?: boolean
@@ -41106,6 +41286,10 @@ export namespace Prisma {
     traceability_cattle?: boolean | traceability$traceability_cattleArgs<ExtArgs>
     traceability_status?: boolean | traceability$traceability_statusArgs<ExtArgs>
     traceability_vehicle?: boolean | traceability$traceability_vehicleArgs<ExtArgs>
+    origin_farm?: boolean | farmsDefaultArgs<ExtArgs>
+    destination_farm?: boolean | traceability$destination_farmArgs<ExtArgs>
+    origin_pen?: boolean | pensDefaultArgs<ExtArgs>
+    destination_pen?: boolean | traceability$destination_penArgs<ExtArgs>
     _count?: boolean | TraceabilityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["traceability"]>
 
@@ -41123,6 +41307,10 @@ export namespace Prisma {
     shipment_date?: boolean
     estimated_arrival_date?: boolean
     destination_type?: boolean
+    buyer_title?: boolean
+    buyer_first_name?: boolean
+    buyer_last_name?: boolean
+    buyer_identity?: boolean
     status?: boolean
     created_at?: boolean
     created_by_id?: boolean
@@ -41130,6 +41318,10 @@ export namespace Prisma {
     updated_at?: boolean
     updated_by_id?: boolean
     updated_by?: boolean
+    origin_farm?: boolean | farmsDefaultArgs<ExtArgs>
+    destination_farm?: boolean | traceability$destination_farmArgs<ExtArgs>
+    origin_pen?: boolean | pensDefaultArgs<ExtArgs>
+    destination_pen?: boolean | traceability$destination_penArgs<ExtArgs>
   }, ExtArgs["result"]["traceability"]>
 
   export type traceabilitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -41146,6 +41338,10 @@ export namespace Prisma {
     shipment_date?: boolean
     estimated_arrival_date?: boolean
     destination_type?: boolean
+    buyer_title?: boolean
+    buyer_first_name?: boolean
+    buyer_last_name?: boolean
+    buyer_identity?: boolean
     status?: boolean
     created_at?: boolean
     created_by_id?: boolean
@@ -41153,6 +41349,10 @@ export namespace Prisma {
     updated_at?: boolean
     updated_by_id?: boolean
     updated_by?: boolean
+    origin_farm?: boolean | farmsDefaultArgs<ExtArgs>
+    destination_farm?: boolean | traceability$destination_farmArgs<ExtArgs>
+    origin_pen?: boolean | pensDefaultArgs<ExtArgs>
+    destination_pen?: boolean | traceability$destination_penArgs<ExtArgs>
   }, ExtArgs["result"]["traceability"]>
 
   export type traceabilitySelectScalar = {
@@ -41169,6 +41369,10 @@ export namespace Prisma {
     shipment_date?: boolean
     estimated_arrival_date?: boolean
     destination_type?: boolean
+    buyer_title?: boolean
+    buyer_first_name?: boolean
+    buyer_last_name?: boolean
+    buyer_identity?: boolean
     status?: boolean
     created_at?: boolean
     created_by_id?: boolean
@@ -41178,15 +41382,29 @@ export namespace Prisma {
     updated_by?: boolean
   }
 
-  export type traceabilityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reason" | "document_no" | "total_animal" | "origin_farm_id" | "origin_pen_id" | "destination_farm_id" | "destination_pen_id" | "specific_destination_name" | "destination_province" | "shipment_date" | "estimated_arrival_date" | "destination_type" | "status" | "created_at" | "created_by_id" | "created_by" | "updated_at" | "updated_by_id" | "updated_by", ExtArgs["result"]["traceability"]>
+  export type traceabilityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reason" | "document_no" | "total_animal" | "origin_farm_id" | "origin_pen_id" | "destination_farm_id" | "destination_pen_id" | "specific_destination_name" | "destination_province" | "shipment_date" | "estimated_arrival_date" | "destination_type" | "buyer_title" | "buyer_first_name" | "buyer_last_name" | "buyer_identity" | "status" | "created_at" | "created_by_id" | "created_by" | "updated_at" | "updated_by_id" | "updated_by", ExtArgs["result"]["traceability"]>
   export type traceabilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     traceability_cattle?: boolean | traceability$traceability_cattleArgs<ExtArgs>
     traceability_status?: boolean | traceability$traceability_statusArgs<ExtArgs>
     traceability_vehicle?: boolean | traceability$traceability_vehicleArgs<ExtArgs>
+    origin_farm?: boolean | farmsDefaultArgs<ExtArgs>
+    destination_farm?: boolean | traceability$destination_farmArgs<ExtArgs>
+    origin_pen?: boolean | pensDefaultArgs<ExtArgs>
+    destination_pen?: boolean | traceability$destination_penArgs<ExtArgs>
     _count?: boolean | TraceabilityCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type traceabilityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type traceabilityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type traceabilityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    origin_farm?: boolean | farmsDefaultArgs<ExtArgs>
+    destination_farm?: boolean | traceability$destination_farmArgs<ExtArgs>
+    origin_pen?: boolean | pensDefaultArgs<ExtArgs>
+    destination_pen?: boolean | traceability$destination_penArgs<ExtArgs>
+  }
+  export type traceabilityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    origin_farm?: boolean | farmsDefaultArgs<ExtArgs>
+    destination_farm?: boolean | traceability$destination_farmArgs<ExtArgs>
+    origin_pen?: boolean | pensDefaultArgs<ExtArgs>
+    destination_pen?: boolean | traceability$destination_penArgs<ExtArgs>
+  }
 
   export type $traceabilityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "traceability"
@@ -41194,6 +41412,10 @@ export namespace Prisma {
       traceability_cattle: Prisma.$traceability_cattlePayload<ExtArgs>[]
       traceability_status: Prisma.$traceability_statusPayload<ExtArgs>[]
       traceability_vehicle: Prisma.$traceability_vehiclePayload<ExtArgs>[]
+      origin_farm: Prisma.$farmsPayload<ExtArgs>
+      destination_farm: Prisma.$farmsPayload<ExtArgs> | null
+      origin_pen: Prisma.$pensPayload<ExtArgs>
+      destination_pen: Prisma.$pensPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -41209,6 +41431,10 @@ export namespace Prisma {
       shipment_date: Date
       estimated_arrival_date: Date
       destination_type: string
+      buyer_title: string | null
+      buyer_first_name: string | null
+      buyer_last_name: string | null
+      buyer_identity: string | null
       status: string
       created_at: Date
       created_by_id: string
@@ -41613,6 +41839,10 @@ export namespace Prisma {
     traceability_cattle<T extends traceability$traceability_cattleArgs<ExtArgs> = {}>(args?: Subset<T, traceability$traceability_cattleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$traceability_cattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     traceability_status<T extends traceability$traceability_statusArgs<ExtArgs> = {}>(args?: Subset<T, traceability$traceability_statusArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$traceability_statusPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     traceability_vehicle<T extends traceability$traceability_vehicleArgs<ExtArgs> = {}>(args?: Subset<T, traceability$traceability_vehicleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$traceability_vehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    origin_farm<T extends farmsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, farmsDefaultArgs<ExtArgs>>): Prisma__farmsClient<$Result.GetResult<Prisma.$farmsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    destination_farm<T extends traceability$destination_farmArgs<ExtArgs> = {}>(args?: Subset<T, traceability$destination_farmArgs<ExtArgs>>): Prisma__farmsClient<$Result.GetResult<Prisma.$farmsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    origin_pen<T extends pensDefaultArgs<ExtArgs> = {}>(args?: Subset<T, pensDefaultArgs<ExtArgs>>): Prisma__pensClient<$Result.GetResult<Prisma.$pensPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    destination_pen<T extends traceability$destination_penArgs<ExtArgs> = {}>(args?: Subset<T, traceability$destination_penArgs<ExtArgs>>): Prisma__pensClient<$Result.GetResult<Prisma.$pensPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -41655,6 +41885,10 @@ export namespace Prisma {
     readonly shipment_date: FieldRef<"traceability", 'DateTime'>
     readonly estimated_arrival_date: FieldRef<"traceability", 'DateTime'>
     readonly destination_type: FieldRef<"traceability", 'String'>
+    readonly buyer_title: FieldRef<"traceability", 'String'>
+    readonly buyer_first_name: FieldRef<"traceability", 'String'>
+    readonly buyer_last_name: FieldRef<"traceability", 'String'>
+    readonly buyer_identity: FieldRef<"traceability", 'String'>
     readonly status: FieldRef<"traceability", 'String'>
     readonly created_at: FieldRef<"traceability", 'DateTime'>
     readonly created_by_id: FieldRef<"traceability", 'String'>
@@ -41911,6 +42145,10 @@ export namespace Prisma {
      */
     data: traceabilityCreateManyInput | traceabilityCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: traceabilityIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -41981,6 +42219,10 @@ export namespace Prisma {
      * Limit how many traceabilities to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: traceabilityIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -42119,6 +42361,44 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Traceability_vehicleScalarFieldEnum | Traceability_vehicleScalarFieldEnum[]
+  }
+
+  /**
+   * traceability.destination_farm
+   */
+  export type traceability$destination_farmArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the farms
+     */
+    select?: farmsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the farms
+     */
+    omit?: farmsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: farmsInclude<ExtArgs> | null
+    where?: farmsWhereInput
+  }
+
+  /**
+   * traceability.destination_pen
+   */
+  export type traceability$destination_penArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pens
+     */
+    select?: pensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pens
+     */
+    omit?: pensOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pensInclude<ExtArgs> | null
+    where?: pensWhereInput
   }
 
   /**
@@ -42306,7 +42586,7 @@ export namespace Prisma {
   export type Traceability_cattleGroupByOutputType = {
     id: string
     traceability_id: string
-    vehicle_id: string
+    vehicle_id: string | null
     cattle_id: string
     created_at: Date
     created_by_id: string
@@ -42345,7 +42625,7 @@ export namespace Prisma {
     updated_by_id?: boolean
     updated_by?: boolean
     traceability?: boolean | traceabilityDefaultArgs<ExtArgs>
-    traceability_vehicle?: boolean | traceability_vehicleDefaultArgs<ExtArgs>
+    traceability_vehicle?: boolean | traceability_cattle$traceability_vehicleArgs<ExtArgs>
   }, ExtArgs["result"]["traceability_cattle"]>
 
   export type traceability_cattleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -42360,7 +42640,7 @@ export namespace Prisma {
     updated_by_id?: boolean
     updated_by?: boolean
     traceability?: boolean | traceabilityDefaultArgs<ExtArgs>
-    traceability_vehicle?: boolean | traceability_vehicleDefaultArgs<ExtArgs>
+    traceability_vehicle?: boolean | traceability_cattle$traceability_vehicleArgs<ExtArgs>
   }, ExtArgs["result"]["traceability_cattle"]>
 
   export type traceability_cattleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -42375,7 +42655,7 @@ export namespace Prisma {
     updated_by_id?: boolean
     updated_by?: boolean
     traceability?: boolean | traceabilityDefaultArgs<ExtArgs>
-    traceability_vehicle?: boolean | traceability_vehicleDefaultArgs<ExtArgs>
+    traceability_vehicle?: boolean | traceability_cattle$traceability_vehicleArgs<ExtArgs>
   }, ExtArgs["result"]["traceability_cattle"]>
 
   export type traceability_cattleSelectScalar = {
@@ -42394,27 +42674,27 @@ export namespace Prisma {
   export type traceability_cattleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "traceability_id" | "vehicle_id" | "cattle_id" | "created_at" | "created_by_id" | "created_by" | "updated_at" | "updated_by_id" | "updated_by", ExtArgs["result"]["traceability_cattle"]>
   export type traceability_cattleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     traceability?: boolean | traceabilityDefaultArgs<ExtArgs>
-    traceability_vehicle?: boolean | traceability_vehicleDefaultArgs<ExtArgs>
+    traceability_vehicle?: boolean | traceability_cattle$traceability_vehicleArgs<ExtArgs>
   }
   export type traceability_cattleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     traceability?: boolean | traceabilityDefaultArgs<ExtArgs>
-    traceability_vehicle?: boolean | traceability_vehicleDefaultArgs<ExtArgs>
+    traceability_vehicle?: boolean | traceability_cattle$traceability_vehicleArgs<ExtArgs>
   }
   export type traceability_cattleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     traceability?: boolean | traceabilityDefaultArgs<ExtArgs>
-    traceability_vehicle?: boolean | traceability_vehicleDefaultArgs<ExtArgs>
+    traceability_vehicle?: boolean | traceability_cattle$traceability_vehicleArgs<ExtArgs>
   }
 
   export type $traceability_cattlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "traceability_cattle"
     objects: {
       traceability: Prisma.$traceabilityPayload<ExtArgs>
-      traceability_vehicle: Prisma.$traceability_vehiclePayload<ExtArgs>
+      traceability_vehicle: Prisma.$traceability_vehiclePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       traceability_id: string
-      vehicle_id: string
+      vehicle_id: string | null
       cattle_id: string
       created_at: Date
       created_by_id: string
@@ -42817,7 +43097,7 @@ export namespace Prisma {
   export interface Prisma__traceability_cattleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     traceability<T extends traceabilityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, traceabilityDefaultArgs<ExtArgs>>): Prisma__traceabilityClient<$Result.GetResult<Prisma.$traceabilityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    traceability_vehicle<T extends traceability_vehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, traceability_vehicleDefaultArgs<ExtArgs>>): Prisma__traceability_vehicleClient<$Result.GetResult<Prisma.$traceability_vehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    traceability_vehicle<T extends traceability_cattle$traceability_vehicleArgs<ExtArgs> = {}>(args?: Subset<T, traceability_cattle$traceability_vehicleArgs<ExtArgs>>): Prisma__traceability_vehicleClient<$Result.GetResult<Prisma.$traceability_vehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -43250,6 +43530,25 @@ export namespace Prisma {
      * Limit how many traceability_cattles to delete.
      */
     limit?: number
+  }
+
+  /**
+   * traceability_cattle.traceability_vehicle
+   */
+  export type traceability_cattle$traceability_vehicleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the traceability_vehicle
+     */
+    select?: traceability_vehicleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the traceability_vehicle
+     */
+    omit?: traceability_vehicleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: traceability_vehicleInclude<ExtArgs> | null
+    where?: traceability_vehicleWhereInput
   }
 
   /**
@@ -47656,6 +47955,10 @@ export namespace Prisma {
     shipment_date: 'shipment_date',
     estimated_arrival_date: 'estimated_arrival_date',
     destination_type: 'destination_type',
+    buyer_title: 'buyer_title',
+    buyer_first_name: 'buyer_first_name',
+    buyer_last_name: 'buyer_last_name',
+    buyer_identity: 'buyer_identity',
     status: 'status',
     created_at: 'created_at',
     created_by_id: 'created_by_id',
@@ -50781,6 +51084,8 @@ export namespace Prisma {
     farm_authorized?: Farm_authorizedListRelationFilter
     farm_veterinary?: Farm_veterinaryListRelationFilter
     pens?: PensListRelationFilter
+    traceability_origin?: TraceabilityListRelationFilter
+    traceability_destination?: TraceabilityListRelationFilter
   }
 
   export type farmsOrderByWithRelationInput = {
@@ -50841,6 +51146,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedOrderByRelationAggregateInput
     farm_veterinary?: farm_veterinaryOrderByRelationAggregateInput
     pens?: pensOrderByRelationAggregateInput
+    traceability_origin?: traceabilityOrderByRelationAggregateInput
+    traceability_destination?: traceabilityOrderByRelationAggregateInput
   }
 
   export type farmsWhereUniqueInput = Prisma.AtLeast<{
@@ -50904,6 +51211,8 @@ export namespace Prisma {
     farm_authorized?: Farm_authorizedListRelationFilter
     farm_veterinary?: Farm_veterinaryListRelationFilter
     pens?: PensListRelationFilter
+    traceability_origin?: TraceabilityListRelationFilter
+    traceability_destination?: TraceabilityListRelationFilter
   }, "id">
 
   export type farmsOrderByWithAggregationInput = {
@@ -51519,6 +51828,8 @@ export namespace Prisma {
     cattles?: CattlesListRelationFilter
     pen_attachments?: Pen_attachmentsListRelationFilter
     farms?: XOR<FarmsScalarRelationFilter, farmsWhereInput>
+    traceability_origin?: TraceabilityListRelationFilter
+    traceability_destination?: TraceabilityListRelationFilter
   }
 
   export type pensOrderByWithRelationInput = {
@@ -51541,6 +51852,8 @@ export namespace Prisma {
     cattles?: cattlesOrderByRelationAggregateInput
     pen_attachments?: pen_attachmentsOrderByRelationAggregateInput
     farms?: farmsOrderByWithRelationInput
+    traceability_origin?: traceabilityOrderByRelationAggregateInput
+    traceability_destination?: traceabilityOrderByRelationAggregateInput
   }
 
   export type pensWhereUniqueInput = Prisma.AtLeast<{
@@ -51566,6 +51879,8 @@ export namespace Prisma {
     cattles?: CattlesListRelationFilter
     pen_attachments?: Pen_attachmentsListRelationFilter
     farms?: XOR<FarmsScalarRelationFilter, farmsWhereInput>
+    traceability_origin?: TraceabilityListRelationFilter
+    traceability_destination?: TraceabilityListRelationFilter
   }, "id">
 
   export type pensOrderByWithAggregationInput = {
@@ -51670,6 +51985,10 @@ export namespace Prisma {
     shipment_date?: DateTimeFilter<"traceability"> | Date | string
     estimated_arrival_date?: DateTimeFilter<"traceability"> | Date | string
     destination_type?: StringFilter<"traceability"> | string
+    buyer_title?: StringNullableFilter<"traceability"> | string | null
+    buyer_first_name?: StringNullableFilter<"traceability"> | string | null
+    buyer_last_name?: StringNullableFilter<"traceability"> | string | null
+    buyer_identity?: StringNullableFilter<"traceability"> | string | null
     status?: StringFilter<"traceability"> | string
     created_at?: DateTimeFilter<"traceability"> | Date | string
     created_by_id?: StringFilter<"traceability"> | string
@@ -51680,6 +51999,10 @@ export namespace Prisma {
     traceability_cattle?: Traceability_cattleListRelationFilter
     traceability_status?: Traceability_statusListRelationFilter
     traceability_vehicle?: Traceability_vehicleListRelationFilter
+    origin_farm?: XOR<FarmsScalarRelationFilter, farmsWhereInput>
+    destination_farm?: XOR<FarmsNullableScalarRelationFilter, farmsWhereInput> | null
+    origin_pen?: XOR<PensScalarRelationFilter, pensWhereInput>
+    destination_pen?: XOR<PensNullableScalarRelationFilter, pensWhereInput> | null
   }
 
   export type traceabilityOrderByWithRelationInput = {
@@ -51696,6 +52019,10 @@ export namespace Prisma {
     shipment_date?: SortOrder
     estimated_arrival_date?: SortOrder
     destination_type?: SortOrder
+    buyer_title?: SortOrderInput | SortOrder
+    buyer_first_name?: SortOrderInput | SortOrder
+    buyer_last_name?: SortOrderInput | SortOrder
+    buyer_identity?: SortOrderInput | SortOrder
     status?: SortOrder
     created_at?: SortOrder
     created_by_id?: SortOrder
@@ -51706,6 +52033,10 @@ export namespace Prisma {
     traceability_cattle?: traceability_cattleOrderByRelationAggregateInput
     traceability_status?: traceability_statusOrderByRelationAggregateInput
     traceability_vehicle?: traceability_vehicleOrderByRelationAggregateInput
+    origin_farm?: farmsOrderByWithRelationInput
+    destination_farm?: farmsOrderByWithRelationInput
+    origin_pen?: pensOrderByWithRelationInput
+    destination_pen?: pensOrderByWithRelationInput
   }
 
   export type traceabilityWhereUniqueInput = Prisma.AtLeast<{
@@ -51725,6 +52056,10 @@ export namespace Prisma {
     shipment_date?: DateTimeFilter<"traceability"> | Date | string
     estimated_arrival_date?: DateTimeFilter<"traceability"> | Date | string
     destination_type?: StringFilter<"traceability"> | string
+    buyer_title?: StringNullableFilter<"traceability"> | string | null
+    buyer_first_name?: StringNullableFilter<"traceability"> | string | null
+    buyer_last_name?: StringNullableFilter<"traceability"> | string | null
+    buyer_identity?: StringNullableFilter<"traceability"> | string | null
     status?: StringFilter<"traceability"> | string
     created_at?: DateTimeFilter<"traceability"> | Date | string
     created_by_id?: StringFilter<"traceability"> | string
@@ -51735,6 +52070,10 @@ export namespace Prisma {
     traceability_cattle?: Traceability_cattleListRelationFilter
     traceability_status?: Traceability_statusListRelationFilter
     traceability_vehicle?: Traceability_vehicleListRelationFilter
+    origin_farm?: XOR<FarmsScalarRelationFilter, farmsWhereInput>
+    destination_farm?: XOR<FarmsNullableScalarRelationFilter, farmsWhereInput> | null
+    origin_pen?: XOR<PensScalarRelationFilter, pensWhereInput>
+    destination_pen?: XOR<PensNullableScalarRelationFilter, pensWhereInput> | null
   }, "id">
 
   export type traceabilityOrderByWithAggregationInput = {
@@ -51751,6 +52090,10 @@ export namespace Prisma {
     shipment_date?: SortOrder
     estimated_arrival_date?: SortOrder
     destination_type?: SortOrder
+    buyer_title?: SortOrderInput | SortOrder
+    buyer_first_name?: SortOrderInput | SortOrder
+    buyer_last_name?: SortOrderInput | SortOrder
+    buyer_identity?: SortOrderInput | SortOrder
     status?: SortOrder
     created_at?: SortOrder
     created_by_id?: SortOrder
@@ -51782,6 +52125,10 @@ export namespace Prisma {
     shipment_date?: DateTimeWithAggregatesFilter<"traceability"> | Date | string
     estimated_arrival_date?: DateTimeWithAggregatesFilter<"traceability"> | Date | string
     destination_type?: StringWithAggregatesFilter<"traceability"> | string
+    buyer_title?: StringNullableWithAggregatesFilter<"traceability"> | string | null
+    buyer_first_name?: StringNullableWithAggregatesFilter<"traceability"> | string | null
+    buyer_last_name?: StringNullableWithAggregatesFilter<"traceability"> | string | null
+    buyer_identity?: StringNullableWithAggregatesFilter<"traceability"> | string | null
     status?: StringWithAggregatesFilter<"traceability"> | string
     created_at?: DateTimeWithAggregatesFilter<"traceability"> | Date | string
     created_by_id?: StringWithAggregatesFilter<"traceability"> | string
@@ -51797,7 +52144,7 @@ export namespace Prisma {
     NOT?: traceability_cattleWhereInput | traceability_cattleWhereInput[]
     id?: StringFilter<"traceability_cattle"> | string
     traceability_id?: StringFilter<"traceability_cattle"> | string
-    vehicle_id?: StringFilter<"traceability_cattle"> | string
+    vehicle_id?: StringNullableFilter<"traceability_cattle"> | string | null
     cattle_id?: StringFilter<"traceability_cattle"> | string
     created_at?: DateTimeFilter<"traceability_cattle"> | Date | string
     created_by_id?: StringFilter<"traceability_cattle"> | string
@@ -51806,13 +52153,13 @@ export namespace Prisma {
     updated_by_id?: StringFilter<"traceability_cattle"> | string
     updated_by?: StringFilter<"traceability_cattle"> | string
     traceability?: XOR<TraceabilityScalarRelationFilter, traceabilityWhereInput>
-    traceability_vehicle?: XOR<Traceability_vehicleScalarRelationFilter, traceability_vehicleWhereInput>
+    traceability_vehicle?: XOR<Traceability_vehicleNullableScalarRelationFilter, traceability_vehicleWhereInput> | null
   }
 
   export type traceability_cattleOrderByWithRelationInput = {
     id?: SortOrder
     traceability_id?: SortOrder
-    vehicle_id?: SortOrder
+    vehicle_id?: SortOrderInput | SortOrder
     cattle_id?: SortOrder
     created_at?: SortOrder
     created_by_id?: SortOrder
@@ -51830,7 +52177,7 @@ export namespace Prisma {
     OR?: traceability_cattleWhereInput[]
     NOT?: traceability_cattleWhereInput | traceability_cattleWhereInput[]
     traceability_id?: StringFilter<"traceability_cattle"> | string
-    vehicle_id?: StringFilter<"traceability_cattle"> | string
+    vehicle_id?: StringNullableFilter<"traceability_cattle"> | string | null
     cattle_id?: StringFilter<"traceability_cattle"> | string
     created_at?: DateTimeFilter<"traceability_cattle"> | Date | string
     created_by_id?: StringFilter<"traceability_cattle"> | string
@@ -51839,13 +52186,13 @@ export namespace Prisma {
     updated_by_id?: StringFilter<"traceability_cattle"> | string
     updated_by?: StringFilter<"traceability_cattle"> | string
     traceability?: XOR<TraceabilityScalarRelationFilter, traceabilityWhereInput>
-    traceability_vehicle?: XOR<Traceability_vehicleScalarRelationFilter, traceability_vehicleWhereInput>
+    traceability_vehicle?: XOR<Traceability_vehicleNullableScalarRelationFilter, traceability_vehicleWhereInput> | null
   }, "id">
 
   export type traceability_cattleOrderByWithAggregationInput = {
     id?: SortOrder
     traceability_id?: SortOrder
-    vehicle_id?: SortOrder
+    vehicle_id?: SortOrderInput | SortOrder
     cattle_id?: SortOrder
     created_at?: SortOrder
     created_by_id?: SortOrder
@@ -51864,7 +52211,7 @@ export namespace Prisma {
     NOT?: traceability_cattleScalarWhereWithAggregatesInput | traceability_cattleScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"traceability_cattle"> | string
     traceability_id?: StringWithAggregatesFilter<"traceability_cattle"> | string
-    vehicle_id?: StringWithAggregatesFilter<"traceability_cattle"> | string
+    vehicle_id?: StringNullableWithAggregatesFilter<"traceability_cattle"> | string | null
     cattle_id?: StringWithAggregatesFilter<"traceability_cattle"> | string
     created_at?: DateTimeWithAggregatesFilter<"traceability_cattle"> | Date | string
     created_by_id?: StringWithAggregatesFilter<"traceability_cattle"> | string
@@ -55800,6 +56147,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryCreateNestedManyWithoutFarmsInput
     pens?: pensCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsUncheckedCreateInput = {
@@ -55860,6 +56209,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedUncheckedCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryUncheckedCreateNestedManyWithoutFarmsInput
     pens?: pensUncheckedCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsUpdateInput = {
@@ -55920,6 +56271,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUpdateManyWithoutFarmsNestedInput
     pens?: pensUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type farmsUncheckedUpdateInput = {
@@ -55980,6 +56333,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedUncheckedUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUncheckedUpdateManyWithoutFarmsNestedInput
     pens?: pensUncheckedUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type farmsCreateManyInput = {
@@ -56738,6 +57093,8 @@ export namespace Prisma {
     cattles?: cattlesCreateNestedManyWithoutPensInput
     pen_attachments?: pen_attachmentsCreateNestedManyWithoutPensInput
     farms: farmsCreateNestedOneWithoutPensInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_penInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_penInput
   }
 
   export type pensUncheckedCreateInput = {
@@ -56759,6 +57116,8 @@ export namespace Prisma {
     updated_by: string
     cattles?: cattlesUncheckedCreateNestedManyWithoutPensInput
     pen_attachments?: pen_attachmentsUncheckedCreateNestedManyWithoutPensInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_penInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_penInput
   }
 
   export type pensUpdateInput = {
@@ -56780,6 +57139,8 @@ export namespace Prisma {
     cattles?: cattlesUpdateManyWithoutPensNestedInput
     pen_attachments?: pen_attachmentsUpdateManyWithoutPensNestedInput
     farms?: farmsUpdateOneRequiredWithoutPensNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_penNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_penNestedInput
   }
 
   export type pensUncheckedUpdateInput = {
@@ -56801,6 +57162,8 @@ export namespace Prisma {
     updated_by?: StringFieldUpdateOperationsInput | string
     cattles?: cattlesUncheckedUpdateManyWithoutPensNestedInput
     pen_attachments?: pen_attachmentsUncheckedUpdateManyWithoutPensNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_penNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_penNestedInput
   }
 
   export type pensCreateManyInput = {
@@ -56899,15 +57262,15 @@ export namespace Prisma {
     reason: string
     document_no: string
     total_animal: number
-    origin_farm_id: string
-    origin_pen_id: string
-    destination_farm_id?: string | null
-    destination_pen_id?: string | null
     specific_destination_name?: string | null
     destination_province?: string | null
     shipment_date: Date | string
     estimated_arrival_date: Date | string
     destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
     status: string
     created_at: Date | string
     created_by_id: string
@@ -56918,6 +57281,10 @@ export namespace Prisma {
     traceability_cattle?: traceability_cattleCreateNestedManyWithoutTraceabilityInput
     traceability_status?: traceability_statusCreateNestedManyWithoutTraceabilityInput
     traceability_vehicle?: traceability_vehicleCreateNestedManyWithoutTraceabilityInput
+    origin_farm: farmsCreateNestedOneWithoutTraceability_originInput
+    destination_farm?: farmsCreateNestedOneWithoutTraceability_destinationInput
+    origin_pen: pensCreateNestedOneWithoutTraceability_originInput
+    destination_pen?: pensCreateNestedOneWithoutTraceability_destinationInput
   }
 
   export type traceabilityUncheckedCreateInput = {
@@ -56934,6 +57301,10 @@ export namespace Prisma {
     shipment_date: Date | string
     estimated_arrival_date: Date | string
     destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
     status: string
     created_at: Date | string
     created_by_id: string
@@ -56951,15 +57322,15 @@ export namespace Prisma {
     reason?: StringFieldUpdateOperationsInput | string
     document_no?: StringFieldUpdateOperationsInput | string
     total_animal?: IntFieldUpdateOperationsInput | number
-    origin_farm_id?: StringFieldUpdateOperationsInput | string
-    origin_pen_id?: StringFieldUpdateOperationsInput | string
-    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
-    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
     specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
     destination_province?: NullableStringFieldUpdateOperationsInput | string | null
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -56970,6 +57341,10 @@ export namespace Prisma {
     traceability_cattle?: traceability_cattleUpdateManyWithoutTraceabilityNestedInput
     traceability_status?: traceability_statusUpdateManyWithoutTraceabilityNestedInput
     traceability_vehicle?: traceability_vehicleUpdateManyWithoutTraceabilityNestedInput
+    origin_farm?: farmsUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_farm?: farmsUpdateOneWithoutTraceability_destinationNestedInput
+    origin_pen?: pensUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_pen?: pensUpdateOneWithoutTraceability_destinationNestedInput
   }
 
   export type traceabilityUncheckedUpdateInput = {
@@ -56986,6 +57361,10 @@ export namespace Prisma {
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -57012,6 +57391,10 @@ export namespace Prisma {
     shipment_date: Date | string
     estimated_arrival_date: Date | string
     destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
     status: string
     created_at: Date | string
     created_by_id: string
@@ -57026,15 +57409,15 @@ export namespace Prisma {
     reason?: StringFieldUpdateOperationsInput | string
     document_no?: StringFieldUpdateOperationsInput | string
     total_animal?: IntFieldUpdateOperationsInput | number
-    origin_farm_id?: StringFieldUpdateOperationsInput | string
-    origin_pen_id?: StringFieldUpdateOperationsInput | string
-    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
-    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
     specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
     destination_province?: NullableStringFieldUpdateOperationsInput | string | null
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -57058,6 +57441,10 @@ export namespace Prisma {
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -57077,13 +57464,13 @@ export namespace Prisma {
     updated_by_id: string
     updated_by: string
     traceability: traceabilityCreateNestedOneWithoutTraceability_cattleInput
-    traceability_vehicle: traceability_vehicleCreateNestedOneWithoutTraceability_cattleInput
+    traceability_vehicle?: traceability_vehicleCreateNestedOneWithoutTraceability_cattleInput
   }
 
   export type traceability_cattleUncheckedCreateInput = {
     id: string
     traceability_id: string
-    vehicle_id: string
+    vehicle_id?: string | null
     cattle_id: string
     created_at: Date | string
     created_by_id: string
@@ -57103,13 +57490,13 @@ export namespace Prisma {
     updated_by_id?: StringFieldUpdateOperationsInput | string
     updated_by?: StringFieldUpdateOperationsInput | string
     traceability?: traceabilityUpdateOneRequiredWithoutTraceability_cattleNestedInput
-    traceability_vehicle?: traceability_vehicleUpdateOneRequiredWithoutTraceability_cattleNestedInput
+    traceability_vehicle?: traceability_vehicleUpdateOneWithoutTraceability_cattleNestedInput
   }
 
   export type traceability_cattleUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     traceability_id?: StringFieldUpdateOperationsInput | string
-    vehicle_id?: StringFieldUpdateOperationsInput | string
+    vehicle_id?: NullableStringFieldUpdateOperationsInput | string | null
     cattle_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -57122,7 +57509,7 @@ export namespace Prisma {
   export type traceability_cattleCreateManyInput = {
     id: string
     traceability_id: string
-    vehicle_id: string
+    vehicle_id?: string | null
     cattle_id: string
     created_at: Date | string
     created_by_id: string
@@ -57146,7 +57533,7 @@ export namespace Prisma {
   export type traceability_cattleUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     traceability_id?: StringFieldUpdateOperationsInput | string
-    vehicle_id?: StringFieldUpdateOperationsInput | string
+    vehicle_id?: NullableStringFieldUpdateOperationsInput | string | null
     cattle_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -59532,6 +59919,12 @@ export namespace Prisma {
     none?: pensWhereInput
   }
 
+  export type TraceabilityListRelationFilter = {
+    every?: traceabilityWhereInput
+    some?: traceabilityWhereInput
+    none?: traceabilityWhereInput
+  }
+
   export type cattlesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -59549,6 +59942,10 @@ export namespace Prisma {
   }
 
   export type pensOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type traceabilityOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -60147,6 +60544,16 @@ export namespace Prisma {
     none?: traceability_vehicleWhereInput
   }
 
+  export type FarmsNullableScalarRelationFilter = {
+    is?: farmsWhereInput | null
+    isNot?: farmsWhereInput | null
+  }
+
+  export type PensNullableScalarRelationFilter = {
+    is?: pensWhereInput | null
+    isNot?: pensWhereInput | null
+  }
+
   export type traceability_cattleOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -60173,6 +60580,10 @@ export namespace Prisma {
     shipment_date?: SortOrder
     estimated_arrival_date?: SortOrder
     destination_type?: SortOrder
+    buyer_title?: SortOrder
+    buyer_first_name?: SortOrder
+    buyer_last_name?: SortOrder
+    buyer_identity?: SortOrder
     status?: SortOrder
     created_at?: SortOrder
     created_by_id?: SortOrder
@@ -60200,6 +60611,10 @@ export namespace Prisma {
     shipment_date?: SortOrder
     estimated_arrival_date?: SortOrder
     destination_type?: SortOrder
+    buyer_title?: SortOrder
+    buyer_first_name?: SortOrder
+    buyer_last_name?: SortOrder
+    buyer_identity?: SortOrder
     status?: SortOrder
     created_at?: SortOrder
     created_by_id?: SortOrder
@@ -60223,6 +60638,10 @@ export namespace Prisma {
     shipment_date?: SortOrder
     estimated_arrival_date?: SortOrder
     destination_type?: SortOrder
+    buyer_title?: SortOrder
+    buyer_first_name?: SortOrder
+    buyer_last_name?: SortOrder
+    buyer_identity?: SortOrder
     status?: SortOrder
     created_at?: SortOrder
     created_by_id?: SortOrder
@@ -60241,9 +60660,9 @@ export namespace Prisma {
     isNot?: traceabilityWhereInput
   }
 
-  export type Traceability_vehicleScalarRelationFilter = {
-    is?: traceability_vehicleWhereInput
-    isNot?: traceability_vehicleWhereInput
+  export type Traceability_vehicleNullableScalarRelationFilter = {
+    is?: traceability_vehicleWhereInput | null
+    isNot?: traceability_vehicleWhereInput | null
   }
 
   export type traceability_cattleCountOrderByAggregateInput = {
@@ -61184,6 +61603,20 @@ export namespace Prisma {
     connect?: pensWhereUniqueInput | pensWhereUniqueInput[]
   }
 
+  export type traceabilityCreateNestedManyWithoutOrigin_farmInput = {
+    create?: XOR<traceabilityCreateWithoutOrigin_farmInput, traceabilityUncheckedCreateWithoutOrigin_farmInput> | traceabilityCreateWithoutOrigin_farmInput[] | traceabilityUncheckedCreateWithoutOrigin_farmInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutOrigin_farmInput | traceabilityCreateOrConnectWithoutOrigin_farmInput[]
+    createMany?: traceabilityCreateManyOrigin_farmInputEnvelope
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+  }
+
+  export type traceabilityCreateNestedManyWithoutDestination_farmInput = {
+    create?: XOR<traceabilityCreateWithoutDestination_farmInput, traceabilityUncheckedCreateWithoutDestination_farmInput> | traceabilityCreateWithoutDestination_farmInput[] | traceabilityUncheckedCreateWithoutDestination_farmInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutDestination_farmInput | traceabilityCreateOrConnectWithoutDestination_farmInput[]
+    createMany?: traceabilityCreateManyDestination_farmInputEnvelope
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+  }
+
   export type cattlesUncheckedCreateNestedManyWithoutFarmsInput = {
     create?: XOR<cattlesCreateWithoutFarmsInput, cattlesUncheckedCreateWithoutFarmsInput> | cattlesCreateWithoutFarmsInput[] | cattlesUncheckedCreateWithoutFarmsInput[]
     connectOrCreate?: cattlesCreateOrConnectWithoutFarmsInput | cattlesCreateOrConnectWithoutFarmsInput[]
@@ -61217,6 +61650,20 @@ export namespace Prisma {
     connectOrCreate?: pensCreateOrConnectWithoutFarmsInput | pensCreateOrConnectWithoutFarmsInput[]
     createMany?: pensCreateManyFarmsInputEnvelope
     connect?: pensWhereUniqueInput | pensWhereUniqueInput[]
+  }
+
+  export type traceabilityUncheckedCreateNestedManyWithoutOrigin_farmInput = {
+    create?: XOR<traceabilityCreateWithoutOrigin_farmInput, traceabilityUncheckedCreateWithoutOrigin_farmInput> | traceabilityCreateWithoutOrigin_farmInput[] | traceabilityUncheckedCreateWithoutOrigin_farmInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutOrigin_farmInput | traceabilityCreateOrConnectWithoutOrigin_farmInput[]
+    createMany?: traceabilityCreateManyOrigin_farmInputEnvelope
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+  }
+
+  export type traceabilityUncheckedCreateNestedManyWithoutDestination_farmInput = {
+    create?: XOR<traceabilityCreateWithoutDestination_farmInput, traceabilityUncheckedCreateWithoutDestination_farmInput> | traceabilityCreateWithoutDestination_farmInput[] | traceabilityUncheckedCreateWithoutDestination_farmInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutDestination_farmInput | traceabilityCreateOrConnectWithoutDestination_farmInput[]
+    createMany?: traceabilityCreateManyDestination_farmInputEnvelope
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
   }
 
   export type cattlesUpdateManyWithoutFarmsNestedInput = {
@@ -61289,6 +61736,34 @@ export namespace Prisma {
     deleteMany?: pensScalarWhereInput | pensScalarWhereInput[]
   }
 
+  export type traceabilityUpdateManyWithoutOrigin_farmNestedInput = {
+    create?: XOR<traceabilityCreateWithoutOrigin_farmInput, traceabilityUncheckedCreateWithoutOrigin_farmInput> | traceabilityCreateWithoutOrigin_farmInput[] | traceabilityUncheckedCreateWithoutOrigin_farmInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutOrigin_farmInput | traceabilityCreateOrConnectWithoutOrigin_farmInput[]
+    upsert?: traceabilityUpsertWithWhereUniqueWithoutOrigin_farmInput | traceabilityUpsertWithWhereUniqueWithoutOrigin_farmInput[]
+    createMany?: traceabilityCreateManyOrigin_farmInputEnvelope
+    set?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    disconnect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    delete?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    update?: traceabilityUpdateWithWhereUniqueWithoutOrigin_farmInput | traceabilityUpdateWithWhereUniqueWithoutOrigin_farmInput[]
+    updateMany?: traceabilityUpdateManyWithWhereWithoutOrigin_farmInput | traceabilityUpdateManyWithWhereWithoutOrigin_farmInput[]
+    deleteMany?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
+  }
+
+  export type traceabilityUpdateManyWithoutDestination_farmNestedInput = {
+    create?: XOR<traceabilityCreateWithoutDestination_farmInput, traceabilityUncheckedCreateWithoutDestination_farmInput> | traceabilityCreateWithoutDestination_farmInput[] | traceabilityUncheckedCreateWithoutDestination_farmInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutDestination_farmInput | traceabilityCreateOrConnectWithoutDestination_farmInput[]
+    upsert?: traceabilityUpsertWithWhereUniqueWithoutDestination_farmInput | traceabilityUpsertWithWhereUniqueWithoutDestination_farmInput[]
+    createMany?: traceabilityCreateManyDestination_farmInputEnvelope
+    set?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    disconnect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    delete?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    update?: traceabilityUpdateWithWhereUniqueWithoutDestination_farmInput | traceabilityUpdateWithWhereUniqueWithoutDestination_farmInput[]
+    updateMany?: traceabilityUpdateManyWithWhereWithoutDestination_farmInput | traceabilityUpdateManyWithWhereWithoutDestination_farmInput[]
+    deleteMany?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
+  }
+
   export type cattlesUncheckedUpdateManyWithoutFarmsNestedInput = {
     create?: XOR<cattlesCreateWithoutFarmsInput, cattlesUncheckedCreateWithoutFarmsInput> | cattlesCreateWithoutFarmsInput[] | cattlesUncheckedCreateWithoutFarmsInput[]
     connectOrCreate?: cattlesCreateOrConnectWithoutFarmsInput | cattlesCreateOrConnectWithoutFarmsInput[]
@@ -61357,6 +61832,34 @@ export namespace Prisma {
     update?: pensUpdateWithWhereUniqueWithoutFarmsInput | pensUpdateWithWhereUniqueWithoutFarmsInput[]
     updateMany?: pensUpdateManyWithWhereWithoutFarmsInput | pensUpdateManyWithWhereWithoutFarmsInput[]
     deleteMany?: pensScalarWhereInput | pensScalarWhereInput[]
+  }
+
+  export type traceabilityUncheckedUpdateManyWithoutOrigin_farmNestedInput = {
+    create?: XOR<traceabilityCreateWithoutOrigin_farmInput, traceabilityUncheckedCreateWithoutOrigin_farmInput> | traceabilityCreateWithoutOrigin_farmInput[] | traceabilityUncheckedCreateWithoutOrigin_farmInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutOrigin_farmInput | traceabilityCreateOrConnectWithoutOrigin_farmInput[]
+    upsert?: traceabilityUpsertWithWhereUniqueWithoutOrigin_farmInput | traceabilityUpsertWithWhereUniqueWithoutOrigin_farmInput[]
+    createMany?: traceabilityCreateManyOrigin_farmInputEnvelope
+    set?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    disconnect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    delete?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    update?: traceabilityUpdateWithWhereUniqueWithoutOrigin_farmInput | traceabilityUpdateWithWhereUniqueWithoutOrigin_farmInput[]
+    updateMany?: traceabilityUpdateManyWithWhereWithoutOrigin_farmInput | traceabilityUpdateManyWithWhereWithoutOrigin_farmInput[]
+    deleteMany?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
+  }
+
+  export type traceabilityUncheckedUpdateManyWithoutDestination_farmNestedInput = {
+    create?: XOR<traceabilityCreateWithoutDestination_farmInput, traceabilityUncheckedCreateWithoutDestination_farmInput> | traceabilityCreateWithoutDestination_farmInput[] | traceabilityUncheckedCreateWithoutDestination_farmInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutDestination_farmInput | traceabilityCreateOrConnectWithoutDestination_farmInput[]
+    upsert?: traceabilityUpsertWithWhereUniqueWithoutDestination_farmInput | traceabilityUpsertWithWhereUniqueWithoutDestination_farmInput[]
+    createMany?: traceabilityCreateManyDestination_farmInputEnvelope
+    set?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    disconnect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    delete?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    update?: traceabilityUpdateWithWhereUniqueWithoutDestination_farmInput | traceabilityUpdateWithWhereUniqueWithoutDestination_farmInput[]
+    updateMany?: traceabilityUpdateManyWithWhereWithoutDestination_farmInput | traceabilityUpdateManyWithWhereWithoutDestination_farmInput[]
+    deleteMany?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
   }
 
   export type ordersCreateNestedOneWithoutOrder_attachmentsInput = {
@@ -61514,6 +62017,20 @@ export namespace Prisma {
     connect?: farmsWhereUniqueInput
   }
 
+  export type traceabilityCreateNestedManyWithoutOrigin_penInput = {
+    create?: XOR<traceabilityCreateWithoutOrigin_penInput, traceabilityUncheckedCreateWithoutOrigin_penInput> | traceabilityCreateWithoutOrigin_penInput[] | traceabilityUncheckedCreateWithoutOrigin_penInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutOrigin_penInput | traceabilityCreateOrConnectWithoutOrigin_penInput[]
+    createMany?: traceabilityCreateManyOrigin_penInputEnvelope
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+  }
+
+  export type traceabilityCreateNestedManyWithoutDestination_penInput = {
+    create?: XOR<traceabilityCreateWithoutDestination_penInput, traceabilityUncheckedCreateWithoutDestination_penInput> | traceabilityCreateWithoutDestination_penInput[] | traceabilityUncheckedCreateWithoutDestination_penInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutDestination_penInput | traceabilityCreateOrConnectWithoutDestination_penInput[]
+    createMany?: traceabilityCreateManyDestination_penInputEnvelope
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+  }
+
   export type cattlesUncheckedCreateNestedManyWithoutPensInput = {
     create?: XOR<cattlesCreateWithoutPensInput, cattlesUncheckedCreateWithoutPensInput> | cattlesCreateWithoutPensInput[] | cattlesUncheckedCreateWithoutPensInput[]
     connectOrCreate?: cattlesCreateOrConnectWithoutPensInput | cattlesCreateOrConnectWithoutPensInput[]
@@ -61526,6 +62043,20 @@ export namespace Prisma {
     connectOrCreate?: pen_attachmentsCreateOrConnectWithoutPensInput | pen_attachmentsCreateOrConnectWithoutPensInput[]
     createMany?: pen_attachmentsCreateManyPensInputEnvelope
     connect?: pen_attachmentsWhereUniqueInput | pen_attachmentsWhereUniqueInput[]
+  }
+
+  export type traceabilityUncheckedCreateNestedManyWithoutOrigin_penInput = {
+    create?: XOR<traceabilityCreateWithoutOrigin_penInput, traceabilityUncheckedCreateWithoutOrigin_penInput> | traceabilityCreateWithoutOrigin_penInput[] | traceabilityUncheckedCreateWithoutOrigin_penInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutOrigin_penInput | traceabilityCreateOrConnectWithoutOrigin_penInput[]
+    createMany?: traceabilityCreateManyOrigin_penInputEnvelope
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+  }
+
+  export type traceabilityUncheckedCreateNestedManyWithoutDestination_penInput = {
+    create?: XOR<traceabilityCreateWithoutDestination_penInput, traceabilityUncheckedCreateWithoutDestination_penInput> | traceabilityCreateWithoutDestination_penInput[] | traceabilityUncheckedCreateWithoutDestination_penInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutDestination_penInput | traceabilityCreateOrConnectWithoutDestination_penInput[]
+    createMany?: traceabilityCreateManyDestination_penInputEnvelope
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
   }
 
   export type cattlesUpdateManyWithoutPensNestedInput = {
@@ -61564,6 +62095,34 @@ export namespace Prisma {
     update?: XOR<XOR<farmsUpdateToOneWithWhereWithoutPensInput, farmsUpdateWithoutPensInput>, farmsUncheckedUpdateWithoutPensInput>
   }
 
+  export type traceabilityUpdateManyWithoutOrigin_penNestedInput = {
+    create?: XOR<traceabilityCreateWithoutOrigin_penInput, traceabilityUncheckedCreateWithoutOrigin_penInput> | traceabilityCreateWithoutOrigin_penInput[] | traceabilityUncheckedCreateWithoutOrigin_penInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutOrigin_penInput | traceabilityCreateOrConnectWithoutOrigin_penInput[]
+    upsert?: traceabilityUpsertWithWhereUniqueWithoutOrigin_penInput | traceabilityUpsertWithWhereUniqueWithoutOrigin_penInput[]
+    createMany?: traceabilityCreateManyOrigin_penInputEnvelope
+    set?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    disconnect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    delete?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    update?: traceabilityUpdateWithWhereUniqueWithoutOrigin_penInput | traceabilityUpdateWithWhereUniqueWithoutOrigin_penInput[]
+    updateMany?: traceabilityUpdateManyWithWhereWithoutOrigin_penInput | traceabilityUpdateManyWithWhereWithoutOrigin_penInput[]
+    deleteMany?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
+  }
+
+  export type traceabilityUpdateManyWithoutDestination_penNestedInput = {
+    create?: XOR<traceabilityCreateWithoutDestination_penInput, traceabilityUncheckedCreateWithoutDestination_penInput> | traceabilityCreateWithoutDestination_penInput[] | traceabilityUncheckedCreateWithoutDestination_penInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutDestination_penInput | traceabilityCreateOrConnectWithoutDestination_penInput[]
+    upsert?: traceabilityUpsertWithWhereUniqueWithoutDestination_penInput | traceabilityUpsertWithWhereUniqueWithoutDestination_penInput[]
+    createMany?: traceabilityCreateManyDestination_penInputEnvelope
+    set?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    disconnect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    delete?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    update?: traceabilityUpdateWithWhereUniqueWithoutDestination_penInput | traceabilityUpdateWithWhereUniqueWithoutDestination_penInput[]
+    updateMany?: traceabilityUpdateManyWithWhereWithoutDestination_penInput | traceabilityUpdateManyWithWhereWithoutDestination_penInput[]
+    deleteMany?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
+  }
+
   export type cattlesUncheckedUpdateManyWithoutPensNestedInput = {
     create?: XOR<cattlesCreateWithoutPensInput, cattlesUncheckedCreateWithoutPensInput> | cattlesCreateWithoutPensInput[] | cattlesUncheckedCreateWithoutPensInput[]
     connectOrCreate?: cattlesCreateOrConnectWithoutPensInput | cattlesCreateOrConnectWithoutPensInput[]
@@ -61592,6 +62151,34 @@ export namespace Prisma {
     deleteMany?: pen_attachmentsScalarWhereInput | pen_attachmentsScalarWhereInput[]
   }
 
+  export type traceabilityUncheckedUpdateManyWithoutOrigin_penNestedInput = {
+    create?: XOR<traceabilityCreateWithoutOrigin_penInput, traceabilityUncheckedCreateWithoutOrigin_penInput> | traceabilityCreateWithoutOrigin_penInput[] | traceabilityUncheckedCreateWithoutOrigin_penInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutOrigin_penInput | traceabilityCreateOrConnectWithoutOrigin_penInput[]
+    upsert?: traceabilityUpsertWithWhereUniqueWithoutOrigin_penInput | traceabilityUpsertWithWhereUniqueWithoutOrigin_penInput[]
+    createMany?: traceabilityCreateManyOrigin_penInputEnvelope
+    set?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    disconnect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    delete?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    update?: traceabilityUpdateWithWhereUniqueWithoutOrigin_penInput | traceabilityUpdateWithWhereUniqueWithoutOrigin_penInput[]
+    updateMany?: traceabilityUpdateManyWithWhereWithoutOrigin_penInput | traceabilityUpdateManyWithWhereWithoutOrigin_penInput[]
+    deleteMany?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
+  }
+
+  export type traceabilityUncheckedUpdateManyWithoutDestination_penNestedInput = {
+    create?: XOR<traceabilityCreateWithoutDestination_penInput, traceabilityUncheckedCreateWithoutDestination_penInput> | traceabilityCreateWithoutDestination_penInput[] | traceabilityUncheckedCreateWithoutDestination_penInput[]
+    connectOrCreate?: traceabilityCreateOrConnectWithoutDestination_penInput | traceabilityCreateOrConnectWithoutDestination_penInput[]
+    upsert?: traceabilityUpsertWithWhereUniqueWithoutDestination_penInput | traceabilityUpsertWithWhereUniqueWithoutDestination_penInput[]
+    createMany?: traceabilityCreateManyDestination_penInputEnvelope
+    set?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    disconnect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    delete?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    connect?: traceabilityWhereUniqueInput | traceabilityWhereUniqueInput[]
+    update?: traceabilityUpdateWithWhereUniqueWithoutDestination_penInput | traceabilityUpdateWithWhereUniqueWithoutDestination_penInput[]
+    updateMany?: traceabilityUpdateManyWithWhereWithoutDestination_penInput | traceabilityUpdateManyWithWhereWithoutDestination_penInput[]
+    deleteMany?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
+  }
+
   export type traceability_cattleCreateNestedManyWithoutTraceabilityInput = {
     create?: XOR<traceability_cattleCreateWithoutTraceabilityInput, traceability_cattleUncheckedCreateWithoutTraceabilityInput> | traceability_cattleCreateWithoutTraceabilityInput[] | traceability_cattleUncheckedCreateWithoutTraceabilityInput[]
     connectOrCreate?: traceability_cattleCreateOrConnectWithoutTraceabilityInput | traceability_cattleCreateOrConnectWithoutTraceabilityInput[]
@@ -61611,6 +62198,30 @@ export namespace Prisma {
     connectOrCreate?: traceability_vehicleCreateOrConnectWithoutTraceabilityInput | traceability_vehicleCreateOrConnectWithoutTraceabilityInput[]
     createMany?: traceability_vehicleCreateManyTraceabilityInputEnvelope
     connect?: traceability_vehicleWhereUniqueInput | traceability_vehicleWhereUniqueInput[]
+  }
+
+  export type farmsCreateNestedOneWithoutTraceability_originInput = {
+    create?: XOR<farmsCreateWithoutTraceability_originInput, farmsUncheckedCreateWithoutTraceability_originInput>
+    connectOrCreate?: farmsCreateOrConnectWithoutTraceability_originInput
+    connect?: farmsWhereUniqueInput
+  }
+
+  export type farmsCreateNestedOneWithoutTraceability_destinationInput = {
+    create?: XOR<farmsCreateWithoutTraceability_destinationInput, farmsUncheckedCreateWithoutTraceability_destinationInput>
+    connectOrCreate?: farmsCreateOrConnectWithoutTraceability_destinationInput
+    connect?: farmsWhereUniqueInput
+  }
+
+  export type pensCreateNestedOneWithoutTraceability_originInput = {
+    create?: XOR<pensCreateWithoutTraceability_originInput, pensUncheckedCreateWithoutTraceability_originInput>
+    connectOrCreate?: pensCreateOrConnectWithoutTraceability_originInput
+    connect?: pensWhereUniqueInput
+  }
+
+  export type pensCreateNestedOneWithoutTraceability_destinationInput = {
+    create?: XOR<pensCreateWithoutTraceability_destinationInput, pensUncheckedCreateWithoutTraceability_destinationInput>
+    connectOrCreate?: pensCreateOrConnectWithoutTraceability_destinationInput
+    connect?: pensWhereUniqueInput
   }
 
   export type traceability_cattleUncheckedCreateNestedManyWithoutTraceabilityInput = {
@@ -61676,6 +62287,42 @@ export namespace Prisma {
     deleteMany?: traceability_vehicleScalarWhereInput | traceability_vehicleScalarWhereInput[]
   }
 
+  export type farmsUpdateOneRequiredWithoutTraceability_originNestedInput = {
+    create?: XOR<farmsCreateWithoutTraceability_originInput, farmsUncheckedCreateWithoutTraceability_originInput>
+    connectOrCreate?: farmsCreateOrConnectWithoutTraceability_originInput
+    upsert?: farmsUpsertWithoutTraceability_originInput
+    connect?: farmsWhereUniqueInput
+    update?: XOR<XOR<farmsUpdateToOneWithWhereWithoutTraceability_originInput, farmsUpdateWithoutTraceability_originInput>, farmsUncheckedUpdateWithoutTraceability_originInput>
+  }
+
+  export type farmsUpdateOneWithoutTraceability_destinationNestedInput = {
+    create?: XOR<farmsCreateWithoutTraceability_destinationInput, farmsUncheckedCreateWithoutTraceability_destinationInput>
+    connectOrCreate?: farmsCreateOrConnectWithoutTraceability_destinationInput
+    upsert?: farmsUpsertWithoutTraceability_destinationInput
+    disconnect?: farmsWhereInput | boolean
+    delete?: farmsWhereInput | boolean
+    connect?: farmsWhereUniqueInput
+    update?: XOR<XOR<farmsUpdateToOneWithWhereWithoutTraceability_destinationInput, farmsUpdateWithoutTraceability_destinationInput>, farmsUncheckedUpdateWithoutTraceability_destinationInput>
+  }
+
+  export type pensUpdateOneRequiredWithoutTraceability_originNestedInput = {
+    create?: XOR<pensCreateWithoutTraceability_originInput, pensUncheckedCreateWithoutTraceability_originInput>
+    connectOrCreate?: pensCreateOrConnectWithoutTraceability_originInput
+    upsert?: pensUpsertWithoutTraceability_originInput
+    connect?: pensWhereUniqueInput
+    update?: XOR<XOR<pensUpdateToOneWithWhereWithoutTraceability_originInput, pensUpdateWithoutTraceability_originInput>, pensUncheckedUpdateWithoutTraceability_originInput>
+  }
+
+  export type pensUpdateOneWithoutTraceability_destinationNestedInput = {
+    create?: XOR<pensCreateWithoutTraceability_destinationInput, pensUncheckedCreateWithoutTraceability_destinationInput>
+    connectOrCreate?: pensCreateOrConnectWithoutTraceability_destinationInput
+    upsert?: pensUpsertWithoutTraceability_destinationInput
+    disconnect?: pensWhereInput | boolean
+    delete?: pensWhereInput | boolean
+    connect?: pensWhereUniqueInput
+    update?: XOR<XOR<pensUpdateToOneWithWhereWithoutTraceability_destinationInput, pensUpdateWithoutTraceability_destinationInput>, pensUncheckedUpdateWithoutTraceability_destinationInput>
+  }
+
   export type traceability_cattleUncheckedUpdateManyWithoutTraceabilityNestedInput = {
     create?: XOR<traceability_cattleCreateWithoutTraceabilityInput, traceability_cattleUncheckedCreateWithoutTraceabilityInput> | traceability_cattleCreateWithoutTraceabilityInput[] | traceability_cattleUncheckedCreateWithoutTraceabilityInput[]
     connectOrCreate?: traceability_cattleCreateOrConnectWithoutTraceabilityInput | traceability_cattleCreateOrConnectWithoutTraceabilityInput[]
@@ -61738,10 +62385,12 @@ export namespace Prisma {
     update?: XOR<XOR<traceabilityUpdateToOneWithWhereWithoutTraceability_cattleInput, traceabilityUpdateWithoutTraceability_cattleInput>, traceabilityUncheckedUpdateWithoutTraceability_cattleInput>
   }
 
-  export type traceability_vehicleUpdateOneRequiredWithoutTraceability_cattleNestedInput = {
+  export type traceability_vehicleUpdateOneWithoutTraceability_cattleNestedInput = {
     create?: XOR<traceability_vehicleCreateWithoutTraceability_cattleInput, traceability_vehicleUncheckedCreateWithoutTraceability_cattleInput>
     connectOrCreate?: traceability_vehicleCreateOrConnectWithoutTraceability_cattleInput
     upsert?: traceability_vehicleUpsertWithoutTraceability_cattleInput
+    disconnect?: traceability_vehicleWhereInput | boolean
+    delete?: traceability_vehicleWhereInput | boolean
     connect?: traceability_vehicleWhereUniqueInput
     update?: XOR<XOR<traceability_vehicleUpdateToOneWithWhereWithoutTraceability_cattleInput, traceability_vehicleUpdateWithoutTraceability_cattleInput>, traceability_vehicleUncheckedUpdateWithoutTraceability_cattleInput>
   }
@@ -63102,6 +63751,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryCreateNestedManyWithoutFarmsInput
     pens?: pensCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsUncheckedCreateWithoutCattlesInput = {
@@ -63161,6 +63812,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedUncheckedCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryUncheckedCreateNestedManyWithoutFarmsInput
     pens?: pensUncheckedCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsCreateOrConnectWithoutCattlesInput = {
@@ -63186,6 +63839,8 @@ export namespace Prisma {
     updated_by: string
     pen_attachments?: pen_attachmentsCreateNestedManyWithoutPensInput
     farms: farmsCreateNestedOneWithoutPensInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_penInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_penInput
   }
 
   export type pensUncheckedCreateWithoutCattlesInput = {
@@ -63206,6 +63861,8 @@ export namespace Prisma {
     updated_by_id: string
     updated_by: string
     pen_attachments?: pen_attachmentsUncheckedCreateNestedManyWithoutPensInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_penInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_penInput
   }
 
   export type pensCreateOrConnectWithoutCattlesInput = {
@@ -63394,6 +64051,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUpdateManyWithoutFarmsNestedInput
     pens?: pensUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type farmsUncheckedUpdateWithoutCattlesInput = {
@@ -63453,6 +64112,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedUncheckedUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUncheckedUpdateManyWithoutFarmsNestedInput
     pens?: pensUncheckedUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type pensUpsertWithoutCattlesInput = {
@@ -63484,6 +64145,8 @@ export namespace Prisma {
     updated_by?: StringFieldUpdateOperationsInput | string
     pen_attachments?: pen_attachmentsUpdateManyWithoutPensNestedInput
     farms?: farmsUpdateOneRequiredWithoutPensNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_penNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_penNestedInput
   }
 
   export type pensUncheckedUpdateWithoutCattlesInput = {
@@ -63504,6 +64167,8 @@ export namespace Prisma {
     updated_by_id?: StringFieldUpdateOperationsInput | string
     updated_by?: StringFieldUpdateOperationsInput | string
     pen_attachments?: pen_attachmentsUncheckedUpdateManyWithoutPensNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_penNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_penNestedInput
   }
 
   export type farmsCreateWithoutFarm_attachmentsInput = {
@@ -63563,6 +64228,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryCreateNestedManyWithoutFarmsInput
     pens?: pensCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsUncheckedCreateWithoutFarm_attachmentsInput = {
@@ -63622,6 +64289,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedUncheckedCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryUncheckedCreateNestedManyWithoutFarmsInput
     pens?: pensUncheckedCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsCreateOrConnectWithoutFarm_attachmentsInput = {
@@ -63697,6 +64366,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUpdateManyWithoutFarmsNestedInput
     pens?: pensUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type farmsUncheckedUpdateWithoutFarm_attachmentsInput = {
@@ -63756,6 +64427,8 @@ export namespace Prisma {
     farm_authorized?: farm_authorizedUncheckedUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUncheckedUpdateManyWithoutFarmsNestedInput
     pens?: pensUncheckedUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type farmsCreateWithoutFarm_authorizedInput = {
@@ -63815,6 +64488,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryCreateNestedManyWithoutFarmsInput
     pens?: pensCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsUncheckedCreateWithoutFarm_authorizedInput = {
@@ -63874,6 +64549,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsUncheckedCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryUncheckedCreateNestedManyWithoutFarmsInput
     pens?: pensUncheckedCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsCreateOrConnectWithoutFarm_authorizedInput = {
@@ -63949,6 +64626,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUpdateManyWithoutFarmsNestedInput
     pens?: pensUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type farmsUncheckedUpdateWithoutFarm_authorizedInput = {
@@ -64008,6 +64687,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsUncheckedUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUncheckedUpdateManyWithoutFarmsNestedInput
     pens?: pensUncheckedUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type cattle_sourcingCreateWithoutFarm_sourcingInput = {
@@ -64136,6 +64817,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsCreateNestedManyWithoutFarmsInput
     farm_authorized?: farm_authorizedCreateNestedManyWithoutFarmsInput
     pens?: pensCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsUncheckedCreateWithoutFarm_veterinaryInput = {
@@ -64195,6 +64878,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsUncheckedCreateNestedManyWithoutFarmsInput
     farm_authorized?: farm_authorizedUncheckedCreateNestedManyWithoutFarmsInput
     pens?: pensUncheckedCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsCreateOrConnectWithoutFarm_veterinaryInput = {
@@ -64270,6 +64955,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsUpdateManyWithoutFarmsNestedInput
     farm_authorized?: farm_authorizedUpdateManyWithoutFarmsNestedInput
     pens?: pensUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type farmsUncheckedUpdateWithoutFarm_veterinaryInput = {
@@ -64329,6 +65016,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsUncheckedUpdateManyWithoutFarmsNestedInput
     farm_authorized?: farm_authorizedUncheckedUpdateManyWithoutFarmsNestedInput
     pens?: pensUncheckedUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type farmersCreateWithoutFarmer_accountsInput = {
@@ -65060,6 +65749,8 @@ export namespace Prisma {
     updated_by: string
     cattles?: cattlesCreateNestedManyWithoutPensInput
     pen_attachments?: pen_attachmentsCreateNestedManyWithoutPensInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_penInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_penInput
   }
 
   export type pensUncheckedCreateWithoutFarmsInput = {
@@ -65080,6 +65771,8 @@ export namespace Prisma {
     updated_by: string
     cattles?: cattlesUncheckedCreateNestedManyWithoutPensInput
     pen_attachments?: pen_attachmentsUncheckedCreateNestedManyWithoutPensInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_penInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_penInput
   }
 
   export type pensCreateOrConnectWithoutFarmsInput = {
@@ -65089,6 +65782,142 @@ export namespace Prisma {
 
   export type pensCreateManyFarmsInputEnvelope = {
     data: pensCreateManyFarmsInput | pensCreateManyFarmsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type traceabilityCreateWithoutOrigin_farmInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    traceability_cattle?: traceability_cattleCreateNestedManyWithoutTraceabilityInput
+    traceability_status?: traceability_statusCreateNestedManyWithoutTraceabilityInput
+    traceability_vehicle?: traceability_vehicleCreateNestedManyWithoutTraceabilityInput
+    destination_farm?: farmsCreateNestedOneWithoutTraceability_destinationInput
+    origin_pen: pensCreateNestedOneWithoutTraceability_originInput
+    destination_pen?: pensCreateNestedOneWithoutTraceability_destinationInput
+  }
+
+  export type traceabilityUncheckedCreateWithoutOrigin_farmInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    origin_pen_id: string
+    destination_farm_id?: string | null
+    destination_pen_id?: string | null
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    traceability_cattle?: traceability_cattleUncheckedCreateNestedManyWithoutTraceabilityInput
+    traceability_status?: traceability_statusUncheckedCreateNestedManyWithoutTraceabilityInput
+    traceability_vehicle?: traceability_vehicleUncheckedCreateNestedManyWithoutTraceabilityInput
+  }
+
+  export type traceabilityCreateOrConnectWithoutOrigin_farmInput = {
+    where: traceabilityWhereUniqueInput
+    create: XOR<traceabilityCreateWithoutOrigin_farmInput, traceabilityUncheckedCreateWithoutOrigin_farmInput>
+  }
+
+  export type traceabilityCreateManyOrigin_farmInputEnvelope = {
+    data: traceabilityCreateManyOrigin_farmInput | traceabilityCreateManyOrigin_farmInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type traceabilityCreateWithoutDestination_farmInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    traceability_cattle?: traceability_cattleCreateNestedManyWithoutTraceabilityInput
+    traceability_status?: traceability_statusCreateNestedManyWithoutTraceabilityInput
+    traceability_vehicle?: traceability_vehicleCreateNestedManyWithoutTraceabilityInput
+    origin_farm: farmsCreateNestedOneWithoutTraceability_originInput
+    origin_pen: pensCreateNestedOneWithoutTraceability_originInput
+    destination_pen?: pensCreateNestedOneWithoutTraceability_destinationInput
+  }
+
+  export type traceabilityUncheckedCreateWithoutDestination_farmInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    origin_farm_id: string
+    origin_pen_id: string
+    destination_pen_id?: string | null
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    traceability_cattle?: traceability_cattleUncheckedCreateNestedManyWithoutTraceabilityInput
+    traceability_status?: traceability_statusUncheckedCreateNestedManyWithoutTraceabilityInput
+    traceability_vehicle?: traceability_vehicleUncheckedCreateNestedManyWithoutTraceabilityInput
+  }
+
+  export type traceabilityCreateOrConnectWithoutDestination_farmInput = {
+    where: traceabilityWhereUniqueInput
+    create: XOR<traceabilityCreateWithoutDestination_farmInput, traceabilityUncheckedCreateWithoutDestination_farmInput>
+  }
+
+  export type traceabilityCreateManyDestination_farmInputEnvelope = {
+    data: traceabilityCreateManyDestination_farmInput | traceabilityCreateManyDestination_farmInput[]
     skipDuplicates?: boolean
   }
 
@@ -65288,6 +66117,68 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"pens"> | Date | string
     updated_by_id?: StringFilter<"pens"> | string
     updated_by?: StringFilter<"pens"> | string
+  }
+
+  export type traceabilityUpsertWithWhereUniqueWithoutOrigin_farmInput = {
+    where: traceabilityWhereUniqueInput
+    update: XOR<traceabilityUpdateWithoutOrigin_farmInput, traceabilityUncheckedUpdateWithoutOrigin_farmInput>
+    create: XOR<traceabilityCreateWithoutOrigin_farmInput, traceabilityUncheckedCreateWithoutOrigin_farmInput>
+  }
+
+  export type traceabilityUpdateWithWhereUniqueWithoutOrigin_farmInput = {
+    where: traceabilityWhereUniqueInput
+    data: XOR<traceabilityUpdateWithoutOrigin_farmInput, traceabilityUncheckedUpdateWithoutOrigin_farmInput>
+  }
+
+  export type traceabilityUpdateManyWithWhereWithoutOrigin_farmInput = {
+    where: traceabilityScalarWhereInput
+    data: XOR<traceabilityUpdateManyMutationInput, traceabilityUncheckedUpdateManyWithoutOrigin_farmInput>
+  }
+
+  export type traceabilityScalarWhereInput = {
+    AND?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
+    OR?: traceabilityScalarWhereInput[]
+    NOT?: traceabilityScalarWhereInput | traceabilityScalarWhereInput[]
+    id?: StringFilter<"traceability"> | string
+    reason?: StringFilter<"traceability"> | string
+    document_no?: StringFilter<"traceability"> | string
+    total_animal?: IntFilter<"traceability"> | number
+    origin_farm_id?: StringFilter<"traceability"> | string
+    origin_pen_id?: StringFilter<"traceability"> | string
+    destination_farm_id?: StringNullableFilter<"traceability"> | string | null
+    destination_pen_id?: StringNullableFilter<"traceability"> | string | null
+    specific_destination_name?: StringNullableFilter<"traceability"> | string | null
+    destination_province?: StringNullableFilter<"traceability"> | string | null
+    shipment_date?: DateTimeFilter<"traceability"> | Date | string
+    estimated_arrival_date?: DateTimeFilter<"traceability"> | Date | string
+    destination_type?: StringFilter<"traceability"> | string
+    buyer_title?: StringNullableFilter<"traceability"> | string | null
+    buyer_first_name?: StringNullableFilter<"traceability"> | string | null
+    buyer_last_name?: StringNullableFilter<"traceability"> | string | null
+    buyer_identity?: StringNullableFilter<"traceability"> | string | null
+    status?: StringFilter<"traceability"> | string
+    created_at?: DateTimeFilter<"traceability"> | Date | string
+    created_by_id?: StringFilter<"traceability"> | string
+    created_by?: StringFilter<"traceability"> | string
+    updated_at?: DateTimeFilter<"traceability"> | Date | string
+    updated_by_id?: StringFilter<"traceability"> | string
+    updated_by?: StringFilter<"traceability"> | string
+  }
+
+  export type traceabilityUpsertWithWhereUniqueWithoutDestination_farmInput = {
+    where: traceabilityWhereUniqueInput
+    update: XOR<traceabilityUpdateWithoutDestination_farmInput, traceabilityUncheckedUpdateWithoutDestination_farmInput>
+    create: XOR<traceabilityCreateWithoutDestination_farmInput, traceabilityUncheckedCreateWithoutDestination_farmInput>
+  }
+
+  export type traceabilityUpdateWithWhereUniqueWithoutDestination_farmInput = {
+    where: traceabilityWhereUniqueInput
+    data: XOR<traceabilityUpdateWithoutDestination_farmInput, traceabilityUncheckedUpdateWithoutDestination_farmInput>
+  }
+
+  export type traceabilityUpdateManyWithWhereWithoutDestination_farmInput = {
+    where: traceabilityScalarWhereInput
+    data: XOR<traceabilityUpdateManyMutationInput, traceabilityUncheckedUpdateManyWithoutDestination_farmInput>
   }
 
   export type ordersCreateWithoutOrder_attachmentsInput = {
@@ -65727,6 +66618,8 @@ export namespace Prisma {
     updated_by: string
     cattles?: cattlesCreateNestedManyWithoutPensInput
     farms: farmsCreateNestedOneWithoutPensInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_penInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_penInput
   }
 
   export type pensUncheckedCreateWithoutPen_attachmentsInput = {
@@ -65747,6 +66640,8 @@ export namespace Prisma {
     updated_by_id: string
     updated_by: string
     cattles?: cattlesUncheckedCreateNestedManyWithoutPensInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_penInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_penInput
   }
 
   export type pensCreateOrConnectWithoutPen_attachmentsInput = {
@@ -65783,6 +66678,8 @@ export namespace Prisma {
     updated_by?: StringFieldUpdateOperationsInput | string
     cattles?: cattlesUpdateManyWithoutPensNestedInput
     farms?: farmsUpdateOneRequiredWithoutPensNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_penNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_penNestedInput
   }
 
   export type pensUncheckedUpdateWithoutPen_attachmentsInput = {
@@ -65803,6 +66700,8 @@ export namespace Prisma {
     updated_by_id?: StringFieldUpdateOperationsInput | string
     updated_by?: StringFieldUpdateOperationsInput | string
     cattles?: cattlesUncheckedUpdateManyWithoutPensNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_penNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_penNestedInput
   }
 
   export type cattlesCreateWithoutPensInput = {
@@ -65994,6 +66893,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsCreateNestedManyWithoutFarmsInput
     farm_authorized?: farm_authorizedCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsUncheckedCreateWithoutPensInput = {
@@ -66053,11 +66954,149 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsUncheckedCreateNestedManyWithoutFarmsInput
     farm_authorized?: farm_authorizedUncheckedCreateNestedManyWithoutFarmsInput
     farm_veterinary?: farm_veterinaryUncheckedCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_farmInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_farmInput
   }
 
   export type farmsCreateOrConnectWithoutPensInput = {
     where: farmsWhereUniqueInput
     create: XOR<farmsCreateWithoutPensInput, farmsUncheckedCreateWithoutPensInput>
+  }
+
+  export type traceabilityCreateWithoutOrigin_penInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    traceability_cattle?: traceability_cattleCreateNestedManyWithoutTraceabilityInput
+    traceability_status?: traceability_statusCreateNestedManyWithoutTraceabilityInput
+    traceability_vehicle?: traceability_vehicleCreateNestedManyWithoutTraceabilityInput
+    origin_farm: farmsCreateNestedOneWithoutTraceability_originInput
+    destination_farm?: farmsCreateNestedOneWithoutTraceability_destinationInput
+    destination_pen?: pensCreateNestedOneWithoutTraceability_destinationInput
+  }
+
+  export type traceabilityUncheckedCreateWithoutOrigin_penInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    origin_farm_id: string
+    destination_farm_id?: string | null
+    destination_pen_id?: string | null
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    traceability_cattle?: traceability_cattleUncheckedCreateNestedManyWithoutTraceabilityInput
+    traceability_status?: traceability_statusUncheckedCreateNestedManyWithoutTraceabilityInput
+    traceability_vehicle?: traceability_vehicleUncheckedCreateNestedManyWithoutTraceabilityInput
+  }
+
+  export type traceabilityCreateOrConnectWithoutOrigin_penInput = {
+    where: traceabilityWhereUniqueInput
+    create: XOR<traceabilityCreateWithoutOrigin_penInput, traceabilityUncheckedCreateWithoutOrigin_penInput>
+  }
+
+  export type traceabilityCreateManyOrigin_penInputEnvelope = {
+    data: traceabilityCreateManyOrigin_penInput | traceabilityCreateManyOrigin_penInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type traceabilityCreateWithoutDestination_penInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    traceability_cattle?: traceability_cattleCreateNestedManyWithoutTraceabilityInput
+    traceability_status?: traceability_statusCreateNestedManyWithoutTraceabilityInput
+    traceability_vehicle?: traceability_vehicleCreateNestedManyWithoutTraceabilityInput
+    origin_farm: farmsCreateNestedOneWithoutTraceability_originInput
+    destination_farm?: farmsCreateNestedOneWithoutTraceability_destinationInput
+    origin_pen: pensCreateNestedOneWithoutTraceability_originInput
+  }
+
+  export type traceabilityUncheckedCreateWithoutDestination_penInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    origin_farm_id: string
+    origin_pen_id: string
+    destination_farm_id?: string | null
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    traceability_cattle?: traceability_cattleUncheckedCreateNestedManyWithoutTraceabilityInput
+    traceability_status?: traceability_statusUncheckedCreateNestedManyWithoutTraceabilityInput
+    traceability_vehicle?: traceability_vehicleUncheckedCreateNestedManyWithoutTraceabilityInput
+  }
+
+  export type traceabilityCreateOrConnectWithoutDestination_penInput = {
+    where: traceabilityWhereUniqueInput
+    create: XOR<traceabilityCreateWithoutDestination_penInput, traceabilityUncheckedCreateWithoutDestination_penInput>
+  }
+
+  export type traceabilityCreateManyDestination_penInputEnvelope = {
+    data: traceabilityCreateManyDestination_penInput | traceabilityCreateManyDestination_penInput[]
+    skipDuplicates?: boolean
   }
 
   export type cattlesUpsertWithWhereUniqueWithoutPensInput = {
@@ -66179,6 +67218,8 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsUpdateManyWithoutFarmsNestedInput
     farm_authorized?: farm_authorizedUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_farmNestedInput
   }
 
   export type farmsUncheckedUpdateWithoutPensInput = {
@@ -66238,6 +67279,40 @@ export namespace Prisma {
     farm_attachments?: farm_attachmentsUncheckedUpdateManyWithoutFarmsNestedInput
     farm_authorized?: farm_authorizedUncheckedUpdateManyWithoutFarmsNestedInput
     farm_veterinary?: farm_veterinaryUncheckedUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_farmNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_farmNestedInput
+  }
+
+  export type traceabilityUpsertWithWhereUniqueWithoutOrigin_penInput = {
+    where: traceabilityWhereUniqueInput
+    update: XOR<traceabilityUpdateWithoutOrigin_penInput, traceabilityUncheckedUpdateWithoutOrigin_penInput>
+    create: XOR<traceabilityCreateWithoutOrigin_penInput, traceabilityUncheckedCreateWithoutOrigin_penInput>
+  }
+
+  export type traceabilityUpdateWithWhereUniqueWithoutOrigin_penInput = {
+    where: traceabilityWhereUniqueInput
+    data: XOR<traceabilityUpdateWithoutOrigin_penInput, traceabilityUncheckedUpdateWithoutOrigin_penInput>
+  }
+
+  export type traceabilityUpdateManyWithWhereWithoutOrigin_penInput = {
+    where: traceabilityScalarWhereInput
+    data: XOR<traceabilityUpdateManyMutationInput, traceabilityUncheckedUpdateManyWithoutOrigin_penInput>
+  }
+
+  export type traceabilityUpsertWithWhereUniqueWithoutDestination_penInput = {
+    where: traceabilityWhereUniqueInput
+    update: XOR<traceabilityUpdateWithoutDestination_penInput, traceabilityUncheckedUpdateWithoutDestination_penInput>
+    create: XOR<traceabilityCreateWithoutDestination_penInput, traceabilityUncheckedCreateWithoutDestination_penInput>
+  }
+
+  export type traceabilityUpdateWithWhereUniqueWithoutDestination_penInput = {
+    where: traceabilityWhereUniqueInput
+    data: XOR<traceabilityUpdateWithoutDestination_penInput, traceabilityUncheckedUpdateWithoutDestination_penInput>
+  }
+
+  export type traceabilityUpdateManyWithWhereWithoutDestination_penInput = {
+    where: traceabilityScalarWhereInput
+    data: XOR<traceabilityUpdateManyMutationInput, traceabilityUncheckedUpdateManyWithoutDestination_penInput>
   }
 
   export type traceability_cattleCreateWithoutTraceabilityInput = {
@@ -66249,12 +67324,12 @@ export namespace Prisma {
     updated_at: Date | string
     updated_by_id: string
     updated_by: string
-    traceability_vehicle: traceability_vehicleCreateNestedOneWithoutTraceability_cattleInput
+    traceability_vehicle?: traceability_vehicleCreateNestedOneWithoutTraceability_cattleInput
   }
 
   export type traceability_cattleUncheckedCreateWithoutTraceabilityInput = {
     id: string
-    vehicle_id: string
+    vehicle_id?: string | null
     cattle_id: string
     created_at: Date | string
     created_by_id: string
@@ -66364,6 +67439,358 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type farmsCreateWithoutTraceability_originInput = {
+    id: string
+    tracer_id: string
+    farm_identification: string
+    farm_type: string
+    max_cows: number
+    name: string
+    standard: string
+    status: string
+    rai: Decimal | DecimalJsLike | number | string
+    ngan: Decimal | DecimalJsLike | number | string
+    wa: Decimal | DecimalJsLike | number | string
+    address_line1: string
+    address_subdistrict: string
+    address_district: string
+    address_province: string
+    address_zipcode: string
+    is_owner_ref_farmer: boolean
+    farmer_id?: string | null
+    owner_type?: string | null
+    owner_tin?: string | null
+    owner_masking_tin?: string | null
+    owner_title?: string | null
+    owner_first_name?: string | null
+    owner_middle_name?: string | null
+    owner_last_name?: string | null
+    owner_company_name?: string | null
+    owner_gender?: string | null
+    owner_birthdate?: string | null
+    owner_education_degree?: string | null
+    owner_occupation?: string | null
+    owner_second_occupation?: string | null
+    owner_phone_number?: string | null
+    owner_mobile_number?: string | null
+    owner_email?: string | null
+    owner_line_id?: string | null
+    owner_address_line1?: string | null
+    owner_address_subdistrict?: string | null
+    owner_address_district?: string | null
+    owner_address_province?: string | null
+    owner_address_zipcode?: string | null
+    owner_contact_address_line1?: string | null
+    owner_contact_address_subdistrict?: string | null
+    owner_contact_address_district?: string | null
+    owner_contact_address_province?: string | null
+    owner_contact_address_zipcode?: string | null
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    ref_1: string
+    cattles?: cattlesCreateNestedManyWithoutFarmsInput
+    farm_attachments?: farm_attachmentsCreateNestedManyWithoutFarmsInput
+    farm_authorized?: farm_authorizedCreateNestedManyWithoutFarmsInput
+    farm_veterinary?: farm_veterinaryCreateNestedManyWithoutFarmsInput
+    pens?: pensCreateNestedManyWithoutFarmsInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_farmInput
+  }
+
+  export type farmsUncheckedCreateWithoutTraceability_originInput = {
+    id: string
+    tracer_id: string
+    farm_identification: string
+    farm_type: string
+    max_cows: number
+    name: string
+    standard: string
+    status: string
+    rai: Decimal | DecimalJsLike | number | string
+    ngan: Decimal | DecimalJsLike | number | string
+    wa: Decimal | DecimalJsLike | number | string
+    address_line1: string
+    address_subdistrict: string
+    address_district: string
+    address_province: string
+    address_zipcode: string
+    is_owner_ref_farmer: boolean
+    farmer_id?: string | null
+    owner_type?: string | null
+    owner_tin?: string | null
+    owner_masking_tin?: string | null
+    owner_title?: string | null
+    owner_first_name?: string | null
+    owner_middle_name?: string | null
+    owner_last_name?: string | null
+    owner_company_name?: string | null
+    owner_gender?: string | null
+    owner_birthdate?: string | null
+    owner_education_degree?: string | null
+    owner_occupation?: string | null
+    owner_second_occupation?: string | null
+    owner_phone_number?: string | null
+    owner_mobile_number?: string | null
+    owner_email?: string | null
+    owner_line_id?: string | null
+    owner_address_line1?: string | null
+    owner_address_subdistrict?: string | null
+    owner_address_district?: string | null
+    owner_address_province?: string | null
+    owner_address_zipcode?: string | null
+    owner_contact_address_line1?: string | null
+    owner_contact_address_subdistrict?: string | null
+    owner_contact_address_district?: string | null
+    owner_contact_address_province?: string | null
+    owner_contact_address_zipcode?: string | null
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    ref_1: string
+    cattles?: cattlesUncheckedCreateNestedManyWithoutFarmsInput
+    farm_attachments?: farm_attachmentsUncheckedCreateNestedManyWithoutFarmsInput
+    farm_authorized?: farm_authorizedUncheckedCreateNestedManyWithoutFarmsInput
+    farm_veterinary?: farm_veterinaryUncheckedCreateNestedManyWithoutFarmsInput
+    pens?: pensUncheckedCreateNestedManyWithoutFarmsInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_farmInput
+  }
+
+  export type farmsCreateOrConnectWithoutTraceability_originInput = {
+    where: farmsWhereUniqueInput
+    create: XOR<farmsCreateWithoutTraceability_originInput, farmsUncheckedCreateWithoutTraceability_originInput>
+  }
+
+  export type farmsCreateWithoutTraceability_destinationInput = {
+    id: string
+    tracer_id: string
+    farm_identification: string
+    farm_type: string
+    max_cows: number
+    name: string
+    standard: string
+    status: string
+    rai: Decimal | DecimalJsLike | number | string
+    ngan: Decimal | DecimalJsLike | number | string
+    wa: Decimal | DecimalJsLike | number | string
+    address_line1: string
+    address_subdistrict: string
+    address_district: string
+    address_province: string
+    address_zipcode: string
+    is_owner_ref_farmer: boolean
+    farmer_id?: string | null
+    owner_type?: string | null
+    owner_tin?: string | null
+    owner_masking_tin?: string | null
+    owner_title?: string | null
+    owner_first_name?: string | null
+    owner_middle_name?: string | null
+    owner_last_name?: string | null
+    owner_company_name?: string | null
+    owner_gender?: string | null
+    owner_birthdate?: string | null
+    owner_education_degree?: string | null
+    owner_occupation?: string | null
+    owner_second_occupation?: string | null
+    owner_phone_number?: string | null
+    owner_mobile_number?: string | null
+    owner_email?: string | null
+    owner_line_id?: string | null
+    owner_address_line1?: string | null
+    owner_address_subdistrict?: string | null
+    owner_address_district?: string | null
+    owner_address_province?: string | null
+    owner_address_zipcode?: string | null
+    owner_contact_address_line1?: string | null
+    owner_contact_address_subdistrict?: string | null
+    owner_contact_address_district?: string | null
+    owner_contact_address_province?: string | null
+    owner_contact_address_zipcode?: string | null
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    ref_1: string
+    cattles?: cattlesCreateNestedManyWithoutFarmsInput
+    farm_attachments?: farm_attachmentsCreateNestedManyWithoutFarmsInput
+    farm_authorized?: farm_authorizedCreateNestedManyWithoutFarmsInput
+    farm_veterinary?: farm_veterinaryCreateNestedManyWithoutFarmsInput
+    pens?: pensCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_farmInput
+  }
+
+  export type farmsUncheckedCreateWithoutTraceability_destinationInput = {
+    id: string
+    tracer_id: string
+    farm_identification: string
+    farm_type: string
+    max_cows: number
+    name: string
+    standard: string
+    status: string
+    rai: Decimal | DecimalJsLike | number | string
+    ngan: Decimal | DecimalJsLike | number | string
+    wa: Decimal | DecimalJsLike | number | string
+    address_line1: string
+    address_subdistrict: string
+    address_district: string
+    address_province: string
+    address_zipcode: string
+    is_owner_ref_farmer: boolean
+    farmer_id?: string | null
+    owner_type?: string | null
+    owner_tin?: string | null
+    owner_masking_tin?: string | null
+    owner_title?: string | null
+    owner_first_name?: string | null
+    owner_middle_name?: string | null
+    owner_last_name?: string | null
+    owner_company_name?: string | null
+    owner_gender?: string | null
+    owner_birthdate?: string | null
+    owner_education_degree?: string | null
+    owner_occupation?: string | null
+    owner_second_occupation?: string | null
+    owner_phone_number?: string | null
+    owner_mobile_number?: string | null
+    owner_email?: string | null
+    owner_line_id?: string | null
+    owner_address_line1?: string | null
+    owner_address_subdistrict?: string | null
+    owner_address_district?: string | null
+    owner_address_province?: string | null
+    owner_address_zipcode?: string | null
+    owner_contact_address_line1?: string | null
+    owner_contact_address_subdistrict?: string | null
+    owner_contact_address_district?: string | null
+    owner_contact_address_province?: string | null
+    owner_contact_address_zipcode?: string | null
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    ref_1: string
+    cattles?: cattlesUncheckedCreateNestedManyWithoutFarmsInput
+    farm_attachments?: farm_attachmentsUncheckedCreateNestedManyWithoutFarmsInput
+    farm_authorized?: farm_authorizedUncheckedCreateNestedManyWithoutFarmsInput
+    farm_veterinary?: farm_veterinaryUncheckedCreateNestedManyWithoutFarmsInput
+    pens?: pensUncheckedCreateNestedManyWithoutFarmsInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_farmInput
+  }
+
+  export type farmsCreateOrConnectWithoutTraceability_destinationInput = {
+    where: farmsWhereUniqueInput
+    create: XOR<farmsCreateWithoutTraceability_destinationInput, farmsUncheckedCreateWithoutTraceability_destinationInput>
+  }
+
+  export type pensCreateWithoutTraceability_originInput = {
+    id: string
+    pen_type: string
+    pen_number: string
+    capacity: number
+    name: string
+    wa: Decimal | DecimalJsLike | number | string
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    cattles?: cattlesCreateNestedManyWithoutPensInput
+    pen_attachments?: pen_attachmentsCreateNestedManyWithoutPensInput
+    farms: farmsCreateNestedOneWithoutPensInput
+    traceability_destination?: traceabilityCreateNestedManyWithoutDestination_penInput
+  }
+
+  export type pensUncheckedCreateWithoutTraceability_originInput = {
+    id: string
+    farm_id: string
+    pen_type: string
+    pen_number: string
+    capacity: number
+    name: string
+    wa: Decimal | DecimalJsLike | number | string
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    cattles?: cattlesUncheckedCreateNestedManyWithoutPensInput
+    pen_attachments?: pen_attachmentsUncheckedCreateNestedManyWithoutPensInput
+    traceability_destination?: traceabilityUncheckedCreateNestedManyWithoutDestination_penInput
+  }
+
+  export type pensCreateOrConnectWithoutTraceability_originInput = {
+    where: pensWhereUniqueInput
+    create: XOR<pensCreateWithoutTraceability_originInput, pensUncheckedCreateWithoutTraceability_originInput>
+  }
+
+  export type pensCreateWithoutTraceability_destinationInput = {
+    id: string
+    pen_type: string
+    pen_number: string
+    capacity: number
+    name: string
+    wa: Decimal | DecimalJsLike | number | string
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    cattles?: cattlesCreateNestedManyWithoutPensInput
+    pen_attachments?: pen_attachmentsCreateNestedManyWithoutPensInput
+    farms: farmsCreateNestedOneWithoutPensInput
+    traceability_origin?: traceabilityCreateNestedManyWithoutOrigin_penInput
+  }
+
+  export type pensUncheckedCreateWithoutTraceability_destinationInput = {
+    id: string
+    farm_id: string
+    pen_type: string
+    pen_number: string
+    capacity: number
+    name: string
+    wa: Decimal | DecimalJsLike | number | string
+    latitude: Decimal | DecimalJsLike | number | string
+    longitude: Decimal | DecimalJsLike | number | string
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+    cattles?: cattlesUncheckedCreateNestedManyWithoutPensInput
+    pen_attachments?: pen_attachmentsUncheckedCreateNestedManyWithoutPensInput
+    traceability_origin?: traceabilityUncheckedCreateNestedManyWithoutOrigin_penInput
+  }
+
+  export type pensCreateOrConnectWithoutTraceability_destinationInput = {
+    where: pensWhereUniqueInput
+    create: XOR<pensCreateWithoutTraceability_destinationInput, pensUncheckedCreateWithoutTraceability_destinationInput>
+  }
+
   export type traceability_cattleUpsertWithWhereUniqueWithoutTraceabilityInput = {
     where: traceability_cattleWhereUniqueInput
     update: XOR<traceability_cattleUpdateWithoutTraceabilityInput, traceability_cattleUncheckedUpdateWithoutTraceabilityInput>
@@ -66386,7 +67813,7 @@ export namespace Prisma {
     NOT?: traceability_cattleScalarWhereInput | traceability_cattleScalarWhereInput[]
     id?: StringFilter<"traceability_cattle"> | string
     traceability_id?: StringFilter<"traceability_cattle"> | string
-    vehicle_id?: StringFilter<"traceability_cattle"> | string
+    vehicle_id?: StringNullableFilter<"traceability_cattle"> | string | null
     cattle_id?: StringFilter<"traceability_cattle"> | string
     created_at?: DateTimeFilter<"traceability_cattle"> | Date | string
     created_by_id?: StringFilter<"traceability_cattle"> | string
@@ -66470,20 +67897,396 @@ export namespace Prisma {
     updated_by?: StringFilter<"traceability_vehicle"> | string
   }
 
+  export type farmsUpsertWithoutTraceability_originInput = {
+    update: XOR<farmsUpdateWithoutTraceability_originInput, farmsUncheckedUpdateWithoutTraceability_originInput>
+    create: XOR<farmsCreateWithoutTraceability_originInput, farmsUncheckedCreateWithoutTraceability_originInput>
+    where?: farmsWhereInput
+  }
+
+  export type farmsUpdateToOneWithWhereWithoutTraceability_originInput = {
+    where?: farmsWhereInput
+    data: XOR<farmsUpdateWithoutTraceability_originInput, farmsUncheckedUpdateWithoutTraceability_originInput>
+  }
+
+  export type farmsUpdateWithoutTraceability_originInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tracer_id?: StringFieldUpdateOperationsInput | string
+    farm_identification?: StringFieldUpdateOperationsInput | string
+    farm_type?: StringFieldUpdateOperationsInput | string
+    max_cows?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    standard?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    rai?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    ngan?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    wa?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    address_line1?: StringFieldUpdateOperationsInput | string
+    address_subdistrict?: StringFieldUpdateOperationsInput | string
+    address_district?: StringFieldUpdateOperationsInput | string
+    address_province?: StringFieldUpdateOperationsInput | string
+    address_zipcode?: StringFieldUpdateOperationsInput | string
+    is_owner_ref_farmer?: BoolFieldUpdateOperationsInput | boolean
+    farmer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_type?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_tin?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_masking_tin?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_title?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_middle_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_gender?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_education_degree?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_occupation?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_second_occupation?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_email?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_line1?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_subdistrict?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_district?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_province?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_zipcode?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_line1?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_subdistrict?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_district?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_province?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_zipcode?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    ref_1?: StringFieldUpdateOperationsInput | string
+    cattles?: cattlesUpdateManyWithoutFarmsNestedInput
+    farm_attachments?: farm_attachmentsUpdateManyWithoutFarmsNestedInput
+    farm_authorized?: farm_authorizedUpdateManyWithoutFarmsNestedInput
+    farm_veterinary?: farm_veterinaryUpdateManyWithoutFarmsNestedInput
+    pens?: pensUpdateManyWithoutFarmsNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_farmNestedInput
+  }
+
+  export type farmsUncheckedUpdateWithoutTraceability_originInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tracer_id?: StringFieldUpdateOperationsInput | string
+    farm_identification?: StringFieldUpdateOperationsInput | string
+    farm_type?: StringFieldUpdateOperationsInput | string
+    max_cows?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    standard?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    rai?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    ngan?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    wa?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    address_line1?: StringFieldUpdateOperationsInput | string
+    address_subdistrict?: StringFieldUpdateOperationsInput | string
+    address_district?: StringFieldUpdateOperationsInput | string
+    address_province?: StringFieldUpdateOperationsInput | string
+    address_zipcode?: StringFieldUpdateOperationsInput | string
+    is_owner_ref_farmer?: BoolFieldUpdateOperationsInput | boolean
+    farmer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_type?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_tin?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_masking_tin?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_title?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_middle_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_gender?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_education_degree?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_occupation?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_second_occupation?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_email?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_line1?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_subdistrict?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_district?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_province?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_zipcode?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_line1?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_subdistrict?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_district?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_province?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_zipcode?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    ref_1?: StringFieldUpdateOperationsInput | string
+    cattles?: cattlesUncheckedUpdateManyWithoutFarmsNestedInput
+    farm_attachments?: farm_attachmentsUncheckedUpdateManyWithoutFarmsNestedInput
+    farm_authorized?: farm_authorizedUncheckedUpdateManyWithoutFarmsNestedInput
+    farm_veterinary?: farm_veterinaryUncheckedUpdateManyWithoutFarmsNestedInput
+    pens?: pensUncheckedUpdateManyWithoutFarmsNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_farmNestedInput
+  }
+
+  export type farmsUpsertWithoutTraceability_destinationInput = {
+    update: XOR<farmsUpdateWithoutTraceability_destinationInput, farmsUncheckedUpdateWithoutTraceability_destinationInput>
+    create: XOR<farmsCreateWithoutTraceability_destinationInput, farmsUncheckedCreateWithoutTraceability_destinationInput>
+    where?: farmsWhereInput
+  }
+
+  export type farmsUpdateToOneWithWhereWithoutTraceability_destinationInput = {
+    where?: farmsWhereInput
+    data: XOR<farmsUpdateWithoutTraceability_destinationInput, farmsUncheckedUpdateWithoutTraceability_destinationInput>
+  }
+
+  export type farmsUpdateWithoutTraceability_destinationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tracer_id?: StringFieldUpdateOperationsInput | string
+    farm_identification?: StringFieldUpdateOperationsInput | string
+    farm_type?: StringFieldUpdateOperationsInput | string
+    max_cows?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    standard?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    rai?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    ngan?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    wa?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    address_line1?: StringFieldUpdateOperationsInput | string
+    address_subdistrict?: StringFieldUpdateOperationsInput | string
+    address_district?: StringFieldUpdateOperationsInput | string
+    address_province?: StringFieldUpdateOperationsInput | string
+    address_zipcode?: StringFieldUpdateOperationsInput | string
+    is_owner_ref_farmer?: BoolFieldUpdateOperationsInput | boolean
+    farmer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_type?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_tin?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_masking_tin?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_title?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_middle_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_gender?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_education_degree?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_occupation?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_second_occupation?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_email?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_line1?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_subdistrict?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_district?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_province?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_zipcode?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_line1?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_subdistrict?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_district?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_province?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_zipcode?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    ref_1?: StringFieldUpdateOperationsInput | string
+    cattles?: cattlesUpdateManyWithoutFarmsNestedInput
+    farm_attachments?: farm_attachmentsUpdateManyWithoutFarmsNestedInput
+    farm_authorized?: farm_authorizedUpdateManyWithoutFarmsNestedInput
+    farm_veterinary?: farm_veterinaryUpdateManyWithoutFarmsNestedInput
+    pens?: pensUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_farmNestedInput
+  }
+
+  export type farmsUncheckedUpdateWithoutTraceability_destinationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tracer_id?: StringFieldUpdateOperationsInput | string
+    farm_identification?: StringFieldUpdateOperationsInput | string
+    farm_type?: StringFieldUpdateOperationsInput | string
+    max_cows?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    standard?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    rai?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    ngan?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    wa?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    address_line1?: StringFieldUpdateOperationsInput | string
+    address_subdistrict?: StringFieldUpdateOperationsInput | string
+    address_district?: StringFieldUpdateOperationsInput | string
+    address_province?: StringFieldUpdateOperationsInput | string
+    address_zipcode?: StringFieldUpdateOperationsInput | string
+    is_owner_ref_farmer?: BoolFieldUpdateOperationsInput | boolean
+    farmer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_type?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_tin?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_masking_tin?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_title?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_middle_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_gender?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_birthdate?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_education_degree?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_occupation?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_second_occupation?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_phone_number?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_email?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_line1?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_subdistrict?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_district?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_province?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_address_zipcode?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_line1?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_subdistrict?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_district?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_province?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_contact_address_zipcode?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    ref_1?: StringFieldUpdateOperationsInput | string
+    cattles?: cattlesUncheckedUpdateManyWithoutFarmsNestedInput
+    farm_attachments?: farm_attachmentsUncheckedUpdateManyWithoutFarmsNestedInput
+    farm_authorized?: farm_authorizedUncheckedUpdateManyWithoutFarmsNestedInput
+    farm_veterinary?: farm_veterinaryUncheckedUpdateManyWithoutFarmsNestedInput
+    pens?: pensUncheckedUpdateManyWithoutFarmsNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_farmNestedInput
+  }
+
+  export type pensUpsertWithoutTraceability_originInput = {
+    update: XOR<pensUpdateWithoutTraceability_originInput, pensUncheckedUpdateWithoutTraceability_originInput>
+    create: XOR<pensCreateWithoutTraceability_originInput, pensUncheckedCreateWithoutTraceability_originInput>
+    where?: pensWhereInput
+  }
+
+  export type pensUpdateToOneWithWhereWithoutTraceability_originInput = {
+    where?: pensWhereInput
+    data: XOR<pensUpdateWithoutTraceability_originInput, pensUncheckedUpdateWithoutTraceability_originInput>
+  }
+
+  export type pensUpdateWithoutTraceability_originInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pen_type?: StringFieldUpdateOperationsInput | string
+    pen_number?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    wa?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    cattles?: cattlesUpdateManyWithoutPensNestedInput
+    pen_attachments?: pen_attachmentsUpdateManyWithoutPensNestedInput
+    farms?: farmsUpdateOneRequiredWithoutPensNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_penNestedInput
+  }
+
+  export type pensUncheckedUpdateWithoutTraceability_originInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    farm_id?: StringFieldUpdateOperationsInput | string
+    pen_type?: StringFieldUpdateOperationsInput | string
+    pen_number?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    wa?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    cattles?: cattlesUncheckedUpdateManyWithoutPensNestedInput
+    pen_attachments?: pen_attachmentsUncheckedUpdateManyWithoutPensNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_penNestedInput
+  }
+
+  export type pensUpsertWithoutTraceability_destinationInput = {
+    update: XOR<pensUpdateWithoutTraceability_destinationInput, pensUncheckedUpdateWithoutTraceability_destinationInput>
+    create: XOR<pensCreateWithoutTraceability_destinationInput, pensUncheckedCreateWithoutTraceability_destinationInput>
+    where?: pensWhereInput
+  }
+
+  export type pensUpdateToOneWithWhereWithoutTraceability_destinationInput = {
+    where?: pensWhereInput
+    data: XOR<pensUpdateWithoutTraceability_destinationInput, pensUncheckedUpdateWithoutTraceability_destinationInput>
+  }
+
+  export type pensUpdateWithoutTraceability_destinationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pen_type?: StringFieldUpdateOperationsInput | string
+    pen_number?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    wa?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    cattles?: cattlesUpdateManyWithoutPensNestedInput
+    pen_attachments?: pen_attachmentsUpdateManyWithoutPensNestedInput
+    farms?: farmsUpdateOneRequiredWithoutPensNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_penNestedInput
+  }
+
+  export type pensUncheckedUpdateWithoutTraceability_destinationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    farm_id?: StringFieldUpdateOperationsInput | string
+    pen_type?: StringFieldUpdateOperationsInput | string
+    pen_number?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    wa?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    cattles?: cattlesUncheckedUpdateManyWithoutPensNestedInput
+    pen_attachments?: pen_attachmentsUncheckedUpdateManyWithoutPensNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_penNestedInput
+  }
+
   export type traceabilityCreateWithoutTraceability_cattleInput = {
     id: string
     reason: string
     document_no: string
     total_animal: number
-    origin_farm_id: string
-    origin_pen_id: string
-    destination_farm_id?: string | null
-    destination_pen_id?: string | null
     specific_destination_name?: string | null
     destination_province?: string | null
     shipment_date: Date | string
     estimated_arrival_date: Date | string
     destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
     status: string
     created_at: Date | string
     created_by_id: string
@@ -66493,6 +68296,10 @@ export namespace Prisma {
     updated_by: string
     traceability_status?: traceability_statusCreateNestedManyWithoutTraceabilityInput
     traceability_vehicle?: traceability_vehicleCreateNestedManyWithoutTraceabilityInput
+    origin_farm: farmsCreateNestedOneWithoutTraceability_originInput
+    destination_farm?: farmsCreateNestedOneWithoutTraceability_destinationInput
+    origin_pen: pensCreateNestedOneWithoutTraceability_originInput
+    destination_pen?: pensCreateNestedOneWithoutTraceability_destinationInput
   }
 
   export type traceabilityUncheckedCreateWithoutTraceability_cattleInput = {
@@ -66509,6 +68316,10 @@ export namespace Prisma {
     shipment_date: Date | string
     estimated_arrival_date: Date | string
     destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
     status: string
     created_at: Date | string
     created_by_id: string
@@ -66594,15 +68405,15 @@ export namespace Prisma {
     reason?: StringFieldUpdateOperationsInput | string
     document_no?: StringFieldUpdateOperationsInput | string
     total_animal?: IntFieldUpdateOperationsInput | number
-    origin_farm_id?: StringFieldUpdateOperationsInput | string
-    origin_pen_id?: StringFieldUpdateOperationsInput | string
-    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
-    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
     specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
     destination_province?: NullableStringFieldUpdateOperationsInput | string | null
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -66612,6 +68423,10 @@ export namespace Prisma {
     updated_by?: StringFieldUpdateOperationsInput | string
     traceability_status?: traceability_statusUpdateManyWithoutTraceabilityNestedInput
     traceability_vehicle?: traceability_vehicleUpdateManyWithoutTraceabilityNestedInput
+    origin_farm?: farmsUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_farm?: farmsUpdateOneWithoutTraceability_destinationNestedInput
+    origin_pen?: pensUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_pen?: pensUpdateOneWithoutTraceability_destinationNestedInput
   }
 
   export type traceabilityUncheckedUpdateWithoutTraceability_cattleInput = {
@@ -66628,6 +68443,10 @@ export namespace Prisma {
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -66703,15 +68522,15 @@ export namespace Prisma {
     reason: string
     document_no: string
     total_animal: number
-    origin_farm_id: string
-    origin_pen_id: string
-    destination_farm_id?: string | null
-    destination_pen_id?: string | null
     specific_destination_name?: string | null
     destination_province?: string | null
     shipment_date: Date | string
     estimated_arrival_date: Date | string
     destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
     status: string
     created_at: Date | string
     created_by_id: string
@@ -66721,6 +68540,10 @@ export namespace Prisma {
     updated_by: string
     traceability_cattle?: traceability_cattleCreateNestedManyWithoutTraceabilityInput
     traceability_vehicle?: traceability_vehicleCreateNestedManyWithoutTraceabilityInput
+    origin_farm: farmsCreateNestedOneWithoutTraceability_originInput
+    destination_farm?: farmsCreateNestedOneWithoutTraceability_destinationInput
+    origin_pen: pensCreateNestedOneWithoutTraceability_originInput
+    destination_pen?: pensCreateNestedOneWithoutTraceability_destinationInput
   }
 
   export type traceabilityUncheckedCreateWithoutTraceability_statusInput = {
@@ -66737,6 +68560,10 @@ export namespace Prisma {
     shipment_date: Date | string
     estimated_arrival_date: Date | string
     destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
     status: string
     created_at: Date | string
     created_by_id: string
@@ -66769,15 +68596,15 @@ export namespace Prisma {
     reason?: StringFieldUpdateOperationsInput | string
     document_no?: StringFieldUpdateOperationsInput | string
     total_animal?: IntFieldUpdateOperationsInput | number
-    origin_farm_id?: StringFieldUpdateOperationsInput | string
-    origin_pen_id?: StringFieldUpdateOperationsInput | string
-    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
-    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
     specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
     destination_province?: NullableStringFieldUpdateOperationsInput | string | null
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -66787,6 +68614,10 @@ export namespace Prisma {
     updated_by?: StringFieldUpdateOperationsInput | string
     traceability_cattle?: traceability_cattleUpdateManyWithoutTraceabilityNestedInput
     traceability_vehicle?: traceability_vehicleUpdateManyWithoutTraceabilityNestedInput
+    origin_farm?: farmsUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_farm?: farmsUpdateOneWithoutTraceability_destinationNestedInput
+    origin_pen?: pensUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_pen?: pensUpdateOneWithoutTraceability_destinationNestedInput
   }
 
   export type traceabilityUncheckedUpdateWithoutTraceability_statusInput = {
@@ -66803,6 +68634,10 @@ export namespace Prisma {
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -66853,15 +68688,15 @@ export namespace Prisma {
     reason: string
     document_no: string
     total_animal: number
-    origin_farm_id: string
-    origin_pen_id: string
-    destination_farm_id?: string | null
-    destination_pen_id?: string | null
     specific_destination_name?: string | null
     destination_province?: string | null
     shipment_date: Date | string
     estimated_arrival_date: Date | string
     destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
     status: string
     created_at: Date | string
     created_by_id: string
@@ -66871,6 +68706,10 @@ export namespace Prisma {
     updated_by: string
     traceability_cattle?: traceability_cattleCreateNestedManyWithoutTraceabilityInput
     traceability_status?: traceability_statusCreateNestedManyWithoutTraceabilityInput
+    origin_farm: farmsCreateNestedOneWithoutTraceability_originInput
+    destination_farm?: farmsCreateNestedOneWithoutTraceability_destinationInput
+    origin_pen: pensCreateNestedOneWithoutTraceability_originInput
+    destination_pen?: pensCreateNestedOneWithoutTraceability_destinationInput
   }
 
   export type traceabilityUncheckedCreateWithoutTraceability_vehicleInput = {
@@ -66887,6 +68726,10 @@ export namespace Prisma {
     shipment_date: Date | string
     estimated_arrival_date: Date | string
     destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
     status: string
     created_at: Date | string
     created_by_id: string
@@ -66935,15 +68778,15 @@ export namespace Prisma {
     reason?: StringFieldUpdateOperationsInput | string
     document_no?: StringFieldUpdateOperationsInput | string
     total_animal?: IntFieldUpdateOperationsInput | number
-    origin_farm_id?: StringFieldUpdateOperationsInput | string
-    origin_pen_id?: StringFieldUpdateOperationsInput | string
-    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
-    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
     specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
     destination_province?: NullableStringFieldUpdateOperationsInput | string | null
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -66953,6 +68796,10 @@ export namespace Prisma {
     updated_by?: StringFieldUpdateOperationsInput | string
     traceability_cattle?: traceability_cattleUpdateManyWithoutTraceabilityNestedInput
     traceability_status?: traceability_statusUpdateManyWithoutTraceabilityNestedInput
+    origin_farm?: farmsUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_farm?: farmsUpdateOneWithoutTraceability_destinationNestedInput
+    origin_pen?: pensUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_pen?: pensUpdateOneWithoutTraceability_destinationNestedInput
   }
 
   export type traceabilityUncheckedUpdateWithoutTraceability_vehicleInput = {
@@ -66969,6 +68816,10 @@ export namespace Prisma {
     shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
     destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -67526,6 +69377,58 @@ export namespace Prisma {
     updated_by: string
   }
 
+  export type traceabilityCreateManyOrigin_farmInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    origin_pen_id: string
+    destination_farm_id?: string | null
+    destination_pen_id?: string | null
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+  }
+
+  export type traceabilityCreateManyDestination_farmInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    origin_farm_id: string
+    origin_pen_id: string
+    destination_pen_id?: string | null
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+  }
+
   export type cattlesUpdateWithoutFarmsInput = {
     id?: StringFieldUpdateOperationsInput | string
     tracer_id?: StringFieldUpdateOperationsInput | string
@@ -67790,6 +69693,8 @@ export namespace Prisma {
     updated_by?: StringFieldUpdateOperationsInput | string
     cattles?: cattlesUpdateManyWithoutPensNestedInput
     pen_attachments?: pen_attachmentsUpdateManyWithoutPensNestedInput
+    traceability_origin?: traceabilityUpdateManyWithoutOrigin_penNestedInput
+    traceability_destination?: traceabilityUpdateManyWithoutDestination_penNestedInput
   }
 
   export type pensUncheckedUpdateWithoutFarmsInput = {
@@ -67810,6 +69715,8 @@ export namespace Prisma {
     updated_by?: StringFieldUpdateOperationsInput | string
     cattles?: cattlesUncheckedUpdateManyWithoutPensNestedInput
     pen_attachments?: pen_attachmentsUncheckedUpdateManyWithoutPensNestedInput
+    traceability_origin?: traceabilityUncheckedUpdateManyWithoutOrigin_penNestedInput
+    traceability_destination?: traceabilityUncheckedUpdateManyWithoutDestination_penNestedInput
   }
 
   export type pensUncheckedUpdateManyWithoutFarmsInput = {
@@ -67821,6 +69728,174 @@ export namespace Prisma {
     wa?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     latitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     longitude?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type traceabilityUpdateWithoutOrigin_farmInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    traceability_cattle?: traceability_cattleUpdateManyWithoutTraceabilityNestedInput
+    traceability_status?: traceability_statusUpdateManyWithoutTraceabilityNestedInput
+    traceability_vehicle?: traceability_vehicleUpdateManyWithoutTraceabilityNestedInput
+    destination_farm?: farmsUpdateOneWithoutTraceability_destinationNestedInput
+    origin_pen?: pensUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_pen?: pensUpdateOneWithoutTraceability_destinationNestedInput
+  }
+
+  export type traceabilityUncheckedUpdateWithoutOrigin_farmInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    origin_pen_id?: StringFieldUpdateOperationsInput | string
+    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    traceability_cattle?: traceability_cattleUncheckedUpdateManyWithoutTraceabilityNestedInput
+    traceability_status?: traceability_statusUncheckedUpdateManyWithoutTraceabilityNestedInput
+    traceability_vehicle?: traceability_vehicleUncheckedUpdateManyWithoutTraceabilityNestedInput
+  }
+
+  export type traceabilityUncheckedUpdateManyWithoutOrigin_farmInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    origin_pen_id?: StringFieldUpdateOperationsInput | string
+    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type traceabilityUpdateWithoutDestination_farmInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    traceability_cattle?: traceability_cattleUpdateManyWithoutTraceabilityNestedInput
+    traceability_status?: traceability_statusUpdateManyWithoutTraceabilityNestedInput
+    traceability_vehicle?: traceability_vehicleUpdateManyWithoutTraceabilityNestedInput
+    origin_farm?: farmsUpdateOneRequiredWithoutTraceability_originNestedInput
+    origin_pen?: pensUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_pen?: pensUpdateOneWithoutTraceability_destinationNestedInput
+  }
+
+  export type traceabilityUncheckedUpdateWithoutDestination_farmInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    origin_farm_id?: StringFieldUpdateOperationsInput | string
+    origin_pen_id?: StringFieldUpdateOperationsInput | string
+    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    traceability_cattle?: traceability_cattleUncheckedUpdateManyWithoutTraceabilityNestedInput
+    traceability_status?: traceability_statusUncheckedUpdateManyWithoutTraceabilityNestedInput
+    traceability_vehicle?: traceability_vehicleUncheckedUpdateManyWithoutTraceabilityNestedInput
+  }
+
+  export type traceabilityUncheckedUpdateManyWithoutDestination_farmInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    origin_farm_id?: StringFieldUpdateOperationsInput | string
+    origin_pen_id?: StringFieldUpdateOperationsInput | string
+    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -68031,6 +70106,58 @@ export namespace Prisma {
     updated_by: string
   }
 
+  export type traceabilityCreateManyOrigin_penInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    origin_farm_id: string
+    destination_farm_id?: string | null
+    destination_pen_id?: string | null
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+  }
+
+  export type traceabilityCreateManyDestination_penInput = {
+    id: string
+    reason: string
+    document_no: string
+    total_animal: number
+    origin_farm_id: string
+    origin_pen_id: string
+    destination_farm_id?: string | null
+    specific_destination_name?: string | null
+    destination_province?: string | null
+    shipment_date: Date | string
+    estimated_arrival_date: Date | string
+    destination_type: string
+    buyer_title?: string | null
+    buyer_first_name?: string | null
+    buyer_last_name?: string | null
+    buyer_identity?: string | null
+    status: string
+    created_at: Date | string
+    created_by_id: string
+    created_by: string
+    updated_at: Date | string
+    updated_by_id: string
+    updated_by: string
+  }
+
   export type cattlesUpdateWithoutPensInput = {
     id?: StringFieldUpdateOperationsInput | string
     tracer_id?: StringFieldUpdateOperationsInput | string
@@ -68196,9 +70323,177 @@ export namespace Prisma {
     updated_by?: StringFieldUpdateOperationsInput | string
   }
 
+  export type traceabilityUpdateWithoutOrigin_penInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    traceability_cattle?: traceability_cattleUpdateManyWithoutTraceabilityNestedInput
+    traceability_status?: traceability_statusUpdateManyWithoutTraceabilityNestedInput
+    traceability_vehicle?: traceability_vehicleUpdateManyWithoutTraceabilityNestedInput
+    origin_farm?: farmsUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_farm?: farmsUpdateOneWithoutTraceability_destinationNestedInput
+    destination_pen?: pensUpdateOneWithoutTraceability_destinationNestedInput
+  }
+
+  export type traceabilityUncheckedUpdateWithoutOrigin_penInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    origin_farm_id?: StringFieldUpdateOperationsInput | string
+    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    traceability_cattle?: traceability_cattleUncheckedUpdateManyWithoutTraceabilityNestedInput
+    traceability_status?: traceability_statusUncheckedUpdateManyWithoutTraceabilityNestedInput
+    traceability_vehicle?: traceability_vehicleUncheckedUpdateManyWithoutTraceabilityNestedInput
+  }
+
+  export type traceabilityUncheckedUpdateManyWithoutOrigin_penInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    origin_farm_id?: StringFieldUpdateOperationsInput | string
+    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_pen_id?: NullableStringFieldUpdateOperationsInput | string | null
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type traceabilityUpdateWithoutDestination_penInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    traceability_cattle?: traceability_cattleUpdateManyWithoutTraceabilityNestedInput
+    traceability_status?: traceability_statusUpdateManyWithoutTraceabilityNestedInput
+    traceability_vehicle?: traceability_vehicleUpdateManyWithoutTraceabilityNestedInput
+    origin_farm?: farmsUpdateOneRequiredWithoutTraceability_originNestedInput
+    destination_farm?: farmsUpdateOneWithoutTraceability_destinationNestedInput
+    origin_pen?: pensUpdateOneRequiredWithoutTraceability_originNestedInput
+  }
+
+  export type traceabilityUncheckedUpdateWithoutDestination_penInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    origin_farm_id?: StringFieldUpdateOperationsInput | string
+    origin_pen_id?: StringFieldUpdateOperationsInput | string
+    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+    traceability_cattle?: traceability_cattleUncheckedUpdateManyWithoutTraceabilityNestedInput
+    traceability_status?: traceability_statusUncheckedUpdateManyWithoutTraceabilityNestedInput
+    traceability_vehicle?: traceability_vehicleUncheckedUpdateManyWithoutTraceabilityNestedInput
+  }
+
+  export type traceabilityUncheckedUpdateManyWithoutDestination_penInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reason?: StringFieldUpdateOperationsInput | string
+    document_no?: StringFieldUpdateOperationsInput | string
+    total_animal?: IntFieldUpdateOperationsInput | number
+    origin_farm_id?: StringFieldUpdateOperationsInput | string
+    origin_pen_id?: StringFieldUpdateOperationsInput | string
+    destination_farm_id?: NullableStringFieldUpdateOperationsInput | string | null
+    specific_destination_name?: NullableStringFieldUpdateOperationsInput | string | null
+    destination_province?: NullableStringFieldUpdateOperationsInput | string | null
+    shipment_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimated_arrival_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    destination_type?: StringFieldUpdateOperationsInput | string
+    buyer_title?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    buyer_identity?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by_id?: StringFieldUpdateOperationsInput | string
+    created_by?: StringFieldUpdateOperationsInput | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by_id?: StringFieldUpdateOperationsInput | string
+    updated_by?: StringFieldUpdateOperationsInput | string
+  }
+
   export type traceability_cattleCreateManyTraceabilityInput = {
     id: string
-    vehicle_id: string
+    vehicle_id?: string | null
     cattle_id: string
     created_at: Date | string
     created_by_id: string
@@ -68251,12 +70546,12 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_by_id?: StringFieldUpdateOperationsInput | string
     updated_by?: StringFieldUpdateOperationsInput | string
-    traceability_vehicle?: traceability_vehicleUpdateOneRequiredWithoutTraceability_cattleNestedInput
+    traceability_vehicle?: traceability_vehicleUpdateOneWithoutTraceability_cattleNestedInput
   }
 
   export type traceability_cattleUncheckedUpdateWithoutTraceabilityInput = {
     id?: StringFieldUpdateOperationsInput | string
-    vehicle_id?: StringFieldUpdateOperationsInput | string
+    vehicle_id?: NullableStringFieldUpdateOperationsInput | string | null
     cattle_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string
@@ -68268,7 +70563,7 @@ export namespace Prisma {
 
   export type traceability_cattleUncheckedUpdateManyWithoutTraceabilityInput = {
     id?: StringFieldUpdateOperationsInput | string
-    vehicle_id?: StringFieldUpdateOperationsInput | string
+    vehicle_id?: NullableStringFieldUpdateOperationsInput | string | null
     cattle_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_by_id?: StringFieldUpdateOperationsInput | string

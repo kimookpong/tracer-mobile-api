@@ -20,6 +20,27 @@ function generateUUID() {
   });
 }
 
+function generateRandomNumber(length) {
+  let result = "";
+  const characters = "0123456789";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+function generateRandomString(length) {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
 // generate F240001 F is type Farms,Farmers,Users,Cows 24 is current year 0001 is Running number
 function generateTracerId(type, runningNumber) {
   const currentYear = new Date().getFullYear().toString().slice(-2);
@@ -30,4 +51,6 @@ module.exports = {
   toCamelCase,
   generateUUID,
   generateTracerId,
+  generateRandomNumber,
+  generateRandomString,
 };

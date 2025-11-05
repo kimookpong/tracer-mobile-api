@@ -586,6 +586,8 @@ model farms {
   farm_authorized                   farm_authorized[]
   farm_veterinary                   farm_veterinary[]
   pens                              pens[]
+  traceability_origin               traceability[]     @relation("origin_farm")
+  traceability_destination          traceability[]     @relation("destination_farm")
 }
 
 model order_attachments {
@@ -694,6 +696,8 @@ model pens {
   cattles         cattles[]
   pen_attachments pen_attachments[]
   farms           farms             @relation(fields: [farm_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_farm_id")
+  traceability_origin      traceability[] @relation("origin_pen")
+  traceability_destination traceability[] @relation("destination_pen")
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
@@ -724,6 +728,10 @@ model traceability {
   shipment_date             DateTime               @db.Timestamp(6)
   estimated_arrival_date    DateTime               @db.Timestamp(6)
   destination_type          String                 @db.VarChar(30)
+  buyer_title               String?                @db.VarChar
+  buyer_first_name          String?                @db.VarChar
+  buyer_last_name           String?                @db.VarChar
+  buyer_identity            String?                @db.VarChar
   status                    String                 @db.VarChar(50)
   created_at                DateTime               @db.Timestamp(6)
   created_by_id             String                 @db.VarChar(36)
@@ -734,21 +742,25 @@ model traceability {
   traceability_cattle       traceability_cattle[]
   traceability_status       traceability_status[]
   traceability_vehicle      traceability_vehicle[]
+  origin_farm               farms                  @relation("origin_farm", fields: [origin_farm_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_origin_farm_id")
+  destination_farm          farms?                 @relation("destination_farm", fields: [destination_farm_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_destination_farm_id")
+  origin_pen                pens                   @relation("origin_pen", fields: [origin_pen_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_origin_pen_id")
+  destination_pen           pens?                  @relation("destination_pen", fields: [destination_pen_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_destination_pen_id")
 }
 
 model traceability_cattle {
-  id                   String               @id @db.VarChar(36)
-  traceability_id      String               @db.VarChar(36)
-  vehicle_id           String               @db.VarChar(36)
-  cattle_id            String               @db.VarChar(36)
-  created_at           DateTime             @db.Timestamp(6)
-  created_by_id        String               @db.VarChar(36)
-  created_by           String               @db.VarChar
-  updated_at           DateTime             @db.Timestamp(6)
-  updated_by_id        String               @db.VarChar(36)
-  updated_by           String               @db.VarChar
-  traceability         traceability         @relation(fields: [traceability_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_traceability_id")
-  traceability_vehicle traceability_vehicle @relation(fields: [vehicle_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_vehicle_id")
+  id                   String                @id @db.VarChar(36)
+  traceability_id      String                @db.VarChar(36)
+  vehicle_id           String?               @db.VarChar(36)
+  cattle_id            String                @db.VarChar(36)
+  created_at           DateTime              @db.Timestamp(6)
+  created_by_id        String                @db.VarChar(36)
+  created_by           String                @db.VarChar
+  updated_at           DateTime              @db.Timestamp(6)
+  updated_by_id        String                @db.VarChar(36)
+  updated_by           String                @db.VarChar
+  traceability         traceability          @relation(fields: [traceability_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_traceability_id")
+  traceability_vehicle traceability_vehicle? @relation(fields: [vehicle_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_vehicle_id")
 }
 
 model traceability_status {

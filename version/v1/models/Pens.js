@@ -8,7 +8,13 @@ exports.getAll = async (req, res, next) => {
     const data = await prisma.pens.findMany({
       include: {
         farms: true,
-        cattles: true,
+        cattles: {
+          where: {
+            status: {
+              not: "SOLD",
+            },
+          },
+        },
         pen_attachments: true,
       },
     });
@@ -26,7 +32,13 @@ exports.getId = async (req, res, next) => {
       where: { id: id },
       include: {
         farms: true,
-        cattles: true,
+        cattles: {
+          where: {
+            status: {
+              not: "SOLD",
+            },
+          },
+        },
         pen_attachments: true,
       },
     });
@@ -49,7 +61,13 @@ exports.getByFarmId = async (req, res, next) => {
       where: { farm_id: farmId },
       include: {
         farms: true,
-        cattles: true,
+        cattles: {
+          where: {
+            status: {
+              not: "SOLD",
+            },
+          },
+        },
         pen_attachments: true,
       },
     });
@@ -181,7 +199,13 @@ exports.getStats = async (req, res, next) => {
     const pen = await prisma.pens.findFirst({
       where: { id: id },
       include: {
-        cattles: true,
+        cattles: {
+          where: {
+            status: {
+              not: "SOLD",
+            },
+          },
+        },
       },
     });
 

@@ -10,6 +10,7 @@ const Cattles = require("./models/Cattles");
 const Master = require("./models/Master");
 const Upload = require("./models/Upload");
 const Traceability = require("./models/Traceability");
+const Orders = require("./models/Orders");
 const verifyToken = require("../../middleware/auth");
 
 // Authentication
@@ -124,5 +125,17 @@ router.get(
   verifyToken,
   Traceability.getStatusHistory
 );
+
+// Orders
+router.get("/orders", verifyToken, Orders.getAll);
+router.post("/orders", verifyToken, Orders.create);
+router.get("/orders/:id", verifyToken, Orders.getId);
+router.put("/orders/:id", verifyToken, Orders.update);
+router.delete("/orders/:id", verifyToken, Orders.remove);
+router.get("/orders/code/:orderCode", verifyToken, Orders.getByOrderCode);
+router.get("/orders/buyer/:buyerId", verifyToken, Orders.getByBuyerId);
+router.get("/orders/status/:status", verifyToken, Orders.getByStatus);
+router.post("/orders/:id/status", verifyToken, Orders.updateStatus);
+router.get("/orders/buyer/:buyerId/stats", verifyToken, Orders.getStatsByBuyer);
 
 module.exports = router;

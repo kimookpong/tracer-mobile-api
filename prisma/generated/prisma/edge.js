@@ -916,7 +916,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\github\\tracer-mobile-api\\prisma\\generated\\prisma",
+      "value": "/Users/cdimac/Documents/GitHub/tracer-mobile-api/prisma/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -925,12 +925,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\github\\tracer-mobile-api\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/cdimac/Documents/GitHub/tracer-mobile-api/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -944,6 +944,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {

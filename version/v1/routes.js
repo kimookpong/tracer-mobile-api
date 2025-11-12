@@ -1,3 +1,4 @@
+const Notifications = require("./models/Notifications");
 const express = require("express");
 const router = express.Router();
 const Admins = require("./models/Admins");
@@ -11,6 +12,7 @@ const Master = require("./models/Master");
 const Upload = require("./models/Upload");
 const Traceability = require("./models/Traceability");
 const Orders = require("./models/Orders");
+const UserDevices = require("./models/UserDevices");
 const verifyToken = require("../../middleware/auth");
 
 // Authentication
@@ -138,5 +140,18 @@ router.get("/orders/buyer/:buyerId", verifyToken, Orders.getByBuyerId);
 router.get("/orders/status/:status", verifyToken, Orders.getByStatus);
 router.post("/orders/:id/status", verifyToken, Orders.updateStatus);
 router.get("/orders/buyer/:buyerId/stats", verifyToken, Orders.getStatsByBuyer);
+
+// Notifications
+router.post("/notifications", verifyToken, Notifications.create);
+router.get("/notifications", verifyToken, Notifications.getAll);
+router.get("/notifications/:id", verifyToken, Notifications.getById);
+router.get("/notifications/user/:userId", verifyToken, Notifications.getByUser);
+router.get("/notifications/countUnread/:userId", verifyToken, Notifications.countUnread);
+router.post("/notifications/:id/read", verifyToken, Notifications.markAsRead);
+
+// User Devices
+router.post("/user-devices", verifyToken, UserDevices.create);
+router.get("/user-devices", verifyToken, UserDevices.getAll);
+router.get("/user-devices/:id", verifyToken, UserDevices.getById);
 
 module.exports = router;

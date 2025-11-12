@@ -825,4 +825,35 @@ model user {
   email          String?   @db.VarChar
   line_id        String?   @db.VarChar
   avatar         String?   @db.VarChar
+  user_devices   user_devices[]
+  notifications  notifications[]
+}
+
+
+model user_devices {
+  id           String   @id @db.VarChar(36)
+  user_id       String   @db.VarChar(36)
+  device_type   String   @db.VarChar(20)
+  device_token  String   @db.VarChar(255)
+  device_id     String   @db.VarChar(255)
+  device_model  String   @db.VarChar(255)
+  os_version    String   @db.VarChar(50)
+  app_version   String   @db.VarChar(20)
+  created_at    DateTime @default(now()) @db.Timestamp(6)
+  updated_at    DateTime @updatedAt @db.Timestamp(6)
+  user          user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_id")
+}
+
+model notifications {
+  id        String   @id @db.VarChar(36)
+  user_id   String   @db.VarChar(36)
+  title     String   @db.VarChar(255)
+  body      String   @db.VarChar(1000)
+  type      String   @db.VarChar(50)
+  read_flag Boolean  @default(false)
+  route     String?  @db.VarChar(255)
+  image     String?  @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  updated_at DateTime @updatedAt @db.Timestamp(6)
+  user      user     @relation(fields: [user_id], references: [id])
 }

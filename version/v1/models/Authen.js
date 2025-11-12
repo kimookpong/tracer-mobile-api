@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
-const { toCamelCase } = require("../../../middleware/utils");
+const { toCamelCase, sendPushNotification, createNotification } = require("../../../middleware/utils");
 const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("../../../prisma/generated/prisma");
 const prisma = new PrismaClient();
@@ -108,7 +108,8 @@ exports.loginTest = async (req, res, next) => {
       });
     }
     const accessToken = jwt.sign(user, process.env.JWT_TOKEN_SECRET);
-
+    await createNotification({ userId: user.id, type: "ACCOUNT", title: "ทดสอบการเข้าสู่ระบบ", body: "คุณได้เข้าสู่ระบบสำเร็จ", route: "dashboard", image: null });
+    // await sendPushNotification(user.id, "Login Successful", "You have successfully logged in.", "dashboard", {});
     res.status(200).json({
       status: "success",
       message: "Login successful",

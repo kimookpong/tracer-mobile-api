@@ -881,6 +881,32 @@ exports.Prisma.UserScalarFieldEnum = {
   avatar: 'avatar'
 };
 
+exports.Prisma.User_devicesScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  device_type: 'device_type',
+  device_token: 'device_token',
+  device_id: 'device_id',
+  device_model: 'device_model',
+  os_version: 'os_version',
+  app_version: 'app_version',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.NotificationsScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  title: 'title',
+  body: 'body',
+  type: 'type',
+  read_flag: 'read_flag',
+  route: 'route',
+  image: 'image',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -931,7 +957,9 @@ exports.Prisma.ModelName = {
   traceability_cattle: 'traceability_cattle',
   traceability_status: 'traceability_status',
   traceability_vehicle: 'traceability_vehicle',
-  user: 'user'
+  user: 'user',
+  user_devices: 'user_devices',
+  notifications: 'notifications'
 };
 
 /**

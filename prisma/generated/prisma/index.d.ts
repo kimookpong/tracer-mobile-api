@@ -183,6 +183,16 @@ export type traceability_vehicle = $Result.DefaultSelection<Prisma.$traceability
  * The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
  */
 export type user = $Result.DefaultSelection<Prisma.$userPayload>
+/**
+ * Model user_devices
+ * 
+ */
+export type user_devices = $Result.DefaultSelection<Prisma.$user_devicesPayload>
+/**
+ * Model notifications
+ * 
+ */
+export type notifications = $Result.DefaultSelection<Prisma.$notificationsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -648,6 +658,26 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.userDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user_devices`: Exposes CRUD operations for the **user_devices** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_devices
+    * const user_devices = await prisma.user_devices.findMany()
+    * ```
+    */
+  get user_devices(): Prisma.user_devicesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.notifications`: Exposes CRUD operations for the **notifications** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Notifications
+    * const notifications = await prisma.notifications.findMany()
+    * ```
+    */
+  get notifications(): Prisma.notificationsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1121,7 +1151,9 @@ export namespace Prisma {
     traceability_cattle: 'traceability_cattle',
     traceability_status: 'traceability_status',
     traceability_vehicle: 'traceability_vehicle',
-    user: 'user'
+    user: 'user',
+    user_devices: 'user_devices',
+    notifications: 'notifications'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1140,7 +1172,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "admins" | "buyer_attachments" | "buyers" | "cattle_attachments" | "cattle_breeds" | "cattle_create_staged" | "cattle_healths" | "cattle_matching_order_staged" | "cattle_sourcing" | "cattle_types" | "cattle_vaccinations" | "cattles" | "data_migrations" | "farm_attachments" | "farm_authorized" | "farm_create_staged" | "farm_sourcing" | "farm_veterinary" | "farmer_accounts" | "farmer_attachments" | "farmer_create_staged" | "farmers" | "farms" | "order_attachments" | "order_requests" | "orders" | "pen_attachments" | "pens" | "schema_migrations" | "traceability" | "traceability_cattle" | "traceability_status" | "traceability_vehicle" | "user"
+      modelProps: "admins" | "buyer_attachments" | "buyers" | "cattle_attachments" | "cattle_breeds" | "cattle_create_staged" | "cattle_healths" | "cattle_matching_order_staged" | "cattle_sourcing" | "cattle_types" | "cattle_vaccinations" | "cattles" | "data_migrations" | "farm_attachments" | "farm_authorized" | "farm_create_staged" | "farm_sourcing" | "farm_veterinary" | "farmer_accounts" | "farmer_attachments" | "farmer_create_staged" | "farmers" | "farms" | "order_attachments" | "order_requests" | "orders" | "pen_attachments" | "pens" | "schema_migrations" | "traceability" | "traceability_cattle" | "traceability_status" | "traceability_vehicle" | "user" | "user_devices" | "notifications"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3660,6 +3692,154 @@ export namespace Prisma {
           }
         }
       }
+      user_devices: {
+        payload: Prisma.$user_devicesPayload<ExtArgs>
+        fields: Prisma.user_devicesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.user_devicesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.user_devicesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload>
+          }
+          findFirst: {
+            args: Prisma.user_devicesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.user_devicesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload>
+          }
+          findMany: {
+            args: Prisma.user_devicesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload>[]
+          }
+          create: {
+            args: Prisma.user_devicesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload>
+          }
+          createMany: {
+            args: Prisma.user_devicesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.user_devicesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload>[]
+          }
+          delete: {
+            args: Prisma.user_devicesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload>
+          }
+          update: {
+            args: Prisma.user_devicesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload>
+          }
+          deleteMany: {
+            args: Prisma.user_devicesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.user_devicesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.user_devicesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload>[]
+          }
+          upsert: {
+            args: Prisma.user_devicesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_devicesPayload>
+          }
+          aggregate: {
+            args: Prisma.User_devicesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_devices>
+          }
+          groupBy: {
+            args: Prisma.user_devicesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_devicesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.user_devicesCountArgs<ExtArgs>
+            result: $Utils.Optional<User_devicesCountAggregateOutputType> | number
+          }
+        }
+      }
+      notifications: {
+        payload: Prisma.$notificationsPayload<ExtArgs>
+        fields: Prisma.notificationsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.notificationsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.notificationsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload>
+          }
+          findFirst: {
+            args: Prisma.notificationsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.notificationsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload>
+          }
+          findMany: {
+            args: Prisma.notificationsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload>[]
+          }
+          create: {
+            args: Prisma.notificationsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload>
+          }
+          createMany: {
+            args: Prisma.notificationsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.notificationsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload>[]
+          }
+          delete: {
+            args: Prisma.notificationsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload>
+          }
+          update: {
+            args: Prisma.notificationsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload>
+          }
+          deleteMany: {
+            args: Prisma.notificationsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.notificationsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.notificationsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload>[]
+          }
+          upsert: {
+            args: Prisma.notificationsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$notificationsPayload>
+          }
+          aggregate: {
+            args: Prisma.NotificationsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNotifications>
+          }
+          groupBy: {
+            args: Prisma.notificationsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NotificationsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.notificationsCountArgs<ExtArgs>
+            result: $Utils.Optional<NotificationsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -3778,6 +3958,8 @@ export namespace Prisma {
     traceability_status?: traceability_statusOmit
     traceability_vehicle?: traceability_vehicleOmit
     user?: userOmit
+    user_devices?: user_devicesOmit
+    notifications?: notificationsOmit
   }
 
   /* Types for Logging */
@@ -4278,6 +4460,46 @@ export namespace Prisma {
    */
   export type Traceability_vehicleCountOutputTypeCountTraceability_cattleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: traceability_cattleWhereInput
+  }
+
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    user_devices: number
+    notifications: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_devices?: boolean | UserCountOutputTypeCountUser_devicesArgs
+    notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUser_devicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_devicesWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: notificationsWhereInput
   }
 
 
@@ -46268,6 +46490,9 @@ export namespace Prisma {
     email?: boolean
     line_id?: boolean
     avatar?: boolean
+    user_devices?: boolean | user$user_devicesArgs<ExtArgs>
+    notifications?: boolean | user$notificationsArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type userSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -46343,10 +46568,20 @@ export namespace Prisma {
   }
 
   export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "type" | "last_login" | "user_id" | "approve_status" | "role_id" | "type_id" | "company_name" | "company_id" | "title_name" | "first_name" | "last_name" | "birth_date" | "nationality_id" | "id_card" | "mobile_number" | "office_number" | "email" | "line_id" | "avatar", ExtArgs["result"]["user"]>
+  export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user_devices?: boolean | user$user_devicesArgs<ExtArgs>
+    notifications?: boolean | user$notificationsArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type userIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type userIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $userPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user"
-    objects: {}
+    objects: {
+      user_devices: Prisma.$user_devicesPayload<ExtArgs>[]
+      notifications: Prisma.$notificationsPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       token: string
@@ -46763,6 +46998,8 @@ export namespace Prisma {
    */
   export interface Prisma__userClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user_devices<T extends user$user_devicesArgs<ExtArgs> = {}>(args?: Subset<T, user$user_devicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notifications<T extends user$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, user$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -46830,6 +47067,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter, which user to fetch.
      */
     where: userWhereUniqueInput
@@ -46848,6 +47089,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter, which user to fetch.
      */
     where: userWhereUniqueInput
@@ -46865,6 +47110,10 @@ export namespace Prisma {
      * Omit specific fields from the user
      */
     omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
     /**
      * Filter, which user to fetch.
      */
@@ -46914,6 +47163,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter, which user to fetch.
      */
     where?: userWhereInput
@@ -46962,6 +47215,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where?: userWhereInput
@@ -47004,6 +47261,10 @@ export namespace Prisma {
      * Omit specific fields from the user
      */
     omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
     /**
      * The data needed to create a user.
      */
@@ -47052,6 +47313,10 @@ export namespace Prisma {
      * Omit specific fields from the user
      */
     omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
     /**
      * The data needed to update a user.
      */
@@ -47119,6 +47384,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * The filter to search for the user to update in case it exists.
      */
     where: userWhereUniqueInput
@@ -47145,6 +47414,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter which user to delete.
      */
     where: userWhereUniqueInput
@@ -47165,6 +47438,54 @@ export namespace Prisma {
   }
 
   /**
+   * user.user_devices
+   */
+  export type user$user_devicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    where?: user_devicesWhereInput
+    orderBy?: user_devicesOrderByWithRelationInput | user_devicesOrderByWithRelationInput[]
+    cursor?: user_devicesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_devicesScalarFieldEnum | User_devicesScalarFieldEnum[]
+  }
+
+  /**
+   * user.notifications
+   */
+  export type user$notificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    where?: notificationsWhereInput
+    orderBy?: notificationsOrderByWithRelationInput | notificationsOrderByWithRelationInput[]
+    cursor?: notificationsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NotificationsScalarFieldEnum | NotificationsScalarFieldEnum[]
+  }
+
+  /**
    * user without action
    */
   export type userDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -47176,6 +47497,2256 @@ export namespace Prisma {
      * Omit specific fields from the user
      */
     omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model user_devices
+   */
+
+  export type AggregateUser_devices = {
+    _count: User_devicesCountAggregateOutputType | null
+    _min: User_devicesMinAggregateOutputType | null
+    _max: User_devicesMaxAggregateOutputType | null
+  }
+
+  export type User_devicesMinAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    device_type: string | null
+    device_token: string | null
+    device_id: string | null
+    device_model: string | null
+    os_version: string | null
+    app_version: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type User_devicesMaxAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    device_type: string | null
+    device_token: string | null
+    device_id: string | null
+    device_model: string | null
+    os_version: string | null
+    app_version: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type User_devicesCountAggregateOutputType = {
+    id: number
+    user_id: number
+    device_type: number
+    device_token: number
+    device_id: number
+    device_model: number
+    os_version: number
+    app_version: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type User_devicesMinAggregateInputType = {
+    id?: true
+    user_id?: true
+    device_type?: true
+    device_token?: true
+    device_id?: true
+    device_model?: true
+    os_version?: true
+    app_version?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type User_devicesMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+    device_type?: true
+    device_token?: true
+    device_id?: true
+    device_model?: true
+    os_version?: true
+    app_version?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type User_devicesCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    device_type?: true
+    device_token?: true
+    device_id?: true
+    device_model?: true
+    os_version?: true
+    app_version?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type User_devicesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_devices to aggregate.
+     */
+    where?: user_devicesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_devices to fetch.
+     */
+    orderBy?: user_devicesOrderByWithRelationInput | user_devicesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: user_devicesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_devices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned user_devices
+    **/
+    _count?: true | User_devicesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_devicesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_devicesMaxAggregateInputType
+  }
+
+  export type GetUser_devicesAggregateType<T extends User_devicesAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_devices]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_devices[P]>
+      : GetScalarType<T[P], AggregateUser_devices[P]>
+  }
+
+
+
+
+  export type user_devicesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_devicesWhereInput
+    orderBy?: user_devicesOrderByWithAggregationInput | user_devicesOrderByWithAggregationInput[]
+    by: User_devicesScalarFieldEnum[] | User_devicesScalarFieldEnum
+    having?: user_devicesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_devicesCountAggregateInputType | true
+    _min?: User_devicesMinAggregateInputType
+    _max?: User_devicesMaxAggregateInputType
+  }
+
+  export type User_devicesGroupByOutputType = {
+    id: string
+    user_id: string
+    device_type: string
+    device_token: string
+    device_id: string
+    device_model: string
+    os_version: string
+    app_version: string
+    created_at: Date
+    updated_at: Date
+    _count: User_devicesCountAggregateOutputType | null
+    _min: User_devicesMinAggregateOutputType | null
+    _max: User_devicesMaxAggregateOutputType | null
+  }
+
+  type GetUser_devicesGroupByPayload<T extends user_devicesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_devicesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_devicesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_devicesGroupByOutputType[P]>
+            : GetScalarType<T[P], User_devicesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type user_devicesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    device_type?: boolean
+    device_token?: boolean
+    device_id?: boolean
+    device_model?: boolean
+    os_version?: boolean
+    app_version?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_devices"]>
+
+  export type user_devicesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    device_type?: boolean
+    device_token?: boolean
+    device_id?: boolean
+    device_model?: boolean
+    os_version?: boolean
+    app_version?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_devices"]>
+
+  export type user_devicesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    device_type?: boolean
+    device_token?: boolean
+    device_id?: boolean
+    device_model?: boolean
+    os_version?: boolean
+    app_version?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_devices"]>
+
+  export type user_devicesSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+    device_type?: boolean
+    device_token?: boolean
+    device_id?: boolean
+    device_model?: boolean
+    os_version?: boolean
+    app_version?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type user_devicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "device_type" | "device_token" | "device_id" | "device_model" | "os_version" | "app_version" | "created_at" | "updated_at", ExtArgs["result"]["user_devices"]>
+  export type user_devicesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type user_devicesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type user_devicesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }
+
+  export type $user_devicesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "user_devices"
+    objects: {
+      user: Prisma.$userPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      user_id: string
+      device_type: string
+      device_token: string
+      device_id: string
+      device_model: string
+      os_version: string
+      app_version: string
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["user_devices"]>
+    composites: {}
+  }
+
+  type user_devicesGetPayload<S extends boolean | null | undefined | user_devicesDefaultArgs> = $Result.GetResult<Prisma.$user_devicesPayload, S>
+
+  type user_devicesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<user_devicesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: User_devicesCountAggregateInputType | true
+    }
+
+  export interface user_devicesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['user_devices'], meta: { name: 'user_devices' } }
+    /**
+     * Find zero or one User_devices that matches the filter.
+     * @param {user_devicesFindUniqueArgs} args - Arguments to find a User_devices
+     * @example
+     * // Get one User_devices
+     * const user_devices = await prisma.user_devices.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends user_devicesFindUniqueArgs>(args: SelectSubset<T, user_devicesFindUniqueArgs<ExtArgs>>): Prisma__user_devicesClient<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User_devices that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {user_devicesFindUniqueOrThrowArgs} args - Arguments to find a User_devices
+     * @example
+     * // Get one User_devices
+     * const user_devices = await prisma.user_devices.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends user_devicesFindUniqueOrThrowArgs>(args: SelectSubset<T, user_devicesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__user_devicesClient<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_devices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_devicesFindFirstArgs} args - Arguments to find a User_devices
+     * @example
+     * // Get one User_devices
+     * const user_devices = await prisma.user_devices.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends user_devicesFindFirstArgs>(args?: SelectSubset<T, user_devicesFindFirstArgs<ExtArgs>>): Prisma__user_devicesClient<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_devices that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_devicesFindFirstOrThrowArgs} args - Arguments to find a User_devices
+     * @example
+     * // Get one User_devices
+     * const user_devices = await prisma.user_devices.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends user_devicesFindFirstOrThrowArgs>(args?: SelectSubset<T, user_devicesFindFirstOrThrowArgs<ExtArgs>>): Prisma__user_devicesClient<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more User_devices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_devicesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_devices
+     * const user_devices = await prisma.user_devices.findMany()
+     * 
+     * // Get first 10 User_devices
+     * const user_devices = await prisma.user_devices.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const user_devicesWithIdOnly = await prisma.user_devices.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends user_devicesFindManyArgs>(args?: SelectSubset<T, user_devicesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User_devices.
+     * @param {user_devicesCreateArgs} args - Arguments to create a User_devices.
+     * @example
+     * // Create one User_devices
+     * const User_devices = await prisma.user_devices.create({
+     *   data: {
+     *     // ... data to create a User_devices
+     *   }
+     * })
+     * 
+     */
+    create<T extends user_devicesCreateArgs>(args: SelectSubset<T, user_devicesCreateArgs<ExtArgs>>): Prisma__user_devicesClient<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many User_devices.
+     * @param {user_devicesCreateManyArgs} args - Arguments to create many User_devices.
+     * @example
+     * // Create many User_devices
+     * const user_devices = await prisma.user_devices.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends user_devicesCreateManyArgs>(args?: SelectSubset<T, user_devicesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many User_devices and returns the data saved in the database.
+     * @param {user_devicesCreateManyAndReturnArgs} args - Arguments to create many User_devices.
+     * @example
+     * // Create many User_devices
+     * const user_devices = await prisma.user_devices.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many User_devices and only return the `id`
+     * const user_devicesWithIdOnly = await prisma.user_devices.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends user_devicesCreateManyAndReturnArgs>(args?: SelectSubset<T, user_devicesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a User_devices.
+     * @param {user_devicesDeleteArgs} args - Arguments to delete one User_devices.
+     * @example
+     * // Delete one User_devices
+     * const User_devices = await prisma.user_devices.delete({
+     *   where: {
+     *     // ... filter to delete one User_devices
+     *   }
+     * })
+     * 
+     */
+    delete<T extends user_devicesDeleteArgs>(args: SelectSubset<T, user_devicesDeleteArgs<ExtArgs>>): Prisma__user_devicesClient<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User_devices.
+     * @param {user_devicesUpdateArgs} args - Arguments to update one User_devices.
+     * @example
+     * // Update one User_devices
+     * const user_devices = await prisma.user_devices.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends user_devicesUpdateArgs>(args: SelectSubset<T, user_devicesUpdateArgs<ExtArgs>>): Prisma__user_devicesClient<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more User_devices.
+     * @param {user_devicesDeleteManyArgs} args - Arguments to filter User_devices to delete.
+     * @example
+     * // Delete a few User_devices
+     * const { count } = await prisma.user_devices.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends user_devicesDeleteManyArgs>(args?: SelectSubset<T, user_devicesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_devicesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_devices
+     * const user_devices = await prisma.user_devices.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends user_devicesUpdateManyArgs>(args: SelectSubset<T, user_devicesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_devices and returns the data updated in the database.
+     * @param {user_devicesUpdateManyAndReturnArgs} args - Arguments to update many User_devices.
+     * @example
+     * // Update many User_devices
+     * const user_devices = await prisma.user_devices.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more User_devices and only return the `id`
+     * const user_devicesWithIdOnly = await prisma.user_devices.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends user_devicesUpdateManyAndReturnArgs>(args: SelectSubset<T, user_devicesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one User_devices.
+     * @param {user_devicesUpsertArgs} args - Arguments to update or create a User_devices.
+     * @example
+     * // Update or create a User_devices
+     * const user_devices = await prisma.user_devices.upsert({
+     *   create: {
+     *     // ... data to create a User_devices
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_devices we want to update
+     *   }
+     * })
+     */
+    upsert<T extends user_devicesUpsertArgs>(args: SelectSubset<T, user_devicesUpsertArgs<ExtArgs>>): Prisma__user_devicesClient<$Result.GetResult<Prisma.$user_devicesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of User_devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_devicesCountArgs} args - Arguments to filter User_devices to count.
+     * @example
+     * // Count the number of User_devices
+     * const count = await prisma.user_devices.count({
+     *   where: {
+     *     // ... the filter for the User_devices we want to count
+     *   }
+     * })
+    **/
+    count<T extends user_devicesCountArgs>(
+      args?: Subset<T, user_devicesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_devicesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_devicesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_devicesAggregateArgs>(args: Subset<T, User_devicesAggregateArgs>): Prisma.PrismaPromise<GetUser_devicesAggregateType<T>>
+
+    /**
+     * Group by User_devices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_devicesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends user_devicesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: user_devicesGroupByArgs['orderBy'] }
+        : { orderBy?: user_devicesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, user_devicesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_devicesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the user_devices model
+   */
+  readonly fields: user_devicesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for user_devices.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__user_devicesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the user_devices model
+   */
+  interface user_devicesFieldRefs {
+    readonly id: FieldRef<"user_devices", 'String'>
+    readonly user_id: FieldRef<"user_devices", 'String'>
+    readonly device_type: FieldRef<"user_devices", 'String'>
+    readonly device_token: FieldRef<"user_devices", 'String'>
+    readonly device_id: FieldRef<"user_devices", 'String'>
+    readonly device_model: FieldRef<"user_devices", 'String'>
+    readonly os_version: FieldRef<"user_devices", 'String'>
+    readonly app_version: FieldRef<"user_devices", 'String'>
+    readonly created_at: FieldRef<"user_devices", 'DateTime'>
+    readonly updated_at: FieldRef<"user_devices", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * user_devices findUnique
+   */
+  export type user_devicesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    /**
+     * Filter, which user_devices to fetch.
+     */
+    where: user_devicesWhereUniqueInput
+  }
+
+  /**
+   * user_devices findUniqueOrThrow
+   */
+  export type user_devicesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    /**
+     * Filter, which user_devices to fetch.
+     */
+    where: user_devicesWhereUniqueInput
+  }
+
+  /**
+   * user_devices findFirst
+   */
+  export type user_devicesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    /**
+     * Filter, which user_devices to fetch.
+     */
+    where?: user_devicesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_devices to fetch.
+     */
+    orderBy?: user_devicesOrderByWithRelationInput | user_devicesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_devices.
+     */
+    cursor?: user_devicesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_devices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_devices.
+     */
+    distinct?: User_devicesScalarFieldEnum | User_devicesScalarFieldEnum[]
+  }
+
+  /**
+   * user_devices findFirstOrThrow
+   */
+  export type user_devicesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    /**
+     * Filter, which user_devices to fetch.
+     */
+    where?: user_devicesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_devices to fetch.
+     */
+    orderBy?: user_devicesOrderByWithRelationInput | user_devicesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_devices.
+     */
+    cursor?: user_devicesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_devices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_devices.
+     */
+    distinct?: User_devicesScalarFieldEnum | User_devicesScalarFieldEnum[]
+  }
+
+  /**
+   * user_devices findMany
+   */
+  export type user_devicesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    /**
+     * Filter, which user_devices to fetch.
+     */
+    where?: user_devicesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_devices to fetch.
+     */
+    orderBy?: user_devicesOrderByWithRelationInput | user_devicesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing user_devices.
+     */
+    cursor?: user_devicesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_devices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_devices.
+     */
+    skip?: number
+    distinct?: User_devicesScalarFieldEnum | User_devicesScalarFieldEnum[]
+  }
+
+  /**
+   * user_devices create
+   */
+  export type user_devicesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a user_devices.
+     */
+    data: XOR<user_devicesCreateInput, user_devicesUncheckedCreateInput>
+  }
+
+  /**
+   * user_devices createMany
+   */
+  export type user_devicesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many user_devices.
+     */
+    data: user_devicesCreateManyInput | user_devicesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * user_devices createManyAndReturn
+   */
+  export type user_devicesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * The data used to create many user_devices.
+     */
+    data: user_devicesCreateManyInput | user_devicesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * user_devices update
+   */
+  export type user_devicesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a user_devices.
+     */
+    data: XOR<user_devicesUpdateInput, user_devicesUncheckedUpdateInput>
+    /**
+     * Choose, which user_devices to update.
+     */
+    where: user_devicesWhereUniqueInput
+  }
+
+  /**
+   * user_devices updateMany
+   */
+  export type user_devicesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update user_devices.
+     */
+    data: XOR<user_devicesUpdateManyMutationInput, user_devicesUncheckedUpdateManyInput>
+    /**
+     * Filter which user_devices to update
+     */
+    where?: user_devicesWhereInput
+    /**
+     * Limit how many user_devices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_devices updateManyAndReturn
+   */
+  export type user_devicesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * The data used to update user_devices.
+     */
+    data: XOR<user_devicesUpdateManyMutationInput, user_devicesUncheckedUpdateManyInput>
+    /**
+     * Filter which user_devices to update
+     */
+    where?: user_devicesWhereInput
+    /**
+     * Limit how many user_devices to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * user_devices upsert
+   */
+  export type user_devicesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the user_devices to update in case it exists.
+     */
+    where: user_devicesWhereUniqueInput
+    /**
+     * In case the user_devices found by the `where` argument doesn't exist, create a new user_devices with this data.
+     */
+    create: XOR<user_devicesCreateInput, user_devicesUncheckedCreateInput>
+    /**
+     * In case the user_devices was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<user_devicesUpdateInput, user_devicesUncheckedUpdateInput>
+  }
+
+  /**
+   * user_devices delete
+   */
+  export type user_devicesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+    /**
+     * Filter which user_devices to delete.
+     */
+    where: user_devicesWhereUniqueInput
+  }
+
+  /**
+   * user_devices deleteMany
+   */
+  export type user_devicesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_devices to delete
+     */
+    where?: user_devicesWhereInput
+    /**
+     * Limit how many user_devices to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_devices without action
+   */
+  export type user_devicesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_devices
+     */
+    select?: user_devicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_devices
+     */
+    omit?: user_devicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_devicesInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model notifications
+   */
+
+  export type AggregateNotifications = {
+    _count: NotificationsCountAggregateOutputType | null
+    _min: NotificationsMinAggregateOutputType | null
+    _max: NotificationsMaxAggregateOutputType | null
+  }
+
+  export type NotificationsMinAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    title: string | null
+    body: string | null
+    type: string | null
+    read_flag: boolean | null
+    route: string | null
+    image: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type NotificationsMaxAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    title: string | null
+    body: string | null
+    type: string | null
+    read_flag: boolean | null
+    route: string | null
+    image: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type NotificationsCountAggregateOutputType = {
+    id: number
+    user_id: number
+    title: number
+    body: number
+    type: number
+    read_flag: number
+    route: number
+    image: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type NotificationsMinAggregateInputType = {
+    id?: true
+    user_id?: true
+    title?: true
+    body?: true
+    type?: true
+    read_flag?: true
+    route?: true
+    image?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type NotificationsMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+    title?: true
+    body?: true
+    type?: true
+    read_flag?: true
+    route?: true
+    image?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type NotificationsCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    title?: true
+    body?: true
+    type?: true
+    read_flag?: true
+    route?: true
+    image?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type NotificationsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which notifications to aggregate.
+     */
+    where?: notificationsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of notifications to fetch.
+     */
+    orderBy?: notificationsOrderByWithRelationInput | notificationsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: notificationsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned notifications
+    **/
+    _count?: true | NotificationsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NotificationsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NotificationsMaxAggregateInputType
+  }
+
+  export type GetNotificationsAggregateType<T extends NotificationsAggregateArgs> = {
+        [P in keyof T & keyof AggregateNotifications]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNotifications[P]>
+      : GetScalarType<T[P], AggregateNotifications[P]>
+  }
+
+
+
+
+  export type notificationsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: notificationsWhereInput
+    orderBy?: notificationsOrderByWithAggregationInput | notificationsOrderByWithAggregationInput[]
+    by: NotificationsScalarFieldEnum[] | NotificationsScalarFieldEnum
+    having?: notificationsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NotificationsCountAggregateInputType | true
+    _min?: NotificationsMinAggregateInputType
+    _max?: NotificationsMaxAggregateInputType
+  }
+
+  export type NotificationsGroupByOutputType = {
+    id: string
+    user_id: string
+    title: string
+    body: string
+    type: string
+    read_flag: boolean
+    route: string | null
+    image: string | null
+    created_at: Date
+    updated_at: Date
+    _count: NotificationsCountAggregateOutputType | null
+    _min: NotificationsMinAggregateOutputType | null
+    _max: NotificationsMaxAggregateOutputType | null
+  }
+
+  type GetNotificationsGroupByPayload<T extends notificationsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NotificationsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NotificationsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NotificationsGroupByOutputType[P]>
+            : GetScalarType<T[P], NotificationsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type notificationsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    title?: boolean
+    body?: boolean
+    type?: boolean
+    read_flag?: boolean
+    route?: boolean
+    image?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notifications"]>
+
+  export type notificationsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    title?: boolean
+    body?: boolean
+    type?: boolean
+    read_flag?: boolean
+    route?: boolean
+    image?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notifications"]>
+
+  export type notificationsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    title?: boolean
+    body?: boolean
+    type?: boolean
+    read_flag?: boolean
+    route?: boolean
+    image?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notifications"]>
+
+  export type notificationsSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+    title?: boolean
+    body?: boolean
+    type?: boolean
+    read_flag?: boolean
+    route?: boolean
+    image?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type notificationsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "title" | "body" | "type" | "read_flag" | "route" | "image" | "created_at" | "updated_at", ExtArgs["result"]["notifications"]>
+  export type notificationsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type notificationsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type notificationsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }
+
+  export type $notificationsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "notifications"
+    objects: {
+      user: Prisma.$userPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      user_id: string
+      title: string
+      body: string
+      type: string
+      read_flag: boolean
+      route: string | null
+      image: string | null
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["notifications"]>
+    composites: {}
+  }
+
+  type notificationsGetPayload<S extends boolean | null | undefined | notificationsDefaultArgs> = $Result.GetResult<Prisma.$notificationsPayload, S>
+
+  type notificationsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<notificationsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NotificationsCountAggregateInputType | true
+    }
+
+  export interface notificationsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['notifications'], meta: { name: 'notifications' } }
+    /**
+     * Find zero or one Notifications that matches the filter.
+     * @param {notificationsFindUniqueArgs} args - Arguments to find a Notifications
+     * @example
+     * // Get one Notifications
+     * const notifications = await prisma.notifications.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends notificationsFindUniqueArgs>(args: SelectSubset<T, notificationsFindUniqueArgs<ExtArgs>>): Prisma__notificationsClient<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Notifications that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {notificationsFindUniqueOrThrowArgs} args - Arguments to find a Notifications
+     * @example
+     * // Get one Notifications
+     * const notifications = await prisma.notifications.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends notificationsFindUniqueOrThrowArgs>(args: SelectSubset<T, notificationsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__notificationsClient<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {notificationsFindFirstArgs} args - Arguments to find a Notifications
+     * @example
+     * // Get one Notifications
+     * const notifications = await prisma.notifications.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends notificationsFindFirstArgs>(args?: SelectSubset<T, notificationsFindFirstArgs<ExtArgs>>): Prisma__notificationsClient<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notifications that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {notificationsFindFirstOrThrowArgs} args - Arguments to find a Notifications
+     * @example
+     * // Get one Notifications
+     * const notifications = await prisma.notifications.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends notificationsFindFirstOrThrowArgs>(args?: SelectSubset<T, notificationsFindFirstOrThrowArgs<ExtArgs>>): Prisma__notificationsClient<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Notifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {notificationsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Notifications
+     * const notifications = await prisma.notifications.findMany()
+     * 
+     * // Get first 10 Notifications
+     * const notifications = await prisma.notifications.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const notificationsWithIdOnly = await prisma.notifications.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends notificationsFindManyArgs>(args?: SelectSubset<T, notificationsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Notifications.
+     * @param {notificationsCreateArgs} args - Arguments to create a Notifications.
+     * @example
+     * // Create one Notifications
+     * const Notifications = await prisma.notifications.create({
+     *   data: {
+     *     // ... data to create a Notifications
+     *   }
+     * })
+     * 
+     */
+    create<T extends notificationsCreateArgs>(args: SelectSubset<T, notificationsCreateArgs<ExtArgs>>): Prisma__notificationsClient<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Notifications.
+     * @param {notificationsCreateManyArgs} args - Arguments to create many Notifications.
+     * @example
+     * // Create many Notifications
+     * const notifications = await prisma.notifications.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends notificationsCreateManyArgs>(args?: SelectSubset<T, notificationsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Notifications and returns the data saved in the database.
+     * @param {notificationsCreateManyAndReturnArgs} args - Arguments to create many Notifications.
+     * @example
+     * // Create many Notifications
+     * const notifications = await prisma.notifications.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Notifications and only return the `id`
+     * const notificationsWithIdOnly = await prisma.notifications.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends notificationsCreateManyAndReturnArgs>(args?: SelectSubset<T, notificationsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Notifications.
+     * @param {notificationsDeleteArgs} args - Arguments to delete one Notifications.
+     * @example
+     * // Delete one Notifications
+     * const Notifications = await prisma.notifications.delete({
+     *   where: {
+     *     // ... filter to delete one Notifications
+     *   }
+     * })
+     * 
+     */
+    delete<T extends notificationsDeleteArgs>(args: SelectSubset<T, notificationsDeleteArgs<ExtArgs>>): Prisma__notificationsClient<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Notifications.
+     * @param {notificationsUpdateArgs} args - Arguments to update one Notifications.
+     * @example
+     * // Update one Notifications
+     * const notifications = await prisma.notifications.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends notificationsUpdateArgs>(args: SelectSubset<T, notificationsUpdateArgs<ExtArgs>>): Prisma__notificationsClient<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Notifications.
+     * @param {notificationsDeleteManyArgs} args - Arguments to filter Notifications to delete.
+     * @example
+     * // Delete a few Notifications
+     * const { count } = await prisma.notifications.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends notificationsDeleteManyArgs>(args?: SelectSubset<T, notificationsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {notificationsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Notifications
+     * const notifications = await prisma.notifications.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends notificationsUpdateManyArgs>(args: SelectSubset<T, notificationsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notifications and returns the data updated in the database.
+     * @param {notificationsUpdateManyAndReturnArgs} args - Arguments to update many Notifications.
+     * @example
+     * // Update many Notifications
+     * const notifications = await prisma.notifications.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Notifications and only return the `id`
+     * const notificationsWithIdOnly = await prisma.notifications.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends notificationsUpdateManyAndReturnArgs>(args: SelectSubset<T, notificationsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Notifications.
+     * @param {notificationsUpsertArgs} args - Arguments to update or create a Notifications.
+     * @example
+     * // Update or create a Notifications
+     * const notifications = await prisma.notifications.upsert({
+     *   create: {
+     *     // ... data to create a Notifications
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Notifications we want to update
+     *   }
+     * })
+     */
+    upsert<T extends notificationsUpsertArgs>(args: SelectSubset<T, notificationsUpsertArgs<ExtArgs>>): Prisma__notificationsClient<$Result.GetResult<Prisma.$notificationsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {notificationsCountArgs} args - Arguments to filter Notifications to count.
+     * @example
+     * // Count the number of Notifications
+     * const count = await prisma.notifications.count({
+     *   where: {
+     *     // ... the filter for the Notifications we want to count
+     *   }
+     * })
+    **/
+    count<T extends notificationsCountArgs>(
+      args?: Subset<T, notificationsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NotificationsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NotificationsAggregateArgs>(args: Subset<T, NotificationsAggregateArgs>): Prisma.PrismaPromise<GetNotificationsAggregateType<T>>
+
+    /**
+     * Group by Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {notificationsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends notificationsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: notificationsGroupByArgs['orderBy'] }
+        : { orderBy?: notificationsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, notificationsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNotificationsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the notifications model
+   */
+  readonly fields: notificationsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for notifications.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__notificationsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the notifications model
+   */
+  interface notificationsFieldRefs {
+    readonly id: FieldRef<"notifications", 'String'>
+    readonly user_id: FieldRef<"notifications", 'String'>
+    readonly title: FieldRef<"notifications", 'String'>
+    readonly body: FieldRef<"notifications", 'String'>
+    readonly type: FieldRef<"notifications", 'String'>
+    readonly read_flag: FieldRef<"notifications", 'Boolean'>
+    readonly route: FieldRef<"notifications", 'String'>
+    readonly image: FieldRef<"notifications", 'String'>
+    readonly created_at: FieldRef<"notifications", 'DateTime'>
+    readonly updated_at: FieldRef<"notifications", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * notifications findUnique
+   */
+  export type notificationsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    /**
+     * Filter, which notifications to fetch.
+     */
+    where: notificationsWhereUniqueInput
+  }
+
+  /**
+   * notifications findUniqueOrThrow
+   */
+  export type notificationsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    /**
+     * Filter, which notifications to fetch.
+     */
+    where: notificationsWhereUniqueInput
+  }
+
+  /**
+   * notifications findFirst
+   */
+  export type notificationsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    /**
+     * Filter, which notifications to fetch.
+     */
+    where?: notificationsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of notifications to fetch.
+     */
+    orderBy?: notificationsOrderByWithRelationInput | notificationsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for notifications.
+     */
+    cursor?: notificationsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of notifications.
+     */
+    distinct?: NotificationsScalarFieldEnum | NotificationsScalarFieldEnum[]
+  }
+
+  /**
+   * notifications findFirstOrThrow
+   */
+  export type notificationsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    /**
+     * Filter, which notifications to fetch.
+     */
+    where?: notificationsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of notifications to fetch.
+     */
+    orderBy?: notificationsOrderByWithRelationInput | notificationsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for notifications.
+     */
+    cursor?: notificationsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of notifications.
+     */
+    distinct?: NotificationsScalarFieldEnum | NotificationsScalarFieldEnum[]
+  }
+
+  /**
+   * notifications findMany
+   */
+  export type notificationsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    /**
+     * Filter, which notifications to fetch.
+     */
+    where?: notificationsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of notifications to fetch.
+     */
+    orderBy?: notificationsOrderByWithRelationInput | notificationsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing notifications.
+     */
+    cursor?: notificationsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` notifications.
+     */
+    skip?: number
+    distinct?: NotificationsScalarFieldEnum | NotificationsScalarFieldEnum[]
+  }
+
+  /**
+   * notifications create
+   */
+  export type notificationsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a notifications.
+     */
+    data: XOR<notificationsCreateInput, notificationsUncheckedCreateInput>
+  }
+
+  /**
+   * notifications createMany
+   */
+  export type notificationsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many notifications.
+     */
+    data: notificationsCreateManyInput | notificationsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * notifications createManyAndReturn
+   */
+  export type notificationsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * The data used to create many notifications.
+     */
+    data: notificationsCreateManyInput | notificationsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * notifications update
+   */
+  export type notificationsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a notifications.
+     */
+    data: XOR<notificationsUpdateInput, notificationsUncheckedUpdateInput>
+    /**
+     * Choose, which notifications to update.
+     */
+    where: notificationsWhereUniqueInput
+  }
+
+  /**
+   * notifications updateMany
+   */
+  export type notificationsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update notifications.
+     */
+    data: XOR<notificationsUpdateManyMutationInput, notificationsUncheckedUpdateManyInput>
+    /**
+     * Filter which notifications to update
+     */
+    where?: notificationsWhereInput
+    /**
+     * Limit how many notifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * notifications updateManyAndReturn
+   */
+  export type notificationsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * The data used to update notifications.
+     */
+    data: XOR<notificationsUpdateManyMutationInput, notificationsUncheckedUpdateManyInput>
+    /**
+     * Filter which notifications to update
+     */
+    where?: notificationsWhereInput
+    /**
+     * Limit how many notifications to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * notifications upsert
+   */
+  export type notificationsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the notifications to update in case it exists.
+     */
+    where: notificationsWhereUniqueInput
+    /**
+     * In case the notifications found by the `where` argument doesn't exist, create a new notifications with this data.
+     */
+    create: XOR<notificationsCreateInput, notificationsUncheckedCreateInput>
+    /**
+     * In case the notifications was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<notificationsUpdateInput, notificationsUncheckedUpdateInput>
+  }
+
+  /**
+   * notifications delete
+   */
+  export type notificationsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
+    /**
+     * Filter which notifications to delete.
+     */
+    where: notificationsWhereUniqueInput
+  }
+
+  /**
+   * notifications deleteMany
+   */
+  export type notificationsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which notifications to delete
+     */
+    where?: notificationsWhereInput
+    /**
+     * Limit how many notifications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * notifications without action
+   */
+  export type notificationsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the notifications
+     */
+    select?: notificationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the notifications
+     */
+    omit?: notificationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: notificationsInclude<ExtArgs> | null
   }
 
 
@@ -48054,6 +50625,38 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const User_devicesScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    device_type: 'device_type',
+    device_token: 'device_token',
+    device_id: 'device_id',
+    device_model: 'device_model',
+    os_version: 'os_version',
+    app_version: 'app_version',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type User_devicesScalarFieldEnum = (typeof User_devicesScalarFieldEnum)[keyof typeof User_devicesScalarFieldEnum]
+
+
+  export const NotificationsScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    title: 'title',
+    body: 'body',
+    type: 'type',
+    read_flag: 'read_flag',
+    route: 'route',
+    image: 'image',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type NotificationsScalarFieldEnum = (typeof NotificationsScalarFieldEnum)[keyof typeof NotificationsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -52459,6 +55062,8 @@ export namespace Prisma {
     email?: StringNullableFilter<"user"> | string | null
     line_id?: StringNullableFilter<"user"> | string | null
     avatar?: StringNullableFilter<"user"> | string | null
+    user_devices?: User_devicesListRelationFilter
+    notifications?: NotificationsListRelationFilter
   }
 
   export type userOrderByWithRelationInput = {
@@ -52483,6 +55088,8 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     line_id?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
+    user_devices?: user_devicesOrderByRelationAggregateInput
+    notifications?: notificationsOrderByRelationAggregateInput
   }
 
   export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -52510,6 +55117,8 @@ export namespace Prisma {
     email?: StringNullableFilter<"user"> | string | null
     line_id?: StringNullableFilter<"user"> | string | null
     avatar?: StringNullableFilter<"user"> | string | null
+    user_devices?: User_devicesListRelationFilter
+    notifications?: NotificationsListRelationFilter
   }, "id">
 
   export type userOrderByWithAggregationInput = {
@@ -52564,6 +55173,166 @@ export namespace Prisma {
     email?: StringNullableWithAggregatesFilter<"user"> | string | null
     line_id?: StringNullableWithAggregatesFilter<"user"> | string | null
     avatar?: StringNullableWithAggregatesFilter<"user"> | string | null
+  }
+
+  export type user_devicesWhereInput = {
+    AND?: user_devicesWhereInput | user_devicesWhereInput[]
+    OR?: user_devicesWhereInput[]
+    NOT?: user_devicesWhereInput | user_devicesWhereInput[]
+    id?: StringFilter<"user_devices"> | string
+    user_id?: StringFilter<"user_devices"> | string
+    device_type?: StringFilter<"user_devices"> | string
+    device_token?: StringFilter<"user_devices"> | string
+    device_id?: StringFilter<"user_devices"> | string
+    device_model?: StringFilter<"user_devices"> | string
+    os_version?: StringFilter<"user_devices"> | string
+    app_version?: StringFilter<"user_devices"> | string
+    created_at?: DateTimeFilter<"user_devices"> | Date | string
+    updated_at?: DateTimeFilter<"user_devices"> | Date | string
+    user?: XOR<UserScalarRelationFilter, userWhereInput>
+  }
+
+  export type user_devicesOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    device_type?: SortOrder
+    device_token?: SortOrder
+    device_id?: SortOrder
+    device_model?: SortOrder
+    os_version?: SortOrder
+    app_version?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    user?: userOrderByWithRelationInput
+  }
+
+  export type user_devicesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: user_devicesWhereInput | user_devicesWhereInput[]
+    OR?: user_devicesWhereInput[]
+    NOT?: user_devicesWhereInput | user_devicesWhereInput[]
+    user_id?: StringFilter<"user_devices"> | string
+    device_type?: StringFilter<"user_devices"> | string
+    device_token?: StringFilter<"user_devices"> | string
+    device_id?: StringFilter<"user_devices"> | string
+    device_model?: StringFilter<"user_devices"> | string
+    os_version?: StringFilter<"user_devices"> | string
+    app_version?: StringFilter<"user_devices"> | string
+    created_at?: DateTimeFilter<"user_devices"> | Date | string
+    updated_at?: DateTimeFilter<"user_devices"> | Date | string
+    user?: XOR<UserScalarRelationFilter, userWhereInput>
+  }, "id">
+
+  export type user_devicesOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    device_type?: SortOrder
+    device_token?: SortOrder
+    device_id?: SortOrder
+    device_model?: SortOrder
+    os_version?: SortOrder
+    app_version?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: user_devicesCountOrderByAggregateInput
+    _max?: user_devicesMaxOrderByAggregateInput
+    _min?: user_devicesMinOrderByAggregateInput
+  }
+
+  export type user_devicesScalarWhereWithAggregatesInput = {
+    AND?: user_devicesScalarWhereWithAggregatesInput | user_devicesScalarWhereWithAggregatesInput[]
+    OR?: user_devicesScalarWhereWithAggregatesInput[]
+    NOT?: user_devicesScalarWhereWithAggregatesInput | user_devicesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"user_devices"> | string
+    user_id?: StringWithAggregatesFilter<"user_devices"> | string
+    device_type?: StringWithAggregatesFilter<"user_devices"> | string
+    device_token?: StringWithAggregatesFilter<"user_devices"> | string
+    device_id?: StringWithAggregatesFilter<"user_devices"> | string
+    device_model?: StringWithAggregatesFilter<"user_devices"> | string
+    os_version?: StringWithAggregatesFilter<"user_devices"> | string
+    app_version?: StringWithAggregatesFilter<"user_devices"> | string
+    created_at?: DateTimeWithAggregatesFilter<"user_devices"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"user_devices"> | Date | string
+  }
+
+  export type notificationsWhereInput = {
+    AND?: notificationsWhereInput | notificationsWhereInput[]
+    OR?: notificationsWhereInput[]
+    NOT?: notificationsWhereInput | notificationsWhereInput[]
+    id?: StringFilter<"notifications"> | string
+    user_id?: StringFilter<"notifications"> | string
+    title?: StringFilter<"notifications"> | string
+    body?: StringFilter<"notifications"> | string
+    type?: StringFilter<"notifications"> | string
+    read_flag?: BoolFilter<"notifications"> | boolean
+    route?: StringNullableFilter<"notifications"> | string | null
+    image?: StringNullableFilter<"notifications"> | string | null
+    created_at?: DateTimeFilter<"notifications"> | Date | string
+    updated_at?: DateTimeFilter<"notifications"> | Date | string
+    user?: XOR<UserScalarRelationFilter, userWhereInput>
+  }
+
+  export type notificationsOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    type?: SortOrder
+    read_flag?: SortOrder
+    route?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    user?: userOrderByWithRelationInput
+  }
+
+  export type notificationsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: notificationsWhereInput | notificationsWhereInput[]
+    OR?: notificationsWhereInput[]
+    NOT?: notificationsWhereInput | notificationsWhereInput[]
+    user_id?: StringFilter<"notifications"> | string
+    title?: StringFilter<"notifications"> | string
+    body?: StringFilter<"notifications"> | string
+    type?: StringFilter<"notifications"> | string
+    read_flag?: BoolFilter<"notifications"> | boolean
+    route?: StringNullableFilter<"notifications"> | string | null
+    image?: StringNullableFilter<"notifications"> | string | null
+    created_at?: DateTimeFilter<"notifications"> | Date | string
+    updated_at?: DateTimeFilter<"notifications"> | Date | string
+    user?: XOR<UserScalarRelationFilter, userWhereInput>
+  }, "id">
+
+  export type notificationsOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    type?: SortOrder
+    read_flag?: SortOrder
+    route?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: notificationsCountOrderByAggregateInput
+    _max?: notificationsMaxOrderByAggregateInput
+    _min?: notificationsMinOrderByAggregateInput
+  }
+
+  export type notificationsScalarWhereWithAggregatesInput = {
+    AND?: notificationsScalarWhereWithAggregatesInput | notificationsScalarWhereWithAggregatesInput[]
+    OR?: notificationsScalarWhereWithAggregatesInput[]
+    NOT?: notificationsScalarWhereWithAggregatesInput | notificationsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"notifications"> | string
+    user_id?: StringWithAggregatesFilter<"notifications"> | string
+    title?: StringWithAggregatesFilter<"notifications"> | string
+    body?: StringWithAggregatesFilter<"notifications"> | string
+    type?: StringWithAggregatesFilter<"notifications"> | string
+    read_flag?: BoolWithAggregatesFilter<"notifications"> | boolean
+    route?: StringNullableWithAggregatesFilter<"notifications"> | string | null
+    image?: StringNullableWithAggregatesFilter<"notifications"> | string | null
+    created_at?: DateTimeWithAggregatesFilter<"notifications"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"notifications"> | Date | string
   }
 
   export type adminsCreateInput = {
@@ -57819,6 +60588,8 @@ export namespace Prisma {
     email?: string | null
     line_id?: string | null
     avatar?: string | null
+    user_devices?: user_devicesCreateNestedManyWithoutUserInput
+    notifications?: notificationsCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateInput = {
@@ -57843,6 +60614,8 @@ export namespace Prisma {
     email?: string | null
     line_id?: string | null
     avatar?: string | null
+    user_devices?: user_devicesUncheckedCreateNestedManyWithoutUserInput
+    notifications?: notificationsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userUpdateInput = {
@@ -57867,6 +60640,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     line_id?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    user_devices?: user_devicesUpdateManyWithoutUserNestedInput
+    notifications?: notificationsUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateInput = {
@@ -57891,6 +60666,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     line_id?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    user_devices?: user_devicesUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: notificationsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type userCreateManyInput = {
@@ -57963,6 +60740,186 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     line_id?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type user_devicesCreateInput = {
+    id: string
+    device_type: string
+    device_token: string
+    device_id: string
+    device_model: string
+    os_version: string
+    app_version: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    user: userCreateNestedOneWithoutUser_devicesInput
+  }
+
+  export type user_devicesUncheckedCreateInput = {
+    id: string
+    user_id: string
+    device_type: string
+    device_token: string
+    device_id: string
+    device_model: string
+    os_version: string
+    app_version: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_devicesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    device_type?: StringFieldUpdateOperationsInput | string
+    device_token?: StringFieldUpdateOperationsInput | string
+    device_id?: StringFieldUpdateOperationsInput | string
+    device_model?: StringFieldUpdateOperationsInput | string
+    os_version?: StringFieldUpdateOperationsInput | string
+    app_version?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: userUpdateOneRequiredWithoutUser_devicesNestedInput
+  }
+
+  export type user_devicesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    device_type?: StringFieldUpdateOperationsInput | string
+    device_token?: StringFieldUpdateOperationsInput | string
+    device_id?: StringFieldUpdateOperationsInput | string
+    device_model?: StringFieldUpdateOperationsInput | string
+    os_version?: StringFieldUpdateOperationsInput | string
+    app_version?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_devicesCreateManyInput = {
+    id: string
+    user_id: string
+    device_type: string
+    device_token: string
+    device_id: string
+    device_model: string
+    os_version: string
+    app_version: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_devicesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    device_type?: StringFieldUpdateOperationsInput | string
+    device_token?: StringFieldUpdateOperationsInput | string
+    device_id?: StringFieldUpdateOperationsInput | string
+    device_model?: StringFieldUpdateOperationsInput | string
+    os_version?: StringFieldUpdateOperationsInput | string
+    app_version?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_devicesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    device_type?: StringFieldUpdateOperationsInput | string
+    device_token?: StringFieldUpdateOperationsInput | string
+    device_id?: StringFieldUpdateOperationsInput | string
+    device_model?: StringFieldUpdateOperationsInput | string
+    os_version?: StringFieldUpdateOperationsInput | string
+    app_version?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type notificationsCreateInput = {
+    id: string
+    title: string
+    body: string
+    type: string
+    read_flag?: boolean
+    route?: string | null
+    image?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    user: userCreateNestedOneWithoutNotificationsInput
+  }
+
+  export type notificationsUncheckedCreateInput = {
+    id: string
+    user_id: string
+    title: string
+    body: string
+    type: string
+    read_flag?: boolean
+    route?: string | null
+    image?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type notificationsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    read_flag?: BoolFieldUpdateOperationsInput | boolean
+    route?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: userUpdateOneRequiredWithoutNotificationsNestedInput
+  }
+
+  export type notificationsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    read_flag?: BoolFieldUpdateOperationsInput | boolean
+    route?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type notificationsCreateManyInput = {
+    id: string
+    user_id: string
+    title: string
+    body: string
+    type: string
+    read_flag?: boolean
+    route?: string | null
+    image?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type notificationsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    read_flag?: BoolFieldUpdateOperationsInput | boolean
+    route?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type notificationsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    read_flag?: BoolFieldUpdateOperationsInput | boolean
+    route?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -60812,6 +63769,26 @@ export namespace Prisma {
     updated_by?: SortOrder
   }
 
+  export type User_devicesListRelationFilter = {
+    every?: user_devicesWhereInput
+    some?: user_devicesWhereInput
+    none?: user_devicesWhereInput
+  }
+
+  export type NotificationsListRelationFilter = {
+    every?: notificationsWhereInput
+    some?: notificationsWhereInput
+    none?: notificationsWhereInput
+  }
+
+  export type user_devicesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type notificationsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type userCountOrderByAggregateInput = {
     id?: SortOrder
     token?: SortOrder
@@ -60882,6 +63859,89 @@ export namespace Prisma {
     email?: SortOrder
     line_id?: SortOrder
     avatar?: SortOrder
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: userWhereInput
+    isNot?: userWhereInput
+  }
+
+  export type user_devicesCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    device_type?: SortOrder
+    device_token?: SortOrder
+    device_id?: SortOrder
+    device_model?: SortOrder
+    os_version?: SortOrder
+    app_version?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type user_devicesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    device_type?: SortOrder
+    device_token?: SortOrder
+    device_id?: SortOrder
+    device_model?: SortOrder
+    os_version?: SortOrder
+    app_version?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type user_devicesMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    device_type?: SortOrder
+    device_token?: SortOrder
+    device_id?: SortOrder
+    device_model?: SortOrder
+    os_version?: SortOrder
+    app_version?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type notificationsCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    type?: SortOrder
+    read_flag?: SortOrder
+    route?: SortOrder
+    image?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type notificationsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    type?: SortOrder
+    read_flag?: SortOrder
+    route?: SortOrder
+    image?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type notificationsMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    type?: SortOrder
+    read_flag?: SortOrder
+    route?: SortOrder
+    image?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type adminsCreatepermissionsInput = {
@@ -62463,6 +65523,118 @@ export namespace Prisma {
     update?: traceability_cattleUpdateWithWhereUniqueWithoutTraceability_vehicleInput | traceability_cattleUpdateWithWhereUniqueWithoutTraceability_vehicleInput[]
     updateMany?: traceability_cattleUpdateManyWithWhereWithoutTraceability_vehicleInput | traceability_cattleUpdateManyWithWhereWithoutTraceability_vehicleInput[]
     deleteMany?: traceability_cattleScalarWhereInput | traceability_cattleScalarWhereInput[]
+  }
+
+  export type user_devicesCreateNestedManyWithoutUserInput = {
+    create?: XOR<user_devicesCreateWithoutUserInput, user_devicesUncheckedCreateWithoutUserInput> | user_devicesCreateWithoutUserInput[] | user_devicesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_devicesCreateOrConnectWithoutUserInput | user_devicesCreateOrConnectWithoutUserInput[]
+    createMany?: user_devicesCreateManyUserInputEnvelope
+    connect?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+  }
+
+  export type notificationsCreateNestedManyWithoutUserInput = {
+    create?: XOR<notificationsCreateWithoutUserInput, notificationsUncheckedCreateWithoutUserInput> | notificationsCreateWithoutUserInput[] | notificationsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: notificationsCreateOrConnectWithoutUserInput | notificationsCreateOrConnectWithoutUserInput[]
+    createMany?: notificationsCreateManyUserInputEnvelope
+    connect?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+  }
+
+  export type user_devicesUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<user_devicesCreateWithoutUserInput, user_devicesUncheckedCreateWithoutUserInput> | user_devicesCreateWithoutUserInput[] | user_devicesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_devicesCreateOrConnectWithoutUserInput | user_devicesCreateOrConnectWithoutUserInput[]
+    createMany?: user_devicesCreateManyUserInputEnvelope
+    connect?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+  }
+
+  export type notificationsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<notificationsCreateWithoutUserInput, notificationsUncheckedCreateWithoutUserInput> | notificationsCreateWithoutUserInput[] | notificationsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: notificationsCreateOrConnectWithoutUserInput | notificationsCreateOrConnectWithoutUserInput[]
+    createMany?: notificationsCreateManyUserInputEnvelope
+    connect?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+  }
+
+  export type user_devicesUpdateManyWithoutUserNestedInput = {
+    create?: XOR<user_devicesCreateWithoutUserInput, user_devicesUncheckedCreateWithoutUserInput> | user_devicesCreateWithoutUserInput[] | user_devicesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_devicesCreateOrConnectWithoutUserInput | user_devicesCreateOrConnectWithoutUserInput[]
+    upsert?: user_devicesUpsertWithWhereUniqueWithoutUserInput | user_devicesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: user_devicesCreateManyUserInputEnvelope
+    set?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+    disconnect?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+    delete?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+    connect?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+    update?: user_devicesUpdateWithWhereUniqueWithoutUserInput | user_devicesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: user_devicesUpdateManyWithWhereWithoutUserInput | user_devicesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: user_devicesScalarWhereInput | user_devicesScalarWhereInput[]
+  }
+
+  export type notificationsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<notificationsCreateWithoutUserInput, notificationsUncheckedCreateWithoutUserInput> | notificationsCreateWithoutUserInput[] | notificationsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: notificationsCreateOrConnectWithoutUserInput | notificationsCreateOrConnectWithoutUserInput[]
+    upsert?: notificationsUpsertWithWhereUniqueWithoutUserInput | notificationsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: notificationsCreateManyUserInputEnvelope
+    set?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+    disconnect?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+    delete?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+    connect?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+    update?: notificationsUpdateWithWhereUniqueWithoutUserInput | notificationsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: notificationsUpdateManyWithWhereWithoutUserInput | notificationsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: notificationsScalarWhereInput | notificationsScalarWhereInput[]
+  }
+
+  export type user_devicesUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<user_devicesCreateWithoutUserInput, user_devicesUncheckedCreateWithoutUserInput> | user_devicesCreateWithoutUserInput[] | user_devicesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_devicesCreateOrConnectWithoutUserInput | user_devicesCreateOrConnectWithoutUserInput[]
+    upsert?: user_devicesUpsertWithWhereUniqueWithoutUserInput | user_devicesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: user_devicesCreateManyUserInputEnvelope
+    set?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+    disconnect?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+    delete?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+    connect?: user_devicesWhereUniqueInput | user_devicesWhereUniqueInput[]
+    update?: user_devicesUpdateWithWhereUniqueWithoutUserInput | user_devicesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: user_devicesUpdateManyWithWhereWithoutUserInput | user_devicesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: user_devicesScalarWhereInput | user_devicesScalarWhereInput[]
+  }
+
+  export type notificationsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<notificationsCreateWithoutUserInput, notificationsUncheckedCreateWithoutUserInput> | notificationsCreateWithoutUserInput[] | notificationsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: notificationsCreateOrConnectWithoutUserInput | notificationsCreateOrConnectWithoutUserInput[]
+    upsert?: notificationsUpsertWithWhereUniqueWithoutUserInput | notificationsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: notificationsCreateManyUserInputEnvelope
+    set?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+    disconnect?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+    delete?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+    connect?: notificationsWhereUniqueInput | notificationsWhereUniqueInput[]
+    update?: notificationsUpdateWithWhereUniqueWithoutUserInput | notificationsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: notificationsUpdateManyWithWhereWithoutUserInput | notificationsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: notificationsScalarWhereInput | notificationsScalarWhereInput[]
+  }
+
+  export type userCreateNestedOneWithoutUser_devicesInput = {
+    create?: XOR<userCreateWithoutUser_devicesInput, userUncheckedCreateWithoutUser_devicesInput>
+    connectOrCreate?: userCreateOrConnectWithoutUser_devicesInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type userUpdateOneRequiredWithoutUser_devicesNestedInput = {
+    create?: XOR<userCreateWithoutUser_devicesInput, userUncheckedCreateWithoutUser_devicesInput>
+    connectOrCreate?: userCreateOrConnectWithoutUser_devicesInput
+    upsert?: userUpsertWithoutUser_devicesInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutUser_devicesInput, userUpdateWithoutUser_devicesInput>, userUncheckedUpdateWithoutUser_devicesInput>
+  }
+
+  export type userCreateNestedOneWithoutNotificationsInput = {
+    create?: XOR<userCreateWithoutNotificationsInput, userUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: userCreateOrConnectWithoutNotificationsInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type userUpdateOneRequiredWithoutNotificationsNestedInput = {
+    create?: XOR<userCreateWithoutNotificationsInput, userUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: userCreateOrConnectWithoutNotificationsInput
+    upsert?: userUpsertWithoutNotificationsInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutNotificationsInput, userUpdateWithoutNotificationsInput>, userUncheckedUpdateWithoutNotificationsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -68831,6 +72003,370 @@ export namespace Prisma {
     traceability_status?: traceability_statusUncheckedUpdateManyWithoutTraceabilityNestedInput
   }
 
+  export type user_devicesCreateWithoutUserInput = {
+    id: string
+    device_type: string
+    device_token: string
+    device_id: string
+    device_model: string
+    os_version: string
+    app_version: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_devicesUncheckedCreateWithoutUserInput = {
+    id: string
+    device_type: string
+    device_token: string
+    device_id: string
+    device_model: string
+    os_version: string
+    app_version: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_devicesCreateOrConnectWithoutUserInput = {
+    where: user_devicesWhereUniqueInput
+    create: XOR<user_devicesCreateWithoutUserInput, user_devicesUncheckedCreateWithoutUserInput>
+  }
+
+  export type user_devicesCreateManyUserInputEnvelope = {
+    data: user_devicesCreateManyUserInput | user_devicesCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type notificationsCreateWithoutUserInput = {
+    id: string
+    title: string
+    body: string
+    type: string
+    read_flag?: boolean
+    route?: string | null
+    image?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type notificationsUncheckedCreateWithoutUserInput = {
+    id: string
+    title: string
+    body: string
+    type: string
+    read_flag?: boolean
+    route?: string | null
+    image?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type notificationsCreateOrConnectWithoutUserInput = {
+    where: notificationsWhereUniqueInput
+    create: XOR<notificationsCreateWithoutUserInput, notificationsUncheckedCreateWithoutUserInput>
+  }
+
+  export type notificationsCreateManyUserInputEnvelope = {
+    data: notificationsCreateManyUserInput | notificationsCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type user_devicesUpsertWithWhereUniqueWithoutUserInput = {
+    where: user_devicesWhereUniqueInput
+    update: XOR<user_devicesUpdateWithoutUserInput, user_devicesUncheckedUpdateWithoutUserInput>
+    create: XOR<user_devicesCreateWithoutUserInput, user_devicesUncheckedCreateWithoutUserInput>
+  }
+
+  export type user_devicesUpdateWithWhereUniqueWithoutUserInput = {
+    where: user_devicesWhereUniqueInput
+    data: XOR<user_devicesUpdateWithoutUserInput, user_devicesUncheckedUpdateWithoutUserInput>
+  }
+
+  export type user_devicesUpdateManyWithWhereWithoutUserInput = {
+    where: user_devicesScalarWhereInput
+    data: XOR<user_devicesUpdateManyMutationInput, user_devicesUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type user_devicesScalarWhereInput = {
+    AND?: user_devicesScalarWhereInput | user_devicesScalarWhereInput[]
+    OR?: user_devicesScalarWhereInput[]
+    NOT?: user_devicesScalarWhereInput | user_devicesScalarWhereInput[]
+    id?: StringFilter<"user_devices"> | string
+    user_id?: StringFilter<"user_devices"> | string
+    device_type?: StringFilter<"user_devices"> | string
+    device_token?: StringFilter<"user_devices"> | string
+    device_id?: StringFilter<"user_devices"> | string
+    device_model?: StringFilter<"user_devices"> | string
+    os_version?: StringFilter<"user_devices"> | string
+    app_version?: StringFilter<"user_devices"> | string
+    created_at?: DateTimeFilter<"user_devices"> | Date | string
+    updated_at?: DateTimeFilter<"user_devices"> | Date | string
+  }
+
+  export type notificationsUpsertWithWhereUniqueWithoutUserInput = {
+    where: notificationsWhereUniqueInput
+    update: XOR<notificationsUpdateWithoutUserInput, notificationsUncheckedUpdateWithoutUserInput>
+    create: XOR<notificationsCreateWithoutUserInput, notificationsUncheckedCreateWithoutUserInput>
+  }
+
+  export type notificationsUpdateWithWhereUniqueWithoutUserInput = {
+    where: notificationsWhereUniqueInput
+    data: XOR<notificationsUpdateWithoutUserInput, notificationsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type notificationsUpdateManyWithWhereWithoutUserInput = {
+    where: notificationsScalarWhereInput
+    data: XOR<notificationsUpdateManyMutationInput, notificationsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type notificationsScalarWhereInput = {
+    AND?: notificationsScalarWhereInput | notificationsScalarWhereInput[]
+    OR?: notificationsScalarWhereInput[]
+    NOT?: notificationsScalarWhereInput | notificationsScalarWhereInput[]
+    id?: StringFilter<"notifications"> | string
+    user_id?: StringFilter<"notifications"> | string
+    title?: StringFilter<"notifications"> | string
+    body?: StringFilter<"notifications"> | string
+    type?: StringFilter<"notifications"> | string
+    read_flag?: BoolFilter<"notifications"> | boolean
+    route?: StringNullableFilter<"notifications"> | string | null
+    image?: StringNullableFilter<"notifications"> | string | null
+    created_at?: DateTimeFilter<"notifications"> | Date | string
+    updated_at?: DateTimeFilter<"notifications"> | Date | string
+  }
+
+  export type userCreateWithoutUser_devicesInput = {
+    id: string
+    token: string
+    type?: string | null
+    last_login?: Date | string | null
+    user_id?: string | null
+    approve_status?: string | null
+    role_id?: string | null
+    type_id?: string | null
+    company_name?: string | null
+    company_id?: string | null
+    title_name?: string | null
+    first_name?: string | null
+    last_name?: string | null
+    birth_date?: Date | string | null
+    nationality_id?: string | null
+    id_card?: string | null
+    mobile_number?: string | null
+    office_number?: string | null
+    email?: string | null
+    line_id?: string | null
+    avatar?: string | null
+    notifications?: notificationsCreateNestedManyWithoutUserInput
+  }
+
+  export type userUncheckedCreateWithoutUser_devicesInput = {
+    id: string
+    token: string
+    type?: string | null
+    last_login?: Date | string | null
+    user_id?: string | null
+    approve_status?: string | null
+    role_id?: string | null
+    type_id?: string | null
+    company_name?: string | null
+    company_id?: string | null
+    title_name?: string | null
+    first_name?: string | null
+    last_name?: string | null
+    birth_date?: Date | string | null
+    nationality_id?: string | null
+    id_card?: string | null
+    mobile_number?: string | null
+    office_number?: string | null
+    email?: string | null
+    line_id?: string | null
+    avatar?: string | null
+    notifications?: notificationsUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type userCreateOrConnectWithoutUser_devicesInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutUser_devicesInput, userUncheckedCreateWithoutUser_devicesInput>
+  }
+
+  export type userUpsertWithoutUser_devicesInput = {
+    update: XOR<userUpdateWithoutUser_devicesInput, userUncheckedUpdateWithoutUser_devicesInput>
+    create: XOR<userCreateWithoutUser_devicesInput, userUncheckedCreateWithoutUser_devicesInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutUser_devicesInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutUser_devicesInput, userUncheckedUpdateWithoutUser_devicesInput>
+  }
+
+  export type userUpdateWithoutUser_devicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    approve_status?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    company_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title_name?: NullableStringFieldUpdateOperationsInput | string | null
+    first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality_id?: NullableStringFieldUpdateOperationsInput | string | null
+    id_card?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    office_number?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    notifications?: notificationsUpdateManyWithoutUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutUser_devicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    approve_status?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    company_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title_name?: NullableStringFieldUpdateOperationsInput | string | null
+    first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality_id?: NullableStringFieldUpdateOperationsInput | string | null
+    id_card?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    office_number?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    notifications?: notificationsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type userCreateWithoutNotificationsInput = {
+    id: string
+    token: string
+    type?: string | null
+    last_login?: Date | string | null
+    user_id?: string | null
+    approve_status?: string | null
+    role_id?: string | null
+    type_id?: string | null
+    company_name?: string | null
+    company_id?: string | null
+    title_name?: string | null
+    first_name?: string | null
+    last_name?: string | null
+    birth_date?: Date | string | null
+    nationality_id?: string | null
+    id_card?: string | null
+    mobile_number?: string | null
+    office_number?: string | null
+    email?: string | null
+    line_id?: string | null
+    avatar?: string | null
+    user_devices?: user_devicesCreateNestedManyWithoutUserInput
+  }
+
+  export type userUncheckedCreateWithoutNotificationsInput = {
+    id: string
+    token: string
+    type?: string | null
+    last_login?: Date | string | null
+    user_id?: string | null
+    approve_status?: string | null
+    role_id?: string | null
+    type_id?: string | null
+    company_name?: string | null
+    company_id?: string | null
+    title_name?: string | null
+    first_name?: string | null
+    last_name?: string | null
+    birth_date?: Date | string | null
+    nationality_id?: string | null
+    id_card?: string | null
+    mobile_number?: string | null
+    office_number?: string | null
+    email?: string | null
+    line_id?: string | null
+    avatar?: string | null
+    user_devices?: user_devicesUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type userCreateOrConnectWithoutNotificationsInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutNotificationsInput, userUncheckedCreateWithoutNotificationsInput>
+  }
+
+  export type userUpsertWithoutNotificationsInput = {
+    update: XOR<userUpdateWithoutNotificationsInput, userUncheckedUpdateWithoutNotificationsInput>
+    create: XOR<userCreateWithoutNotificationsInput, userUncheckedCreateWithoutNotificationsInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutNotificationsInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutNotificationsInput, userUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type userUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    approve_status?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    company_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title_name?: NullableStringFieldUpdateOperationsInput | string | null
+    first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality_id?: NullableStringFieldUpdateOperationsInput | string | null
+    id_card?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    office_number?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    user_devices?: user_devicesUpdateManyWithoutUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    last_login?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    approve_status?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    company_name?: NullableStringFieldUpdateOperationsInput | string | null
+    company_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title_name?: NullableStringFieldUpdateOperationsInput | string | null
+    first_name?: NullableStringFieldUpdateOperationsInput | string | null
+    last_name?: NullableStringFieldUpdateOperationsInput | string | null
+    birth_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nationality_id?: NullableStringFieldUpdateOperationsInput | string | null
+    id_card?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile_number?: NullableStringFieldUpdateOperationsInput | string | null
+    office_number?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    line_id?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    user_devices?: user_devicesUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type buyer_attachmentsCreateManyBuyersInput = {
     id: string
     file_name: string
@@ -70723,6 +74259,102 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_by_id?: StringFieldUpdateOperationsInput | string
     updated_by?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type user_devicesCreateManyUserInput = {
+    id: string
+    device_type: string
+    device_token: string
+    device_id: string
+    device_model: string
+    os_version: string
+    app_version: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type notificationsCreateManyUserInput = {
+    id: string
+    title: string
+    body: string
+    type: string
+    read_flag?: boolean
+    route?: string | null
+    image?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_devicesUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    device_type?: StringFieldUpdateOperationsInput | string
+    device_token?: StringFieldUpdateOperationsInput | string
+    device_id?: StringFieldUpdateOperationsInput | string
+    device_model?: StringFieldUpdateOperationsInput | string
+    os_version?: StringFieldUpdateOperationsInput | string
+    app_version?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_devicesUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    device_type?: StringFieldUpdateOperationsInput | string
+    device_token?: StringFieldUpdateOperationsInput | string
+    device_id?: StringFieldUpdateOperationsInput | string
+    device_model?: StringFieldUpdateOperationsInput | string
+    os_version?: StringFieldUpdateOperationsInput | string
+    app_version?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_devicesUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    device_type?: StringFieldUpdateOperationsInput | string
+    device_token?: StringFieldUpdateOperationsInput | string
+    device_id?: StringFieldUpdateOperationsInput | string
+    device_model?: StringFieldUpdateOperationsInput | string
+    os_version?: StringFieldUpdateOperationsInput | string
+    app_version?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type notificationsUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    read_flag?: BoolFieldUpdateOperationsInput | boolean
+    route?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type notificationsUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    read_flag?: BoolFieldUpdateOperationsInput | boolean
+    route?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type notificationsUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    read_flag?: BoolFieldUpdateOperationsInput | boolean
+    route?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

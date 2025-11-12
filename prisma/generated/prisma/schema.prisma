@@ -804,25 +804,55 @@ model traceability_vehicle {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model user {
-  id             String    @id @db.VarChar
-  token          String    @db.VarChar
-  type           String?   @db.VarChar
-  last_login     DateTime? @db.Timestamp(6)
-  user_id        String?   @db.VarChar
-  approve_status String?   @db.VarChar
-  role_id        String?   @db.VarChar(32)
-  type_id        String?   @db.VarChar(32)
-  company_name   String?   @db.VarChar
-  company_id     String?   @db.VarChar
-  title_name     String?   @db.VarChar
-  first_name     String?   @db.VarChar
-  last_name      String?   @db.VarChar
-  birth_date     DateTime? @db.Date
-  nationality_id String?   @db.VarChar
-  id_card        String?   @db.VarChar
-  mobile_number  String?   @db.VarChar
-  office_number  String?   @db.VarChar
-  email          String?   @db.VarChar
-  line_id        String?   @db.VarChar
-  avatar         String?   @db.VarChar
+  id             String          @id @db.VarChar
+  token          String          @db.VarChar
+  type           String?         @db.VarChar
+  last_login     DateTime?       @db.Timestamp(6)
+  user_id        String?         @db.VarChar
+  approve_status String?         @db.VarChar
+  role_id        String?         @db.VarChar(32)
+  type_id        String?         @db.VarChar(32)
+  company_name   String?         @db.VarChar
+  company_id     String?         @db.VarChar
+  title_name     String?         @db.VarChar
+  first_name     String?         @db.VarChar
+  last_name      String?         @db.VarChar
+  birth_date     DateTime?       @db.Date
+  nationality_id String?         @db.VarChar
+  id_card        String?         @db.VarChar
+  mobile_number  String?         @db.VarChar
+  office_number  String?         @db.VarChar
+  email          String?         @db.VarChar
+  line_id        String?         @db.VarChar
+  avatar         String?         @db.VarChar
+  user_devices   user_devices[]
+  notifications  notifications[]
+}
+
+model user_devices {
+  id           String   @id @db.VarChar(36)
+  user_id      String   @db.VarChar(36)
+  device_type  String   @db.VarChar(20)
+  device_token String   @db.VarChar(255)
+  device_id    String   @db.VarChar(255)
+  device_model String   @db.VarChar(255)
+  os_version   String   @db.VarChar(50)
+  app_version  String   @db.VarChar(20)
+  created_at   DateTime @default(now()) @db.Timestamp(6)
+  updated_at   DateTime @updatedAt @db.Timestamp(6)
+  user         user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_id")
+}
+
+model notifications {
+  id         String   @id @db.VarChar(36)
+  user_id    String   @db.VarChar(36)
+  title      String   @db.VarChar(255)
+  body       String   @db.VarChar(1000)
+  type       String   @db.VarChar(50)
+  read_flag  Boolean  @default(false)
+  route      String?  @db.VarChar(255)
+  image      String?  @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  updated_at DateTime @updatedAt @db.Timestamp(6)
+  user       user     @relation(fields: [user_id], references: [id])
 }

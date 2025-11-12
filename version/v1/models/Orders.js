@@ -28,6 +28,15 @@ exports.getAll = async (req, res, next) => {
   }
 };
 
+exports.myOrders = async (req, res, next) => {
+  const userId = req.user.id;
+  try {
+    res.status(200).json({ status: "success", data: toCamelCase([]) });
+  } catch (error) {
+    res.status(400).json({ status: "error", error: error.message });
+  }
+}
+
 // Get order by ID
 exports.getId = async (req, res, next) => {
   try {

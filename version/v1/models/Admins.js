@@ -50,8 +50,18 @@ exports.getDashboardSummary = async (req, res, next) => {
 
   try {
     if (roleId == "1") {
-      totalFarms = await prisma.farms.count({
+      // Get farm IDs for the farmer first
+      const farmerFarms = await prisma.farms.findMany({
         where: { farmer_id: userId },
+        select: { id: true }
+      });
+      const farmIds = farmerFarms.map(farm => farm.id);
+      totalFarms = farmerFarms.length;
+      totalPens = await prisma.pens.count({
+        where: { farm_id: { in: farmIds } },
+      });
+      totalCattles = await prisma.cattles.count({
+        where: { farm_id: { in: farmIds }, status: { not: "SOLD" } },
       });
     } else if (roleId == "6") {
       totalFarms = await prisma.farms.count();

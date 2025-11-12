@@ -128,6 +128,7 @@ router.get(
 
 // Orders
 router.get("/orders", verifyToken, Orders.getAll);
+router.get("/my-orders/:userId", verifyToken, Orders.myOrders);
 router.post("/orders", verifyToken, Orders.create);
 router.get("/orders/:id", verifyToken, Orders.getId);
 router.put("/orders/:id", verifyToken, Orders.update);

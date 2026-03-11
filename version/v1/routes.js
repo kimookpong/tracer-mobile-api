@@ -82,6 +82,7 @@ router.get("/upload/preview/:category/:year/:filename", Upload.preview);
 router.get("/upload/info/:category/:year/:filename", Upload.getFileInfo);
 router.get("/upload/list/:category/:year", verifyToken, Upload.listFiles);
 
+
 // Traceability
 router.get("/traceability", verifyToken, Traceability.getAll);
 router.post("/traceability", verifyToken, Traceability.create);
@@ -153,5 +154,6 @@ router.post("/notifications/:id/read", verifyToken, Notifications.markAsRead);
 router.post("/user-devices", verifyToken, UserDevices.create);
 router.get("/user-devices", verifyToken, UserDevices.getAll);
 router.get("/user-devices/:id", verifyToken, UserDevices.getById);
+
 
 module.exports = router;
